@@ -1,0 +1,93 @@
+/* Styles for profile card component */
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-grey-800);
+
+  width: clamp(19.5rem, 19rem + 1.5vw, 30rem);
+  padding-block: var(--spacing-600) var(--spacing-300);
+  gap: var(--spacing-250);
+
+  border-radius: 0.8rem;
+  color: var(--color-white);
+}
+
+.profile-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-300);
+}
+
+.profile-card__avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-card__name {
+  font-weight: var(--font-weight-preset1);
+  font-size: var(--font-size-preset1);
+  line-height: var(--line-height-preset1);
+  letter-spacing: var(--letter-spacing-preset1);
+
+  margin-block-end: var(--spacing-150);
+}
+
+.profile-card__location {
+  font-weight: var(--font-weight-preset2);
+  font-size: var(--font-size-preset2);
+  line-height: var(--line-height-preset2);
+  letter-spacing: var(--letter-spacing-preset2);
+  color: var(--color-green);
+}
+
+.profile-card__about {
+  font-weight: var(--font-weight-preset3);
+  font-size: var(--font-size-preset3);
+  line-height: var(--line-height-preset3);
+  letter-spacing: var(--letter-spacing-preset3);
+
+  opacity: 0.8;
+}
+
+.profile-card__social-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+  padding-inline: var(--spacing-300);
+}
+
+.profile-card__social-link {
+  /* Reset <a>'s style */
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  outline: none;
+  border: none;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+
+  /* Make <a> look like button */
+  display: block;
+  text-align: center;
+  padding-block: var(--spacing-200);
+  border-radius: 0.8rem;
+  background-color: var(--color-grey-700);
+
+  /* Set text style */
+  font-weight: var(--font-weight-preset4);
+  font-size: var(--font-size-preset4);
+  line-height: var(--line-height-preset4);
+  letter-spacing: var(--letter-spacing-preset4);
+}
+
+.profile-card__social-link:hover,
+.profile-card__social-link:focus {
+  background-color: var(--color-green);
+  color: var(--color-grey-800);
+}
