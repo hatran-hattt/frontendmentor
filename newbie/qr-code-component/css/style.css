@@ -1,0 +1,65 @@
+:root {
+  --background-color: #d5e1ef;
+  --heading-text-color: #1f314f;
+  --content-text-color: #68778d;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  background-color: var(--background-color);
+  font-family: "Outfit", sans-serif;
+}
+
+h1 {
+  color: var(--heading-text-color);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 20rem;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  padding-block-end: 2.5rem;
+  box-shadow: 0 0.6rem 0.6rem rgba(0, 0, 0, 0.15); /* Add this line */
+}
+.card > img {
+  border-radius: 0.625rem;
+}
+.card > .title {
+  text-align: center;
+  padding: 0 1rem;
+  margin: 0;
+  margin-block-start: 1.5rem;
+  font-weight: 700;
+  font-size: 1.375em;
+  line-height: 1.2;
+  color: var(--heading-text-color);
+}
+.card > .description {
+  text-align: center;
+  padding: 0 1rem;
+  margin: 0;
+  margin-block-start: 1rem;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--content-text-color);
+}
+
+.attribution {
+  margin-block-start: 1.25rem;
+  font-size: 0.7em;
+  text-align: center;
+  color: var(--content-text-color);
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

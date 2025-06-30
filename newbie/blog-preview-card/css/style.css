@@ -1,0 +1,10 @@
+/* Main entry point, imports all others */
+
+/* 1. Settings / Variables (Lowest Specificity) */
+@import url("./_variables.css");
+
+/* 2. Generic / Base Styles */
+@import url("./_base.css");
+
+/* 3. Components (Specific UI elements) */
+@import url("./components/_blog_card.css");

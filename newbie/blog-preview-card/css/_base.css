@@ -1,0 +1,22 @@
+/* Normalize/reset, global body styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  color: var(--color-gray-950);
+  min-height: 100vh;
+  gap: var(--spacing-300);
+  background-color: var(--color-yellow);
+}
+
+.flex-box-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

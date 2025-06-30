@@ -1,0 +1,68 @@
+/* Define all design tokens (colors, typography, spacing) */
+
+@font-face {
+  font-family: "Figtree";
+  src: url("../assets/fonts/Figtree-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900; /* Range for variable font */
+  font-style: normal;
+}
+
+:root {
+  /* Define a base font size for REM calculation */
+  --base-font-size: 16;
+
+  /* Colors */
+  --color-yellow: #f4d04e;
+  --color-gray-950: #111111;
+  --color-gray-500: #6b6b6b;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-family-base: "Figtree", sans-serif;
+
+  /* Text Preset 1: Figtree Extra Bold, 24px, 150% Line Height, 0px Letter Spacing */
+  --font-weight-preset1: 800; /* Extra Bold */
+  --font-size-preset1: clamp(
+    20 / var(--base-font-size) * 1rem,
+    2.5vw,
+    24 / var(--base-font-size) * 1rem
+  );
+  --line-height-preset1: 1.5; /* 150% */
+  --letter-spacing-preset1: 0;
+
+  /* Text Preset 2: Figtree Medium, 16px, 150% Line Height, 0px Letter Spacing */
+  --font-weight-preset2: 500; /* Medium */
+  --font-size-preset2: clamp(
+    14 / var(--base-font-size) * 1rem,
+    2.5vw,
+    16 / var(--base-font-size) * 1rem
+  );
+  --line-height-preset2: 1.5; /* 150% */
+  --letter-spacing-preset2: 0;
+
+  /* Text Preset 3: Figtree Medium, 14px, 150% Line Height, 0px Letter Spacing */
+  --font-weight-preset3: 500; /* Medium */
+  --font-size-preset3: clamp(
+    12 / var(--base-font-size) * 1rem,
+    2.5vw,
+    14 / var(--base-font-size) * 1rem
+  );
+  --line-height-preset3: 1.5; /* 150% */
+  --letter-spacing-preset3: 0;
+
+  /* Text Preset 4: Figtree Extra Bold, 14px, 150% Line Height, 0px Letter Spacing */
+  --font-weight-preset4: 800; /* Extra Bold */
+  --font-size-preset4: clamp(
+    12 / var(--base-font-size) * 1rem,
+    2.5vw,
+    14 / var(--base-font-size) * 1rem
+  );
+  --line-height-preset4: 1.5; /* 150% */
+  --letter-spacing-preset4: 0;
+
+  /* Spacing */
+  --spacing-300: calc(24 / var(--base-font-size) * 1rem);
+  --spacing-150: calc(12 / var(--base-font-size) * 1rem);
+  --spacing-100: calc(8 / var(--base-font-size) * 1rem);
+  --spacing-50: calc(4 / var(--base-font-size) * 1rem);
+}
