@@ -9,6 +9,8 @@
 body {
   font-family: var(--font-family-base);
   background-color: var(--color-stone-100);
+  display: grid;
+  justify-content: center;
 }
 
 footer {

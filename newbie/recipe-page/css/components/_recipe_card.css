@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   background-color: var(--color-white);
+
+  max-width: 100vw;
 }
 .recipe-content {
   display: flex;
@@ -58,19 +60,14 @@
   color: var(--color-brown-800);
 }
 .recipe-section__list {
-  /* Setting gap and remove marker */
   display: grid;
   gap: var(--spacing-100);
-  list-style: none;
+  padding-inline-start: var(--spacing-200);
 }
 .recipe-section__list > li {
-  padding-inline-start: var(--spacing-100);
+  padding-inline-start: var(--spacing-200);
 }
-.recipe-section__list > li::before {
-  /* Setting marker "•    " */
-  content: "•";
-  display: inline-block;
-  width: var(--spacing-400);
+.recipe-section__list > li::marker {
   color: var(--color-brown-800);
 }
 .recipe-section__list > li > strong {
@@ -93,19 +90,12 @@
   letter-spacing: var(--letter-spacing-preset3);
   color: var(--color-rose-800);
 }
-.recipe-preparation__list > li::before {
+.recipe-preparation__list > li::marker {
   color: var(--color-rose-800);
 }
 
 /* Section: Instructions */
-.recipe-instructions__list {
-  counter-reset: custom-counter;
-}
-.recipe-instructions__list > li {
-  counter-increment: custom-counter;
-}
-.recipe-instructions__list > li::before {
-  content: counter(custom-counter) ".";
+.recipe-instructions__list > li::marker {
   font-weight: var(--font-weight-preset4-bold);
 }
 
@@ -145,7 +135,7 @@
     gap: var(--spacing-500);
     padding: var(--spacing-500);
     margin-block-start: 8rem;
-    margin-inline: clamp(4.75rem, 4.5rem + 1.5vw, 22rem);
+    width: clamp(38.5rem, 38rem + 1.5vw, 46rem);
     border-radius: var(--spacing-300);
   }
 

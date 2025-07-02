@@ -134,12 +134,15 @@ You can use any tools you like to help you complete the challenge. So if you've 
 
 > display: inline-block; // ex: give space arround span
 
-#### 5. Controlling the alignment of text in a list item when it wraps to a new line (`hanging indent`) TODO
+#### 5. Controlling the alignment (directly under text) of text in a list item when it wraps to a new line (`hanging indent`)
 
-- Using Flexbox (Most Recommended for Modern Layouts) for `<li>`
-  > use when item contains only marker & 1 content
-- Using text-indent (Traditional, Less Flexible)
-  > This method involves a negative text-indent on the `<li>` and a positive padding-left to push the first line over.
+- Default list's style (list-style-position: outside): already directly under text
+- Case customizing list's style
+
+  - Using Flexbox (Most Recommended for Modern Layouts) for `<li>`
+    > use when item contains only marker & 1 content
+  - Using text-indent (Traditional, Less Flexible)
+    > This method involves a negative text-indent on the `<li>` and a positive padding-left to push the first line over.
 
 ## Author
 
