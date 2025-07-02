@@ -62,7 +62,7 @@
 .recipe-section__list {
   display: grid;
   gap: var(--spacing-100);
-  padding-inline-start: var(--spacing-200);
+  padding-inline-start: var(--spacing-300);
 }
 .recipe-section__list > li {
   padding-inline-start: var(--spacing-200);
@@ -135,7 +135,7 @@
     gap: var(--spacing-500);
     padding: var(--spacing-500);
     margin-block-start: 8rem;
-    width: clamp(38.5rem, 38rem + 1.5vw, 46rem);
+    width: clamp(38.5rem, 38.5rem + 8.5vw, 46rem);
     border-radius: var(--spacing-300);
   }
 
