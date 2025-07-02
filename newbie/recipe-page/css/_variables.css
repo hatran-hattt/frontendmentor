@@ -1,0 +1,78 @@
+/* Define all design tokens (colors, typography, spacing) */
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../assets/fonts/outfit/Outfit-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900; /* Range for variable font */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Young Serif";
+  src: url("../assets/fonts/young-serif/YoungSerif-Regular.ttf")
+    format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+:root {
+  /* Define a base font size for REM calculation */
+  --base-font-size: 16;
+
+  /* Colors */
+  --color-rose-800: rgb(122, 40, 78);
+  --color-rose-50: rgb(255, 247, 251);
+  --color-stone-900: rgb(49, 46, 44);
+  --color-stone-600: rgb(95, 86, 77);
+  --color-stone-150: rgb(227, 221, 215);
+  --color-stone-100: rgb(243, 229, 215);
+  --color-brown-800: rgb(133, 70, 50);
+  --color-white: rgb(255, 255, 255);
+
+  /* Typography */
+  --font-family-base: "Outfit", sans-serif;
+
+  /* Text Preset 1: Young Serif Regular, 36~40px, 100% Line Height, 0px Letter Spacing */
+  --font-family-preset1: "Young Serif", serif;
+  --font-weight-preset1: 400;
+  --font-size-preset1: clamp(
+    36 / var(--base-font-size) * 1rem,
+    0.5rem + 1.5vw,
+    40 / var(--base-font-size) * 1rem
+  );
+  --line-height-preset1: 1;
+  --letter-spacing-preset1: 0;
+
+  /* Text Preset 1: Young Serif Regular, 28px, 100% Line Height, 0px Letter Spacing */
+  --font-family-preset2: "Young Serif", sans-serif;
+  --font-weight-preset2: 400;
+  --font-size-preset2: calc(28 / var(--base-font-size) * 1rem);
+  --line-height-preset2: 1;
+  --letter-spacing-preset2: 0;
+
+  /* Text Preset 3: Outfit Semi Bold, 20px, 100% Line Height, 0px Letter Spacing */
+  --font-family-preset3: "Outfit", sans-serif;
+  --font-weight-preset3: 600;
+  --font-size-preset3: calc(20 / var(--base-font-size) * 1rem);
+  --line-height-preset3: 1;
+  --letter-spacing-preset3: 0;
+
+  /* Text Preset 4: Outfit Regular/Bold, 16px, 150% Line Height, 0px Letter Spacing */
+  --font-family-preset4: "Outfit", sans-serif;
+  --font-weight-preset4: 400;
+  --font-weight-preset4-bold: 700;
+  --font-size-preset4: calc(16 / var(--base-font-size) * 1rem);
+  --line-height-preset4: 1.5;
+  --letter-spacing-preset4: 0;
+
+  /* Spacing */
+  --spacing-1600: calc(128 / var(--base-font-size) * 1rem);
+  --spacing-600: calc(48 / var(--base-font-size) * 1rem);
+  --spacing-500: calc(40 / var(--base-font-size) * 1rem);
+  --spacing-400: calc(32 / var(--base-font-size) * 1rem);
+  --spacing-300: calc(24 / var(--base-font-size) * 1rem);
+  --spacing-200: calc(16 / var(--base-font-size) * 1rem);
+  --spacing-150: calc(12 / var(--base-font-size) * 1rem);
+  --spacing-100: calc(8 / var(--base-font-size) * 1rem);
+}
