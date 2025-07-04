@@ -48,4 +48,17 @@ $font-weight-bold: 700;
   --font-family-heading: #{$font-family-young-serif};
 }
 
-
+// Dark mode 
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Colors
+    --background-color-body: #{$color-stone-900};              // Dark background
+    --background-color-card: #{$color-stone-600};              // Slightly lighter card
+    --background-color-section-highlight: #{$color-rose-800};  // Deep accent for highlights
+    --text-color-main: #{$color-stone-100};                    // Light text
+    --text-color-header: #{$color-white};                      // Bright header text
+    --text-color-section-common: #{$color-rose-50};            // Light accent text
+    --text-color-section-highlight: #{$color-rose-50};         // Light highlight text
+    --border-color: #{$color-stone-150}; 
+  }
+}

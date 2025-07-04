@@ -264,7 +264,34 @@ You can use any tools you like to help you complete the challenge. So if you've 
   > 7-1 pattern
   > Reference: https://sass-guidelin.es/#architecture
 
-#### 7. Fluid Typography prefered caculation: TODO
+#### 7. Apply dark mode (theme)
+
+- Trigger automatically (OS setting)
+
+  ```
+    // Use media query `prefers-color-scheme`
+    @media (prefers-color-scheme: dark) {
+      :root {
+        // Override the light mode defaults with dark mode values
+        --color-text-default: #e0e0e0;
+        ...
+      }
+    }
+  ```
+
+- Trigger manually (User switch using a toogle on UI (ex: themes choosing toogle))
+  ```
+    // Use class toogle
+    html.dark-theme,
+    body.dark-theme { // Target the class on html or body
+      // These values will override both the light mode defaults AND
+      // the `prefers-color-scheme` values if this class is present.
+      --color-text-default: #e0e0e0;
+      ...
+    }
+  ```
+
+#### 8. Fluid Typography prefered caculation: TODO
 
 ## Author
 
