@@ -1,0 +1,58 @@
+// |– base/                   # The boilerplate code for the project
+// |   |– _reset.scss         # Reset/normalize
+// |   |– _typography.scss    # Typography rules
+// |   |– _base.scss          # Standard styles for commonly used HTML elements
+// |   …                      # Etc.
+
+
+
+// || Reset/normalize
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// || Typography rules
+@font-face {
+  font-family: "Outfit";
+  src: url("../assets/fonts/outfit/Outfit-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900; /* Range for variable font */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Young Serif";
+  src: url("../assets/fonts/young-serif/YoungSerif-Regular.ttf")
+    format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+
+// || Standard styles for commonly used HTML elements
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--background-color-body);
+  display: grid;
+  justify-content: center;
+}
+
+footer {
+  margin-block: 3rem;
+  text-align: center;
+}
+
+.sr-only {
+  /* Visually hidden but accessible to screen readers */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,68 @@
+// src/styles/02_tools/_functions.scss
+
+@use 'sass:math'; // Required for math.div()
+@use 'sass:string';
+
+// Helper function to remove units for calculations
+// This ensures that when you divide pixels by pixels or rem by rem, you get a unitless number.
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+/**
+ * Generates a CSS `clamp()` function for fluid typography.
+ *
+ * This function calculates a responsive font size that smoothly
+ * scales between a minimum and maximum value based on viewport width.
+ *
+ * @param {Number} $min-font-size         - The minimum font size (e.g., 1rem, 16px).
+ * @param {Number} $max-font-size         - The maximum font size (e.g., 2.5rem, 40px).
+ * @param {Number} $min-viewport-width    - The viewport width (e.g., 20rem, 320px) where $min-font-size applies.
+ * @param {Number} $max-viewport-width    - The viewport width (e.g., 75rem, 1200px) where $max-font-size applies.
+ *
+ * @return {String} A CSS `clamp()` function string.
+ */
+@function fluid-font-size(
+  $min-font-size,
+  $max-font-size,
+  $min-viewport-width,
+  $max-viewport-width
+) {
+  // --- Convert values to unitless for consistent mathematical operations ---
+  $min-f-size-u: strip-unit($min-font-size);
+  $max-f-size-u: strip-unit($max-font-size);
+  $min-vw-u: strip-unit($min-viewport-width);
+  $max-vw-u: strip-unit($max-viewport-width);
+
+  // --- START OF "PREFERRED SIZE" CALCULATION ---
+
+  // 1. Calculate the SLOPE (m) of the linear function: y = mx + b
+  // This determines how much the font size changes per viewport unit.
+  // Formula: m = (y2 - y1) / (x2 - x1)
+  // Where y = font size, x = viewport width
+  $slope: math.div(($max-f-size-u - $min-f-size-u), ($max-vw-u - $min-vw-u));
+
+  // 2. Calculate the Y-INTERCEPT (b) of the linear function: y = mx + b
+  // This is the fixed base value (what the font size would be if viewport was 0, conceptually).
+  // Formula: b = y1 - m * x1
+  $y-intercept: $min-f-size-u - ($slope * $min-vw-u);
+
+  // 3. Construct the 'preferred' value for `clamp()` as a CSS `calc()` string.
+  // This combines the slope (multiplied by 100vw) and the y-intercept (in rem).
+  // We use string interpolation `#{}` to combine Sass variables with CSS units and operators.
+  // `math.round` is used to prevent excessively long decimal numbers in the output CSS.
+  $preferred-vw: math.div(math.round($slope * 100), 100) * 1vw; // Convert slope to vw
+  $preferred-rem: math.div(math.round($y-intercept * 100), 100) * 1rem; // Convert y-intercept to rem
+
+  // Combine them into a calc() string.
+  // Note: We deliberately create a string here so Sass doesn't try to evaluate
+  // the `vw` unit calculation, leaving it for the browser's `calc()`.
+  $preferred-value-calc: "#{$preferred-vw} + #{$preferred-rem}";
+
+  // --- END OF "PREFERRED SIZE" CALCULATION ---
+
+  // Return the complete `clamp()` function string.
+  // `unquote()` is used to ensure the `calc()` string is output directly without
+  // Sass escaping it with quotes.
+  @return clamp($min-font-size, string.unquote($preferred-value-calc), $max-font-size);
+}

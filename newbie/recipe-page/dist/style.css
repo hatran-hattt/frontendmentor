@@ -1,0 +1,210 @@
+/* Main entry point, imports all others */
+/* Colors */
+/* Typography */
+:root {
+  --background-color-body: rgb(243, 229, 215);
+  --background-color-card: rgb(255, 255, 255);
+  --background-color-section-highlight: rgb(255, 247, 251);
+  --text-color-main: rgb(95, 86, 77);
+  --text-color-header: rgb(49, 46, 44);
+  --text-color-section-common: rgb(133, 70, 50);
+  --text-color-section-highlight: rgb(122, 40, 78);
+  --border-color: rgb(227, 221, 215);
+  --font-family-base: Outfit, sans-serif;
+  --font-family-heading: Young Serif, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../assets/fonts/outfit/Outfit-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900; /* Range for variable font */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Young Serif";
+  src: url("../assets/fonts/young-serif/YoungSerif-Regular.ttf") format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--background-color-body);
+  display: grid;
+  justify-content: center;
+}
+
+footer {
+  margin-block: 3rem;
+  text-align: center;
+}
+
+.sr-only {
+  /* Visually hidden but accessible to screen readers */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Main entry point, imports all others */
+/* Styles for recipe card component */
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color-card);
+  max-width: 100vw;
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--text-color-main);
+}
+
+.recipe-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-inline: 2rem;
+  padding-block: 2.5rem;
+}
+
+/* Header */
+.recipe-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.recipe-header > h1 {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2.25rem, 1.875rem + 1.5vw, 2.5rem);
+  color: var(--text-color-header);
+}
+
+.recipe-header > p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Section: Common */
+.recipe-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.recipe-section__title {
+  font-family: var(--font-family-heading);
+  font-size: 1.75rem;
+  color: var(--text-color-section-common);
+}
+
+.recipe-section__list {
+  display: grid;
+  gap: 0.5rem;
+  padding-inline-start: 1.5rem;
+}
+
+.recipe-section__list > li {
+  padding-inline-start: 1rem;
+}
+
+.recipe-section__list > li::marker {
+  color: var(--text-color-section-common);
+}
+
+.recipe-section__list > li > strong {
+  font-weight: 700;
+}
+
+/* Section: Preparation time */
+.recipe-preparation {
+  gap: 1rem;
+  border-radius: 0.75rem;
+  padding-inline: 1.5rem;
+  padding-block: 1.5rem;
+  background-color: var(--background-color-section-highlight);
+}
+
+.recipe-preparation__title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--text-color-section-highlight);
+}
+
+.recipe-preparation__list > li::marker {
+  color: var(--text-color-section-highlight);
+}
+
+/* Section: Instructions */
+.recipe-instructions__list > li::marker {
+  font-weight: 700;
+}
+
+/* Section: Nutrition */
+.recipe-nutrition__table {
+  border-collapse: collapse;
+}
+
+.recipe-nutrition__table th,
+.recipe-nutrition__table td {
+  padding-block: 0.75rem;
+  text-align: start;
+  border-block-end: 1px solid var(--border-color);
+}
+
+.recipe-nutrition__table tr td:nth-child(1) {
+  padding-inline-start: 2rem;
+}
+
+.recipe-nutrition__table tr td:nth-child(2) {
+  padding-inline-start: 1rem;
+  font-weight: 700;
+  color: var(--text-color-section-common);
+}
+
+.recipe-nutrition__table tr:first-child td {
+  padding-block-start: 0;
+}
+
+.recipe-nutrition__table tr:last-child td {
+  padding-block-end: 0;
+  border-bottom: none;
+}
+
+.section-divider {
+  border-block-start: 1px solid var(--border-color);
+}
+
+/* Setting styles for table, desktop */
+@media (min-width: 48rem) {
+  .recipe-card {
+    gap: 2.5rem;
+    padding: 2.5rem;
+    margin-block-start: 8rem;
+    width: clamp(38.5rem, 38.5rem + 8.5vw, 46rem);
+    border-radius: 1.5rem;
+  }
+  .recipe-hero-img {
+    border-radius: 0.75rem;
+  }
+  .recipe-content {
+    padding-inline: 0;
+    padding-block: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

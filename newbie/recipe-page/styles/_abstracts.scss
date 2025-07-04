@@ -1,0 +1,51 @@
+// |– abstracts/
+// |   |– _variables.scss    # Sass Variables
+// |   |– _functions.scss    # Sass Functions
+// |   |– _mixins.scss       # Sass Mixins
+// |   |– _placeholders.scss # Sass Placeholders
+// The rule of thumb for this folder is that it should not output a single line of CSS when compiled on its own.
+// These are nothing but Sass helpers.
+
+// || Functions
+@function to-rem($px-value) {
+  @return calc($px-value / 16) * 1rem;
+}
+
+// || Variables (Static)
+
+/* Colors */
+$color-rose-800: rgb(122, 40, 78);
+$color-rose-50: rgb(255, 247, 251);
+$color-stone-900: rgb(49, 46, 44);
+$color-stone-600: rgb(95, 86, 77);
+$color-stone-150: rgb(227, 221, 215);
+$color-stone-100: rgb(243, 229, 215);
+$color-brown-800: rgb(133, 70, 50);
+$color-white: rgb(255, 255, 255);
+
+/* Typography */
+$font-family-outfit: "Outfit", sans-serif;
+$font-family-young-serif: "Young Serif", serif;
+$font-weight-regular: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+// 100% Line Height, 0px Letter Spacing
+
+// || Variables (Dynamic)
+:root {
+  // Colors
+  --background-color-body: #{$color-stone-100};
+  --background-color-card: #{$color-white};
+  --background-color-section-highlight: #{$color-rose-50};
+  --text-color-main: #{$color-stone-600};
+  --text-color-header: #{$color-stone-900};
+  --text-color-section-common: #{$color-brown-800};
+  --text-color-section-highlight: #{$color-rose-800};
+  --border-color: #{$color-stone-150};
+
+  // Typography
+  --font-family-base: #{$font-family-outfit};
+  --font-family-heading: #{$font-family-young-serif};
+}
+
+
