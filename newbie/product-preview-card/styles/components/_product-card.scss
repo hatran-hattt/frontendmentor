@@ -5,22 +5,16 @@
 // || Card container
 .product-card-container {
   container-type: inline-size;
-  width: 100vw;
-  display: grid;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding-block-start: to-rem(30);
-}
-// Setting styles for Container when screen width is mobile
-@media (max-width: #{to-em(767)}) {
-  .product-card-container {
-    padding-inline: to-rem(13);
-  }
 }
 
 // || Card
 .product-card {
   border-radius: to-rem(8);
   background-color: var(--background-color-card);
+  margin: to-rem(13);
   
   // Set typography common
   @include font-primary;
@@ -123,8 +117,8 @@
   }
 }
 
-// Setting styles for Card when Container width is table, desktop
-@container (width > #{to-em(767)}) {
+// Setting styles for Card when Container width > 599px
+@container (width > #{to-em(599)}) {
   .product-card {
     display: grid;
     grid-template-columns: 1fr 1fr;

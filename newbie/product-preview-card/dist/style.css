@@ -38,10 +38,14 @@ body {
   font-weight: 500;
   color: var(--text-color-main);
   background-color: var(--background-color-body);
-  display: grid;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
+  padding-block-start: 1.875rem;
+}
+
+main {
+  width: clamp(100vw, 100vw, 37.5rem);
 }
 
 a {
@@ -71,20 +75,15 @@ footer {
 /* Styles for recipe card component */
 .product-card-container {
   container-type: inline-size;
-  width: 100vw;
-  display: grid;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding-block-start: 1.875rem;
 }
 
-@media (max-width: 47.9375em) {
-  .product-card-container {
-    padding-inline: 0.8125rem;
-  }
-}
 .product-card {
   border-radius: 0.5rem;
   background-color: var(--background-color-card);
+  margin: 0.8125rem;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -180,7 +179,7 @@ footer {
   background-color: var(--background-color-cta-hover);
 }
 
-@container (width > 47.9375em) {
+@container (width > 37.4375em) {
   .product-card {
     display: grid;
     grid-template-columns: 1fr 1fr;

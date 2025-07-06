@@ -53,42 +53,42 @@ Users should be able to:
 
   > Ex: use for icon imagge
 
-#### 2. Responsive design: Macro layouts
+#### 2. Responsive design: responsive layouts
 
-Apply responsive for following layout:
+- Layouts:
 
-```
-    // - mobile: 1 column
-    // - desktop: 2 column
+  - Macro layout: Design page layouts.
+    > Using: `media queries`, `rules`
+  - Micro layout: Build flexible components that can be placed anywhere
+    > Using: `container queries`, `rules`
 
-    <header>Header</header>
-    <main>
-    <article>Article</article>
-    <aside>Aside</aside>
-    </main>
-    <footer>Footer</footer>
-```
+- Example using container queries
 
-- Using Grid
-  ```
-    main {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-    }
-  ```
-- Using Flexbox
-  ```
-    main {
-      display: flex;
-      flex-direction: row;
-    }
-    main article {
-      flex: 2;
-    }
-    main aside {
-      flex: 1;
-    }
-  ```
+  > ```
+  >   // Setting styles for Card when Container width > 599px
+  >   @container (width > #{to-em(599)}) {
+  >     .product-card {
+  >       display: grid;
+  >       grid-template-columns: 1fr 1fr;
+  >     }
+  >   }
+  >
+  >   // Card container
+  >   .product-card-container {
+  >     container-type: inline-size;
+  >   }
+  > ```
+
+- Example using rules
+  > Apply rules so that the cards themselves automatically take up the right amount of space.
+  >
+  > ```
+  >  .cards {
+  >    display: grid;
+  >    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  >    grid-gap: 1em;
+  >  }
+  > ```
 
 #### 3. Responsive design: responsive images
 
