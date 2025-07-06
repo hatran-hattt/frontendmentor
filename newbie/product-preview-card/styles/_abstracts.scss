@@ -1,0 +1,77 @@
+// |– abstracts/
+// |   |– _variables.scss    # Sass Variables
+// |   |– _functions.scss    # Sass Functions
+// |   |– _mixins.scss       # Sass Mixins
+// |   |– _placeholders.scss # Sass Placeholders
+// The rule of thumb for this folder is that it should not output a single line of CSS when compiled on its own.
+// These are nothing but Sass helpers.
+
+// || Functions
+@function to-rem($px-value) {
+  @return calc($px-value / 16) * 1rem;
+}
+@function to-em($px-value) {
+  @return calc($px-value / 16) * 1em;
+}
+
+// || Variables (Static)
+
+/* Colors */
+$color-black: rgb(28, 35, 43);
+$color-grey: rgb(108, 114, 137);
+$color-cream: rgb(242, 234, 226);
+$color-green-500: rgb(61, 129, 104);
+$color-green-700: rgb(26, 64, 50);
+$color-white: rgb(255, 255, 255);
+
+/* Typography */
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// || Variables (Dynamic)
+:root {
+  // Colors
+  --background-color-body: #{$color-cream};
+  --background-color-card: #{$color-white};
+  --background-color-cta: #{$color-green-500};
+  --background-color-cta-hover: #{$color-green-700};
+  --text-color-heading: #{$color-black};
+  --text-color-main: #{$color-grey};
+  --text-color-price: #{$color-green-500};
+  --text-color-cta: #{$color-white};
+}
+
+// Dark mode 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color-body: #{$color-black};
+    --background-color-card: #{$color-black};
+    --background-color-cta: #{$color-green-500};
+    --background-color-cta-hover: #{$color-green-700}; 
+    --text-color-heading: #{$color-white};
+    --text-color-main: #{$color-cream};
+    --text-color-price: #{$color-green-500};
+    --text-color-cta: #{$color-white};
+  }
+}
+
+
+// || Mixins
+
+// Typography
+@mixin font-primary($font-weight: $font-weight-medium) {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: $font-weight;
+}
+
+@mixin font-heading {
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: $font-weight-bold;
+  font-variation-settings:
+    "SOFT" 0,
+    "WONK" 1;
+}

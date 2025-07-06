@@ -1,0 +1,49 @@
+// |– base/                   # The boilerplate code for the project
+// |   |– _reset.scss         # Reset/normalize
+// |   |– _typography.scss    # Typography rules
+// |   |– _base.scss          # Standard styles for commonly used HTML elements
+// |   …                      # Etc.
+
+@use "abstracts" as *;
+
+// || Reset/normalize
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// || Standard styles for commonly used HTML elements
+body {
+  @include font-primary;
+  color: var(--text-color-main);
+  background-color: var(--background-color-body);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color-heading);
+
+}
+
+footer {
+  margin-block: 3rem;
+  text-align: center;
+}
+
+.sr-only {
+  /* Visually hidden but accessible to screen readers */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

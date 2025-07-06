@@ -1,0 +1,196 @@
+/* Main entry point, imports all others */
+/* Colors */
+/* Typography */
+:root {
+  --background-color-body: rgb(242, 234, 226);
+  --background-color-card: rgb(255, 255, 255);
+  --background-color-cta: rgb(61, 129, 104);
+  --background-color-cta-hover: rgb(26, 64, 50);
+  --text-color-heading: rgb(28, 35, 43);
+  --text-color-main: rgb(108, 114, 137);
+  --text-color-price: rgb(61, 129, 104);
+  --text-color-cta: rgb(255, 255, 255);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color-body: rgb(28, 35, 43);
+    --background-color-card: rgb(28, 35, 43);
+    --background-color-cta: rgb(61, 129, 104);
+    --background-color-cta-hover: rgb(26, 64, 50);
+    --text-color-heading: rgb(255, 255, 255);
+    --text-color-main: rgb(242, 234, 226);
+    --text-color-price: rgb(61, 129, 104);
+    --text-color-cta: rgb(255, 255, 255);
+  }
+}
+/* Main entry point, imports all others */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text-color-main);
+  background-color: var(--background-color-body);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color-heading);
+}
+
+footer {
+  margin-block: 3rem;
+  text-align: center;
+}
+
+.sr-only {
+  /* Visually hidden but accessible to screen readers */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Main entry point, imports all others */
+/* Styles for recipe card component */
+.product-card-container {
+  container-type: inline-size;
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  padding-block-start: 1.875rem;
+}
+
+@media (max-width: 47.9375em) {
+  .product-card-container {
+    padding-inline: 0.8125rem;
+  }
+}
+.product-card {
+  border-radius: 0.5rem;
+  background-color: var(--background-color-card);
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text-color-main);
+}
+
+.product-picture img {
+  inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 350/342;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 1.5rem + 0.5vw, 2rem);
+  padding: 2rem;
+}
+
+.product-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.product-header .product-category {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: 0.3125rem;
+}
+.product-header .product-name {
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+  color: var(--text-color-heading);
+  font-size: 2rem;
+}
+.product-header .product-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.product-pricing {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+.product-pricing .current-price {
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+  color: var(--text-color-price);
+  font-size: 2rem;
+}
+.product-pricing .old-price {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+
+.btn-add-to-card {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  justify-content: center;
+  background-color: var(--background-color-cta);
+  color: var(--text-color-cta);
+  border-radius: 0.5rem;
+  border: none;
+}
+.btn-add-to-card img {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+}
+.btn-add-to-card span {
+  font-size: 0.875rem;
+  line-height: 1.1;
+}
+.btn-add-to-card:hover {
+  cursor: pointer;
+  background-color: var(--background-color-cta-hover);
+}
+.btn-add-to-card:focus-visible {
+  background-color: var(--background-color-cta-hover);
+}
+
+@container (width > 47.9375em) {
+  .product-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: 37.5rem;
+  }
+  .product-picture img {
+    block-size: 100%;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

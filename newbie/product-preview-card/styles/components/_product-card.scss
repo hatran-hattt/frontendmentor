@@ -1,0 +1,141 @@
+/* Styles for recipe card component */
+
+@use "../abstracts" as *;
+
+// || Card container
+.product-card-container {
+  container-type: inline-size;
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  padding-block-start: to-rem(30);
+}
+// Setting styles for Container when screen width is mobile
+@media (max-width: #{to-em(767)}) {
+  .product-card-container {
+    padding-inline: to-rem(13);
+  }
+}
+
+// || Card
+.product-card {
+  border-radius: to-rem(8);
+  background-color: var(--background-color-card);
+  
+  // Set typography common
+  @include font-primary;
+  color: var(--text-color-main);
+}
+
+// Hero image
+.product-picture {
+  img {
+    inline-size: 100%;  // image take full width of parent element
+    block-size: auto;
+    object-fit: cover;  // image size cover full parent element size
+    object-position: center; // crop image position
+    aspect-ratio: 350/342;
+    border-radius: to-rem(8) to-rem(8) 0 0;
+  }
+}
+
+// Detail
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(to-rem(24), to-rem(24) + 0.5vw, to-rem(32));
+  padding: to-rem(32);
+}
+
+// Header
+.product-header {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(24);
+
+  .product-category {
+    font-size: to-rem(12);
+    line-height: 1.2;
+    letter-spacing: to-rem(5);
+  }
+
+  .product-name {
+    @include font-heading;
+    color: var(--text-color-heading);
+    font-size: to-rem(32);
+  }
+
+  .product-description {
+    font-size: to-rem(14);
+    line-height: 1.6;
+  }
+}
+
+// Pricing
+.product-pricing {
+  display: flex;
+  flex-direction: row;
+  gap: to-rem(16);
+  align-items: center;
+
+  .current-price {
+    @include font-heading;
+    color: var(--text-color-price);
+    font-size: to-rem(32);
+  }
+
+  .old-price {
+    font-size: to-rem(13);
+    line-height: 1.2;
+  }
+}
+
+// CTA button
+.btn-add-to-card {
+  display: flex;
+  flex-direction: row;
+  gap: to-rem(8);
+  padding-inline: to-rem(32);
+  padding-block: to-rem(16);
+  justify-content: center;
+
+  background-color: var(--background-color-cta);
+  color: var(--text-color-cta);
+  border-radius: to-rem(8);
+  border: none;
+
+  img {
+    inline-size: to-rem(18);
+    block-size: to-rem(18);
+  }
+
+  span {
+    font-size: to-rem(14);
+    line-height: 1.1;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--background-color-cta-hover);
+  }
+  &:focus-visible {
+    background-color: var(--background-color-cta-hover);
+  }
+}
+
+// Setting styles for Card when Container width is table, desktop
+@container (width > #{to-em(767)}) {
+  .product-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: to-rem(600);
+  }
+
+  .product-picture img {
+    block-size: 100%;
+    border-radius: to-rem(8) 0 0 to-rem(8);
+  }
+}
+
+
