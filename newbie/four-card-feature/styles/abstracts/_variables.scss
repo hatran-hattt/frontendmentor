@@ -1,0 +1,74 @@
+@use "design-tokens" as *;
+@use 'mixins' as my-mixins;
+@use 'utopia' as utopia;
+
+/* --- Themes */
+$themes: (
+  'light': (
+    // 'primary': ...,
+    // 'secondary': ...,
+    'accent-1': $color-cyan,
+    'accent-2': $color-red,
+    'accent-3': $color-orange,
+    'accent-4': $color-blue,
+    'text': $color-grey-500,
+    'text-light': $color-grey-400,
+    'background': $color-light-white,
+    'background-alt': $color-white,
+    'shadow': rgba(0, 0, 0, 0.25),
+  ),
+  'dark': (
+    // 'primary': ..., 
+    // 'secondary': ...,
+    'accent-1': $color-cyan-dark-mode, // Using slightly adjusted accent colors
+    'accent-2': $color-red-dark-mode,
+    'accent-3': $color-orange-dark-mode,
+    'accent-4': $color-blue-dark-mode,
+    'text': $color-light-white, // Lighter text for dark backgrounds
+    'text-light': $color-white, // Even lighter text for primary text (e.g., headings)
+    'background': $color-dark-black, // Darkest background
+    'background-alt': $color-dark-grey-900, // Slightly lighter background for cards/sections
+    'shadow': rgba(255, 255, 255, 0.25),
+  ), 
+  // Add more themses as needed
+);
+@include my-mixins.apply-themes($themes);
+
+:root {
+
+  /* --- Typography */
+  --font-family-base: #{$font-family-poppins};
+
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,15,1.119,1440,17,1.206,4,2,375&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  @include utopia.generateTypeScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minFontSize": 15,
+    "maxFontSize": 17,
+    "minTypeScale": 1.119,
+    "maxTypeScale": 1.206,
+    "positiveSteps": 4,
+    "negativeSteps": 1,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,15,1.119,1440,17,1.206,4,1,375&s=0.75|0.5|0.375|0.25,1.5|2.125|3|4|4.5|9.5|26,l-4xl|xl-3xl|2xs-5xl&g=s,l,xl,12 */
+  @include utopia.generateSpaceScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minSize": 15,
+    "maxSize": 17,
+    "positiveSteps": (1.5, 2.125, 3, 4, 4.5, 9.5, 26),
+    "negativeSteps": (0.75, 0.5, 0.375, 0.25),
+    "customSizes": ("l-4xl", "xl-3xl", "2xs-5xl"),
+    "prefix": "space-",
+    "relativeTo": "viewport-width",
+  ));
+
+  /* --- Others */
+  --flow-space: var(--space-s);
+}
+

@@ -1,0 +1,96 @@
+/* 1. Universal Box-Sizing */
+/* This is fundamental. It changes how width and height are calculated,
+   making layout much more intuitive: width/height includes padding and border. */
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* 2. Reset Margins & Paddings for Common Block-Level Elements */
+/* Removes default browser margins/paddings that often cause inconsistencies.
+   Includes common elements like headings, paragraphs, lists, and figures. */
+body, h1, h2, h3, h4, h5, h6, p, blockquote, figure,
+ol, ul, dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove List Styles */
+/* Gets rid of default bullets/numbers and any intrinsic padding/margin for lists.
+   You'll re-add specific list styling if needed. */
+ol, ul {
+  list-style: none;
+}
+
+/* 4. Responsive Images */
+/* Ensures images and other media elements are block-level and scale within their containers. */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto; /* Important for maintaining aspect ratio */
+}
+
+/* 5. Improve Form Element Styling */
+/* Makes form elements inherit font styles and sets some consistent baselines. */
+input, button, textarea, select {
+  font: inherit; /* Inherit font properties from parent */
+  /* outline: none; Only remove if you have a :focus-visible style later */
+}
+
+/* 6. Base Link Styling */
+/* Removes default underline from links. Re-add on hover for accessibility if desired. */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit color unless explicitly set */
+}
+
+// ---------------Optional------------------------------
+
+// /* 7. Button Reset (Optional but Recommended for Custom Buttons) */
+// /* Removes default browser button styles, making them easier to style from scratch.
+//    CRITICAL: Combine with a :focus-visible strategy for accessibility. */
+// button {
+//   background: none;
+//   border: none;
+//   padding: 0;
+//   cursor: pointer;
+//   /* outline: none; Only remove if you have a :focus-visible style later */
+// }
+
+// /* 8. Accessibility: Custom Focus Styles */
+// /* Ensures keyboard users still get a visible focus indicator.
+//    You should define a custom outline here. This overrides 'outline: none' above. */
+// button:focus-visible,
+// a:focus-visible,
+// input:focus-visible,
+// select:focus-visible,
+// textarea:focus-visible {
+//   outline: 2px solid var(--color-green-500, #3D8168); /* Use your brand accent color */
+//   outline-offset: 2px; /* Adds a gap between the element and the outline */
+// }
+// /* For elements you don't want a focus ring when clicked with a mouse,
+//    but do when tabbed to: */
+// /* Example for buttons if you removed default outline for all elements in button reset */
+// button:focus:not(:focus-visible) {
+//   outline: none;
+// }
+
+
+// /* 9. Optional: Adjust line-height for body */
+// /* Improves readability of body text across the site */
+// body {
+//   line-height: 1.5;
+//   -webkit-font-smoothing: antialiased; /* For better font rendering on WebKit browsers */
+//   -moz-osx-font-smoothing: grayscale; /* For better font rendering on Firefox */
+// }
+
+// /* 10. Optional: Remove text decoration for all elements which get a link */
+// /* This is a very aggressive blanket removal, only use if you're sure you want ALL underlines gone by default.
+//    It's generally better to target 'a' explicitly as above. */
+// /*
+// *:focus {
+//   outline: none;
+// }
+// */

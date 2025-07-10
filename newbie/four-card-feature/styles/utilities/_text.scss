@@ -1,0 +1,29 @@
+// $font-weight-extra-light: 200;
+// $font-weight-regular: 400;
+// $font-weight-semi-bold: 600;
+
+// /* || Text */
+// @use '../abstracts/mixins' as *;
+
+// // Define the map that links utility class suffixes to the CSS Custom Property names.
+// $font-weight-utility-map: (
+//   'extra-light': 200,
+//   'regular': 400,
+//   'semi-bold': 600,
+// );
+
+// // Generate the color utility classes using the defined map.
+// @include generate-color-utility-classes($color-utility-map);
+
+// TODO: Use common mixin
+.text-fw-extra-light {
+  font-weight: 200;
+}
+
+.text-fw-regular {
+  font-weight: 400;
+}
+
+.text-fw-semi-bold {
+  font-weight: 600;
+}

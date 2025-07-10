@@ -1,0 +1,29 @@
+@use "../abstracts" as *;
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-l);
+  box-shadow: 0 0.25rem 1.5rem var(--color-shadow); // x-offset, y-offset, blur, color
+
+  // border
+  border-top: 0.5rem solid;
+  border-radius: 0.5rem;
+
+  --flow-space: var(--space-l);
+
+  .card__description {
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--color-text-light);
+    --flow-space: var(--space-s);
+  }
+
+  .card__icon {
+    align-self: flex-end;
+    /* @link https://utopia.fyi/clamp/calculator?a=320,1440,64—72 */
+    width: clamp(4rem, 3.8571rem + 0.7143cqi, 4.5rem);
+  }
+  
+}

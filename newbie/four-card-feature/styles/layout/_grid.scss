@@ -1,0 +1,33 @@
+.main-grid {
+  display: grid;
+  grid-template: repeat(4, 1fr) / 1fr;
+  gap: var(--space-l);
+  width: 100vw;
+  padding-inline: var(--space-l-4xl);
+
+  @media (min-width: 48em) and (max-width: 62em) {
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+
+    & > :first-child,
+    & > :last-child{
+      grid-column: 1 / span 2;      // Span 2 columns
+      justify-self: center;         // Center the item in the grid area
+      max-width: calc((100% - var(--space-l)) / 2); // Limit width to 1 column (adjust --gap as needed)
+    }
+
+  }
+  @media (min-width: 62em) {
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+
+    & > :first-child {
+      grid-row: 1 / span 2;      // Span 2 rows
+      align-self: center;         // Center the item in the grid area
+    }
+
+    & > :last-child{
+      grid-column: 3 / span 1;
+      grid-row: 1 / span 2;      // Span 2 rows
+      align-self: center;         // Center the item in the grid area
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@use '../abstracts/mixins' as *;
+
+// Define the map that links utility class suffixes to the CSS Custom Property names.
+$color-utility-map: (
+  'accent-1': --color-accent-1,
+  'accent-2': --color-accent-2,
+  'accent-3': --color-accent-3,
+  'accent-4': --color-accent-4,
+);
+
+// Generate the color utility classes using the defined map.
+@include generate-color-utility-classes($color-utility-map);

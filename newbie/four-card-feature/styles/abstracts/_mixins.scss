@@ -1,0 +1,86 @@
+@use "sass:map";
+
+// || FONT WEIGHTS : TODO create common utilities generate mixins
+// // Generate utility classes that use the CSS Custom Properties.
+// // $utility-map: A Sass map where:
+// //   - Key: The desired suffix for the utility class (e.g., 'default', 'primary')
+// //   - Value: The name of the CSS Custom Property (e.g., '--color-text-default')
+// @mixin generate-color-utility-classes($utility-map) {
+//   @each $utility-suffix, $css-var-name in $utility-map {
+//     // Text color utility: .text-{suffix}
+//     .font-weight#{$utility-suffix} {
+//       color: #{$css-var-name} !important;
+//     }
+//   }
+// }
+
+// --- Generate CSS Custom Properties for a given theme
+@mixin generate-theme-colors($theme-colors) {
+  @each $color-name, $color-value in $theme-colors {
+    --color-#{$color-name}: #{$color-value};
+  }
+}
+
+// --- Apply themes
+// This mixin iterates through all defined themes and applies their CSS Custom Properties.
+// It sets the 'light' theme as default, handles 'dark' via system preference,
+// and allows explicit switching for all themes via 'data-theme' attributes.
+// $themes-map: The main $themes map from _theme-definitions.scss
+@mixin apply-themes($themes-map) {
+  // 1. Apply the 'light' theme as the default to :root.
+  // This ensures a baseline theme is always present.
+  :root {
+    @include generate-theme-colors(map.get($themes-map, 'light'));
+  }
+
+  // 2. Loop through all themes and generate their styles scoped by data-theme attribute.
+  // This allows explicit theme selection via JavaScript.
+  @each $theme-name, $theme-colors in $themes-map {
+    // For each theme, create a selector like html[data-theme='dark'] or html[data-theme='custom']
+    html[data-theme='#{$theme-name}'] {
+      @include generate-theme-colors($theme-colors);
+    }
+  }
+
+  // 3. Apply the 'dark' theme based on system preference.
+  // This rule is less specific than `html[data-theme='dark']` but more specific than `:root`.
+  // The `:not([data-theme])` ensures it only applies if no explicit data-theme is set,
+  // allowing manual toggles to override system preference.
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme]) {
+      @include generate-theme-colors(map.get($themes-map, 'dark'));
+    }
+  }
+}
+
+
+// --- Generate utility classes that use the CSS Custom Properties.
+// $utility-map: A Sass map where:
+//   - Key: The desired suffix for the utility class (e.g., 'default', 'primary')
+//   - Value: The name of the CSS Custom Property (e.g., '--color-text-default')
+@mixin generate-color-utility-classes($utility-map) {
+  @each $utility-suffix, $css-var-name in $utility-map {
+    // Text color utility: .text-{suffix}
+    .text-#{$utility-suffix} {
+      color: var(#{$css-var-name}) !important;
+    }
+
+    // Background color utility: .bg-{suffix}
+    .bg-#{$utility-suffix} {
+      background-color: var(#{$css-var-name}) !important;
+    }
+
+    // Border color utility: .border-{suffix}
+    .border-#{$utility-suffix} {
+      border-color: var(#{$css-var-name}) !important;
+    }
+
+    // Add more properties here if needed, e.g.:
+    // .fill-#{$utility-suffix} {
+    //   fill: var(#{$css-var-name}) !important;
+    // }
+    // .stroke-#{$utility-suffix} {
+    //   stroke: var(#{$css-var-name}) !important;
+    // }
+  }
+}
