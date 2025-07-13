@@ -1,0 +1,66 @@
+$bg-items: (
+  'card-1': var(--color-bg-card-1),
+  'card-2': var(--color-bg-card-2),
+  'card-3': var(--color-bg-card-3),
+  'card-4': var(--color-bg-card-4),
+);
+
+// $color-items: (
+//   'txt-card-1': var(--color-txt-card-1),
+//   'txt-card-1-bold': var(--color-txt-card-1-bold),
+
+//   'txt-card-2': var(--color-txt-card-2),
+//   'txt-card-2-bold': var(--color-txt-card-2-bold),
+//   'accent-card-2': var(--color-accent-card-2),
+
+//   'txt-card-3': var(--color-txt-card-3),
+//   'txt-card-3-bold': var(--color-txt-card-3-bold),
+//   'accent-card-3': var(--color-accent-card-3),
+
+//   'txt-card-4': var(--color-txt-card-4),
+//   'txt-card-4-bold': var(--color-txt-card-4-bold),
+// );
+
+// $border-color-items: (
+//   'accent-card-2': var(--color-accent-card-2),
+//   'accent-card-3': var(--color-accent-card-3),
+// );
+
+$weight-items: (
+  'extra-light': 200,
+  'regular': 400,
+  'medium': 500,
+  'semi-bold': 600,
+);
+
+$space-items: (
+  'xs': var(--space-xs),
+  's': var(--space-s),
+  'm': var(--space-m),
+  'l': var(--space-l),
+  'xl': var(--space-xl),
+);
+
+//----------------CONFIG
+$config: (
+  'bg': (
+    'items': $bg-items,
+    'property': 'background'
+  ),
+  // 'color': (
+  //   'items': $color-items,
+  //   'property': 'color'
+  // ),
+  // 'border-color': (
+  //   'items': $border-color-items,
+  //   'property': 'border-color'
+  // ),
+  'weight': (
+    'items': $weight-items,
+    'property': 'font-weight'
+  ),
+  'pad-block': (
+    'items': $space-items,
+    'property': 'padding-block'
+  )
+);

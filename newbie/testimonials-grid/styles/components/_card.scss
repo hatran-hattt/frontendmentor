@@ -1,0 +1,134 @@
+@use "../abstracts" as *;
+
+
+[class*="testimonial-card"] {
+  position: relative;           // THIS IS KEY for absolute positioning of the icon
+  --flow-space: var(--space-s);
+  padding: var(--space-2xl);
+  border-radius: var(--space-2xs); 
+
+  box-shadow: 0 0.25rem 1.5rem var(--color-shadow); // x-offset, y-offset, blur, color
+  
+  // Header
+  .card__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-s);
+
+    .card__avatar {
+      inline-size: var(--space-xl);
+      block-size: auto;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .card__user {
+      --flow-space: var(--space-3xs);
+      line-height: 1.1;
+      .card__user-name {
+        font-size: var(--step--1);
+      }
+      .card__user-status {
+        font-size: var(--step--2);
+      }
+    }
+  }
+
+  .card__sumary {
+    font-size: var(--step-1);
+    line-height: 1.2;
+  }
+
+  .card__detail {
+    font-size: var(--step--1);
+    line-height: 1.4;
+  }
+
+  .card__icon {
+    // Positioning icon absolutelly
+    position: absolute;
+    z-index: -1;                        // Do not show icon
+    top: 0;
+    right: var(--space-3xl);
+
+    inline-size: var(--space-6xl-7xl);
+    block-size: auto;
+    opacity: 0.5; /* Make it subtle */
+  }
+
+  @include mq_up(medium){
+    .card__icon {
+      z-index: 1;                       // Do show icon
+    }
+  }
+}
+
+.testimonial-card--style1 {
+  background-color: var(--color-bg-card-1);
+  color: var(--color-txt-card-1);
+
+  .card__sumary {
+    color: var(--color-txt-card-1-bold);
+  }
+}
+.testimonial-card--style2 {
+  background-color: var(--color-bg-card-2);
+  color: var(--color-txt-card-2);
+
+  .card__avatar {
+    border: to-rem(2) solid var(--color-accent-card-2);
+  }
+
+  .card__sumary {
+    color: var(--color-txt-card-2-bold);
+  }
+}
+.testimonial-card--style3 {
+  background-color: var(--color-bg-card-3);
+  color: var(--color-txt-card-3);
+
+  .card__avatar {
+    border: to-rem(2) solid var(--color-accent-card-3);
+  }
+
+  .card__sumary {
+    color: var(--color-txt-card-3-bold);
+  }
+}
+.testimonial-card--style4 {
+  background-color: var(--color-bg-card-4);
+  color: var(--color-txt-card-4);
+
+  .card__sumary {
+    color: var(--color-txt-card-4-bold);
+  }
+}
+
+
+
+// .card {
+//   display: flex;
+//   flex-direction: column;
+//   padding: var(--space-l);
+//   box-shadow: 0 0.25rem 1.5rem var(--color-shadow); // x-offset, y-offset, blur, color
+
+//   // border
+//   border-top: 0.5rem solid;
+//   border-radius: 0.5rem;
+
+//   --flow-space: var(--space-l);
+
+//   .card__description {
+//     font-size: var(--step--1);
+//     line-height: 1.6;
+//     color: var(--color-text-light);
+//     --flow-space: var(--space-s);
+//   }
+
+//   .card__icon {
+//     align-self: flex-end;
+//     /* @link https://utopia.fyi/clamp/calculator?a=320,1440,64—72 */
+//     width: clamp(4rem, 3.8571rem + 0.7143cqi, 4.5rem);
+//   }
+  
+// }
