@@ -164,6 +164,7 @@ body {
 
 a {
   color: var(--color-link, #733FCB);
+  text-decoration: underline;
 }
 
 footer {
