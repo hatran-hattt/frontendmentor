@@ -1,0 +1,53 @@
+@use "../abstracts" as *;
+
+/* Component: Button */
+button[class*="c-button"] {
+  display: flex;
+  gap: to-rem(8);
+  max-width: to-rem(200);
+
+  border: none; 
+  border-radius: to-rem(29);
+  padding-inline: to-rem(40);
+  padding-block: to-rem(16);
+  cursor: pointer;
+
+  @include text-preset5;
+}
+.c-button--primary {
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text-main);
+
+  .subtle {
+    color: var(--color-btn-primary-text-subtle);
+  }
+
+  &:hover, &:focus-visible {
+    background-color: var(--color-btn-primary-bg-hover);
+  }
+}
+.c-button--secondary {
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text-main);
+
+  .subtle {
+    color: var(--color-btn-secondary-text-subtle);
+  }
+
+  &:hover, &:focus-visible {
+    background-color: var(--color-btn-secondary-bg-hover);
+  }
+}
+
+/* Component: Container of buttons */
+.c-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: to-rem(16);
+
+  @include cq-up(xsmall) {
+    flex-direction: row;
+  }
+}

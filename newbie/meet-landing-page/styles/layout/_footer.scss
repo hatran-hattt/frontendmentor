@@ -1,0 +1,37 @@
+@use "../abstracts" as *;
+
+/* CTA footer */
+.cta {
+  position: relative;
+  padding-block-start: to-rem(108); // calculated base on number-icon's size
+
+  .c-number-icon {
+    position: absolute;
+    top: 0;
+    left:  calc(50% - to-rem(28)); // calculated base on number-icon's size
+  }
+
+  .content {
+    display: grid;
+
+    @include mq-down(large) {
+      gap: var(--space-s);
+      justify-items: center; // can use `margin-inline: auto;` instead
+      text-align: center;
+      & > * {
+        max-width: to-rem(540); /* Max width to prevent becoming too wide in large screen */
+      }
+      
+    }
+
+    @include mq-up(large) {
+      grid-template-columns: 4fr 3fr 2fr;
+      align-items: start;
+
+      & > :last-child {
+        justify-self: end;
+      }
+    }
+    
+  }
+}

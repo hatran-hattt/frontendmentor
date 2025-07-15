@@ -1,0 +1,46 @@
+@use "../abstracts" as *;
+
+/* Hero grid */
+.hero {
+  display: grid;
+  grid-template: auto auto / repeat(2,1fr);
+  grid-template-areas:
+      "imgleft imgright"
+      "content content";
+  row-gap: var(--space-4xl);
+  column-gap: var(--space-s);
+
+  .hero__img-left {
+    grid-area: imgleft;
+  }
+
+  .hero__img-right {
+    grid-area: imgright;
+  }
+
+  .hero__content {
+    grid-area: content;
+    padding-inline: var(--space-2xl);
+    max-width: calc(to-rem(450) + var(--space-2xl) * 2); /* Max width to prevent becoming too wide in large screen */
+    justify-self: center;
+  }
+
+  @include mq-up(large) {
+    grid-template: 1fr / 3fr 4.5fr 3fr;
+    grid-template-areas: "imgleft content imgright";
+  }
+}
+
+/* Main's image collage grid */
+.img-collage {
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+
+  img {
+    border-radius: var(--space-2xs);
+  }
+
+  @include mq-up(medium) {
+    grid-template: 1fr / repeat(4, 1fr);
+  }
+}

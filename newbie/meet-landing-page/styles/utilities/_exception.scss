@@ -1,0 +1,44 @@
+/* || Utilities for exceptions (E in CUBE) */
+@use "../abstracts" as *;
+
+
+/* Style for main content */
+main .content  {
+
+  /* Max width to prevent becoming too wide in large screen */
+  max-width: to-rem(545);
+  margin-inline: auto;
+
+  .content__title {
+    /* Max width to prevent becoming too wide in large screen */
+    max-width: to-rem(445);
+    margin-inline: auto;
+  }
+
+  /* Text style for label above main content's heading */
+  .content__title__label {
+    @include text-preset3;
+
+    text-transform: uppercase;
+  }
+}
+
+/* Footer background image */
+.cta .content {
+  --img-url: url('../assets/mobile/image-footer.jpg');
+  
+  background-image:
+    linear-gradient(to right, rgba(var(--color-bg-footer) ,0.75), rgba(#4D96A9,0.75)), /* Top layer: semi-transparent gradient */
+    var(--img-url); /* Bottom layer: actual image */
+  background-repeat: no-repeat;
+  background-size: cover; // Scales the image as large as possible without stretching it (clipped)
+
+  @include mq-range(medium, large) {
+    --img-url: url('../assets/tablet/image-footer.jpg')
+  }
+
+  @include mq-up(large) {
+    --img-url: url('../assets/desktop/image-footer.jpg')
+  }
+}
+

@@ -1,0 +1,771 @@
+/* [[[ABSTRACTS]]] */
+/* || Config */
+/* || Design Tokens */
+/* || Variables */
+/* --- Themes */
+:root {
+  --color-bg-page: #FAFAFA;
+  --color-text-main: #87879D;
+  --color-text-heading: #28283D;
+  --color-text-label: #4D96A9;
+  --color-btn-primary-bg: #4D96A9;
+  --color-btn-primary-bg-hover: #71C0D4;
+  --color-btn-primary-text-main: #FAFAFA;
+  --color-btn-primary-text-subtle: #8FE3F9;
+  --color-btn-secondary-bg: #855FB1;
+  --color-btn-secondary-bg-hover: #B18BDD;
+  --color-btn-secondary-text-main: #FAFAFA;
+  --color-btn-secondary-text-subtle: #D9B8FF;
+  --color-bg-footer: 77, 150, 168;
+  --color-text-footer: #FAFAFA;
+  --color-border: #D1D1DF;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme=light] {
+  --color-bg-page: #FAFAFA;
+  --color-text-main: #87879D;
+  --color-text-heading: #28283D;
+  --color-text-label: #4D96A9;
+  --color-btn-primary-bg: #4D96A9;
+  --color-btn-primary-bg-hover: #71C0D4;
+  --color-btn-primary-text-main: #FAFAFA;
+  --color-btn-primary-text-subtle: #8FE3F9;
+  --color-btn-secondary-bg: #855FB1;
+  --color-btn-secondary-bg-hover: #B18BDD;
+  --color-btn-secondary-text-main: #FAFAFA;
+  --color-btn-secondary-text-subtle: #D9B8FF;
+  --color-bg-footer: 77, 150, 168;
+  --color-text-footer: #FAFAFA;
+  --color-border: #D1D1DF;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme=dark] {
+  --color-bg-page: #36364D;
+  --color-text-main: #D1D1DF;
+  --color-text-heading: #FAFAFA;
+  --color-text-label: #71C0D4;
+  --color-btn-primary-bg: #4D96A9;
+  --color-btn-primary-bg-hover: #8FE3F9;
+  --color-btn-primary-text-main: #28283D;
+  --color-btn-primary-text-subtle: #87879D;
+  --color-btn-secondary-bg: #855FB1;
+  --color-btn-secondary-bg-hover: #D9B8FF;
+  --color-btn-secondary-text-main: #28283D;
+  --color-btn-secondary-text-subtle: #87879D;
+  --color-bg-footer: 40, 40, 60;
+  --color-text-footer: #D1D1DF;
+  --color-border: #87879D;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    --color-bg-page: #36364D;
+    --color-text-main: #D1D1DF;
+    --color-text-heading: #FAFAFA;
+    --color-text-label: #71C0D4;
+    --color-btn-primary-bg: #4D96A9;
+    --color-btn-primary-bg-hover: #8FE3F9;
+    --color-btn-primary-text-main: #28283D;
+    --color-btn-primary-text-subtle: #87879D;
+    --color-btn-secondary-bg: #855FB1;
+    --color-btn-secondary-bg-hover: #D9B8FF;
+    --color-btn-secondary-text-main: #28283D;
+    --color-btn-secondary-text-subtle: #87879D;
+    --color-bg-footer: 40, 40, 60;
+    --color-text-footer: #D1D1DF;
+    --color-border: #87879D;
+    --color-shadow: rgba(0, 0, 0, 0.5);
+  }
+}
+:root {
+  /* --- Vars generated from config object */
+  --weight-extra-light: 200;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semi-bold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+  /* --- Typography */
+  --font-family-base: Red Hat Display, sans-serif;
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1440,18,1.375,4,1,375-768&s=0.75|0.5,1.25|1.718|2.362|3.247|4.464,s-l&g=f=inter,l,xl,12 */
+  --step--1: clamp(0.8rem, 0.7948rem + 0.026vw, 0.8182rem);
+  --step-0: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.1652rem + 0.4241vw, 1.5469rem);
+  --step-2: clamp(1.5625rem, 1.4012rem + 0.8064vw, 2.127rem);
+  --step-3: clamp(1.9531rem, 1.6756rem + 1.3878vw, 2.9246rem);
+  --step-4: clamp(2.4414rem, 1.99rem + 2.2569vw, 4.0213rem);
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,32,1.333,2,0.75,375-768&s=0.75|0.5,1.25|1.5|1.75|2|2.5|3|4|5|6|7,2xl-6xl&g=s,m,l,NaN */
+  --space-2xs: clamp(0.5rem, 0.3571rem + 0.7143vw, 1rem);
+  --space-xs: clamp(0.75rem, 0.5357rem + 1.0714vw, 1.5rem);
+  --space-s: clamp(1rem, 0.7143rem + 1.4286vw, 2rem);
+  --space-m: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
+  --space-l: clamp(1.5rem, 1.0714rem + 2.1429vw, 3rem);
+  --space-xl: clamp(1.75rem, 1.25rem + 2.5vw, 3.5rem);
+  --space-2xl: clamp(2rem, 1.4286rem + 2.8571vw, 4rem);
+  --space-3xl: clamp(2.5rem, 1.7857rem + 3.5714vw, 5rem);
+  --space-4xl: clamp(3rem, 2.1429rem + 4.2857vw, 6rem);
+  --space-5xl: clamp(4rem, 2.8571rem + 5.7143vw, 8rem);
+  --space-6xl: clamp(5rem, 3.5714rem + 7.1429vw, 10rem);
+  --space-7xl: clamp(6rem, 4.2857rem + 8.5714vw, 12rem);
+  --space-8xl: clamp(7rem, 5rem + 10vw, 14rem);
+  --space-2xs-xs: clamp(0.5rem, 0.2143rem + 1.4286vw, 1.5rem);
+  --space-xs-s: clamp(0.75rem, 0.3929rem + 1.7857vw, 2rem);
+  --space-s-m: clamp(1rem, 0.5714rem + 2.1429vw, 2.5rem);
+  --space-m-l: clamp(1.25rem, 0.75rem + 2.5vw, 3rem);
+  --space-l-xl: clamp(1.5rem, 0.9286rem + 2.8571vw, 3.5rem);
+  --space-xl-2xl: clamp(1.75rem, 1.1071rem + 3.2143vw, 4rem);
+  --space-2xl-3xl: clamp(2rem, 1.1429rem + 4.2857vw, 5rem);
+  --space-3xl-4xl: clamp(2.5rem, 1.5rem + 5vw, 6rem);
+  --space-4xl-5xl: clamp(3rem, 1.5714rem + 7.1429vw, 8rem);
+  --space-5xl-6xl: clamp(4rem, 2.2857rem + 8.5714vw, 10rem);
+  --space-6xl-7xl: clamp(5rem, 3rem + 10vw, 12rem);
+  --space-7xl-8xl: clamp(6rem, 3.7143rem + 11.4286vw, 14rem);
+  --space-2xl-6xl: clamp(2rem, -0.2857rem + 11.4286vw, 10rem);
+  /* --- Others */
+  --flow-space: var(--space-s);
+}
+
+/* || Functions */
+/* || Mixins */
+/* [[[VENDORS]]] */
+/* [[[BASE]]] */
+/* || Reset */
+/* 1. Universal Box-Sizing */
+/* This is fundamental. It changes how width and height are calculated,
+   making layout much more intuitive: width/height includes padding and border. */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* 2. Reset Margins & Paddings for Common Block-Level Elements */
+/* Removes default browser margins/paddings that often cause inconsistencies.
+   Includes common elements like headings, paragraphs, lists, and figures. */
+body, h1, h2, h3, h4, h5, h6, p, blockquote, figure,
+ol, ul, dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove List Styles */
+/* Gets rid of default bullets/numbers and any intrinsic padding/margin for lists.
+   You'll re-add specific list styling if needed. */
+ol, ul {
+  list-style: none;
+}
+
+/* 4. Responsive Images */
+/* Ensures images and other media elements are block-level and scale within their containers. */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto; /* Important for maintaining aspect ratio */
+}
+
+/* 5. Improve Form Element Styling */
+/* Makes form elements inherit font styles and sets some consistent baselines. */
+input, button, textarea, select {
+  font: inherit; /* Inherit font properties from parent */
+  /* outline: none; Only remove if you have a :focus-visible style later */
+}
+
+/* 6. Base Link Styling */
+/* Removes default underline from links. Re-add on hover for accessibility if desired. */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit color unless explicitly set */
+}
+
+/* || Global */
+/* [[[ABSTRACTS]]] */
+body {
+  color: var(--color-text-main);
+  background-color: var(--color-bg-page);
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-medium);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step-4);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+h2 {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step-3);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+/* [[[LAYOUT]]] */
+/* [[[ABSTRACTS]]] */
+/* Hero grid */
+.hero {
+  display: grid;
+  grid-template: auto auto/repeat(2, 1fr);
+  grid-template-areas: "imgleft imgright" "content content";
+  row-gap: var(--space-4xl);
+  column-gap: var(--space-s);
+}
+.hero .hero__img-left {
+  grid-area: imgleft;
+}
+.hero .hero__img-right {
+  grid-area: imgright;
+}
+.hero .hero__content {
+  grid-area: content;
+  padding-inline: var(--space-2xl);
+  max-width: calc(28.125rem + var(--space-2xl) * 2); /* Max width to prevent becoming too wide in large screen */
+  justify-self: center;
+}
+@media (min-width: 64em) {
+  .hero {
+    grid-template: 1fr/3fr 4.5fr 3fr;
+    grid-template-areas: "imgleft content imgright";
+  }
+}
+
+/* Main's image collage grid */
+.img-collage {
+  display: grid;
+  grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+}
+.img-collage img {
+  border-radius: var(--space-2xs);
+}
+@media (min-width: 48em) {
+  .img-collage {
+    grid-template: 1fr/repeat(4, 1fr);
+  }
+}
+
+/* [[[ABSTRACTS]]] */
+/* CTA footer */
+.cta {
+  position: relative;
+  padding-block-start: 6.75rem;
+}
+.cta .c-number-icon {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 1.75rem);
+}
+.cta .content {
+  display: grid;
+}
+@media (max-width: 63.9375em) {
+  .cta .content {
+    gap: var(--space-s);
+    justify-items: center;
+    text-align: center;
+  }
+  .cta .content > * {
+    max-width: 33.75rem; /* Max width to prevent becoming too wide in large screen */
+  }
+}
+@media (min-width: 64em) {
+  .cta .content {
+    grid-template-columns: 4fr 3fr 2fr;
+    align-items: start;
+  }
+  .cta .content > :last-child {
+    justify-self: end;
+  }
+}
+
+/* [[[COMPONENTS]]] */
+/* [[[ABSTRACTS]]] */
+/* Component: Button */
+button[class*=c-button] {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 12.5rem;
+  border: none;
+  border-radius: 1.8125rem;
+  padding-inline: 2.5rem;
+  padding-block: 1rem;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.c-button--primary {
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text-main);
+}
+.c-button--primary .subtle {
+  color: var(--color-btn-primary-text-subtle);
+}
+.c-button--primary:hover, .c-button--primary:focus-visible {
+  background-color: var(--color-btn-primary-bg-hover);
+}
+
+.c-button--secondary {
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-btn-secondary-text-main);
+}
+.c-button--secondary .subtle {
+  color: var(--color-btn-secondary-text-subtle);
+}
+.c-button--secondary:hover, .c-button--secondary:focus-visible {
+  background-color: var(--color-btn-secondary-bg-hover);
+}
+
+/* Component: Container of buttons */
+.c-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+@container (min-width: 23.4375em) {
+  .c-buttons {
+    flex-direction: row;
+  }
+}
+
+/* [[[ABSTRACTS]]] */
+/* Component: Number Icon */
+.c-number-icon {
+  position: relative; /* Needed for absolute positioning of children */
+  width: 3.5rem; /* Adjust container width as needed */
+  height: 8.5rem; /* Adjust container height to determine line length */
+}
+.c-number-icon .line {
+  position: absolute;
+  width: 0.0625rem; /* Thickness of the line */
+  height: 100%; /* Make it fill the container's height */
+  background-color: var(--color-border, black);
+  left: 50%; /* Center the line horizontally */
+  transform: translateX(-50%); /* Adjust for its own width */
+  z-index: 1; /* Ensure it's above the faint background lines */
+}
+.c-number-icon .node {
+  position: absolute;
+  width: 3.5rem; /* Diameter of the circle */
+  height: 3.5rem; /* Diameter of the circle */
+  border-radius: 50%; /* Makes it a perfect circle */
+  border: 0.0625rem solid var(--color-border, black); /* Circle border */
+  background-color: var(--color-bg-page, white);
+  bottom: 0;
+  display: flex; /* Use flexbox to center the number */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 2; /* Ensure it's above the line */
+  /* By default, it's vertically centered by the parent container's align-items */
+}
+.c-number-icon .number {
+  color: var(--color-text-main, black);
+  text-align: center;
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* [[[UTILITIES]]] */
+/* [[[ABSTRACTS]]] */
+/* [[[ABSTRACTS]]] */
+/* || Utilities for exceptions (E in CUBE) */
+/* Style for main content */
+main .content {
+  /* Max width to prevent becoming too wide in large screen */
+  max-width: 34.0625rem;
+  margin-inline: auto;
+  /* Text style for label above main content's heading */
+}
+main .content .content__title {
+  /* Max width to prevent becoming too wide in large screen */
+  max-width: 27.8125rem;
+  margin-inline: auto;
+}
+main .content .content__title__label {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step--1);
+  line-height: 1.1;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+}
+
+/* Footer background image */
+.cta .content {
+  --img-url: url("../assets/mobile/image-footer.jpg");
+  background-image: linear-gradient(to right, rgba(var(--color-bg-footer), 0.75), rgba(77, 150, 169, 0.75)), var(--img-url); /* Bottom layer: actual image */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media screen and (min-width: 48em) and (max-width: 63.9375em) {
+  .cta .content {
+    --img-url: url("../assets/tablet/image-footer.jpg") ;
+  }
+}
+@media (min-width: 64em) {
+  .cta .content {
+    --img-url: url("../assets/desktop/image-footer.jpg") ;
+  }
+}
+
+/* || Utilities related to layout */
+.flow > * + * {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.wrapper {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  container-type: inline-size;
+  width: 100%;
+}
+
+/* || Utilities related to visibility */
+.sr-only {
+  /* Visually hidden but accessible to screen readers */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Utilities generated from config object */
+.color-text-label {
+  color: var(--color-text-label);
+}
+
+.color-text-heading {
+  color: var(--color-text-heading);
+}
+
+.color-text-footer {
+  color: var(--color-text-footer);
+}
+
+.pad-xs {
+  padding: var(--space-xs);
+}
+
+.pad-s {
+  padding: var(--space-s);
+}
+
+.pad-m {
+  padding: var(--space-m);
+}
+
+.pad-l {
+  padding: var(--space-l);
+}
+
+.pad-xl {
+  padding: var(--space-xl);
+}
+
+.pad-2xl {
+  padding: var(--space-2xl);
+}
+
+.pad-3xl {
+  padding: var(--space-3xl);
+}
+
+.pad-4xl {
+  padding: var(--space-4xl);
+}
+
+.pad-5xl {
+  padding: var(--space-5xl);
+}
+
+.pad-2xl-6xl {
+  padding: var(--space-2xl-6xl);
+}
+
+.pad-block-xs {
+  padding-block: var(--space-xs);
+}
+
+.pad-block-s {
+  padding-block: var(--space-s);
+}
+
+.pad-block-m {
+  padding-block: var(--space-m);
+}
+
+.pad-block-l {
+  padding-block: var(--space-l);
+}
+
+.pad-block-xl {
+  padding-block: var(--space-xl);
+}
+
+.pad-block-2xl {
+  padding-block: var(--space-2xl);
+}
+
+.pad-block-3xl {
+  padding-block: var(--space-3xl);
+}
+
+.pad-block-4xl {
+  padding-block: var(--space-4xl);
+}
+
+.pad-block-5xl {
+  padding-block: var(--space-5xl);
+}
+
+.pad-block-2xl-6xl {
+  padding-block: var(--space-2xl-6xl);
+}
+
+.pad-block-start-xs {
+  padding-block-start: var(--space-xs);
+}
+
+.pad-block-start-s {
+  padding-block-start: var(--space-s);
+}
+
+.pad-block-start-m {
+  padding-block-start: var(--space-m);
+}
+
+.pad-block-start-l {
+  padding-block-start: var(--space-l);
+}
+
+.pad-block-start-xl {
+  padding-block-start: var(--space-xl);
+}
+
+.pad-block-start-2xl {
+  padding-block-start: var(--space-2xl);
+}
+
+.pad-block-start-3xl {
+  padding-block-start: var(--space-3xl);
+}
+
+.pad-block-start-4xl {
+  padding-block-start: var(--space-4xl);
+}
+
+.pad-block-start-5xl {
+  padding-block-start: var(--space-5xl);
+}
+
+.pad-block-start-2xl-6xl {
+  padding-block-start: var(--space-2xl-6xl);
+}
+
+.pad-inline-xs {
+  padding-inline: var(--space-xs);
+}
+
+.pad-inline-s {
+  padding-inline: var(--space-s);
+}
+
+.pad-inline-m {
+  padding-inline: var(--space-m);
+}
+
+.pad-inline-l {
+  padding-inline: var(--space-l);
+}
+
+.pad-inline-xl {
+  padding-inline: var(--space-xl);
+}
+
+.pad-inline-2xl {
+  padding-inline: var(--space-2xl);
+}
+
+.pad-inline-3xl {
+  padding-inline: var(--space-3xl);
+}
+
+.pad-inline-4xl {
+  padding-inline: var(--space-4xl);
+}
+
+.pad-inline-5xl {
+  padding-inline: var(--space-5xl);
+}
+
+.pad-inline-2xl-6xl {
+  padding-inline: var(--space-2xl-6xl);
+}
+
+.mar-block-start-xs {
+  margin-block-start: var(--space-xs);
+}
+
+.mar-block-start-s {
+  margin-block-start: var(--space-s);
+}
+
+.mar-block-start-m {
+  margin-block-start: var(--space-m);
+}
+
+.mar-block-start-l {
+  margin-block-start: var(--space-l);
+}
+
+.mar-block-start-xl {
+  margin-block-start: var(--space-xl);
+}
+
+.mar-block-start-2xl {
+  margin-block-start: var(--space-2xl);
+}
+
+.mar-block-start-3xl {
+  margin-block-start: var(--space-3xl);
+}
+
+.mar-block-start-4xl {
+  margin-block-start: var(--space-4xl);
+}
+
+.mar-block-start-5xl {
+  margin-block-start: var(--space-5xl);
+}
+
+.mar-block-start-2xl-6xl {
+  margin-block-start: var(--space-2xl-6xl);
+}
+
+.gap-xs {
+  gap: var(--space-xs);
+}
+
+.gap-s {
+  gap: var(--space-s);
+}
+
+.gap-m {
+  gap: var(--space-m);
+}
+
+.gap-l {
+  gap: var(--space-l);
+}
+
+.gap-xl {
+  gap: var(--space-xl);
+}
+
+.gap-2xl {
+  gap: var(--space-2xl);
+}
+
+.gap-3xl {
+  gap: var(--space-3xl);
+}
+
+.gap-4xl {
+  gap: var(--space-4xl);
+}
+
+.gap-5xl {
+  gap: var(--space-5xl);
+}
+
+.gap-2xl-6xl {
+  gap: var(--space-2xl-6xl);
+}
+
+.flow-xs > * + * {
+  margin-block-start: var(--space-xs);
+}
+
+.flow-s > * + * {
+  margin-block-start: var(--space-s);
+}
+
+.flow-m > * + * {
+  margin-block-start: var(--space-m);
+}
+
+.flow-l > * + * {
+  margin-block-start: var(--space-l);
+}
+
+.flow-xl > * + * {
+  margin-block-start: var(--space-xl);
+}
+
+.flow-2xl > * + * {
+  margin-block-start: var(--space-2xl);
+}
+
+.flow-3xl > * + * {
+  margin-block-start: var(--space-3xl);
+}
+
+.flow-4xl > * + * {
+  margin-block-start: var(--space-4xl);
+}
+
+.flow-5xl > * + * {
+  margin-block-start: var(--space-5xl);
+}
+
+.flow-2xl-6xl > * + * {
+  margin-block-start: var(--space-2xl-6xl);
+}
+
+/* [[[PAGES]]] */
+/* [[[THEMES]]] */
+
+/*# sourceMappingURL=main.css.map */

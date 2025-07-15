@@ -1,0 +1,102 @@
+@use "config" as *;
+@use "design-tokens" as *;
+@use 'mixins' as *;
+@use 'functions' as *;
+@use 'utopia' as utopia;
+@use "sass:color"; 
+
+/* --- Themes */
+$themes: (
+  'light': (
+    // General
+    'bg-page': $color-white,
+    'text-main': $color-slate-600,
+    'text-heading': $color-slate-900,
+    'text-label': $color-cyan-600,
+
+    // Buttons
+    'btn-primary-bg': $color-cyan-600,
+    'btn-primary-bg-hover': $color-cyan-400,
+    'btn-primary-text-main': $color-white,
+    'btn-primary-text-subtle': $color-cyan-300,
+    'btn-secondary-bg': $color-purple-600,
+    'btn-secondary-bg-hover': $color-purple-400,
+    'btn-secondary-text-main': $color-white,
+    'btn-secondary-text-subtle': $color-purple-300,
+
+    // Footer section
+    'bg-footer': '77, 150, 168', // to use in rgba(--color, 0.5) 
+    'text-footer': $color-white,
+    
+    'border': $color-slate-300,
+    'shadow': rgba(0, 0, 0, 0.1),
+  ),
+  'dark': (
+    // General
+    'bg-page': #36364D,
+    'text-main': $color-slate-300,
+    'text-heading': $color-white,
+    'text-label': $color-cyan-400,
+
+    // Buttons
+    'btn-primary-bg': $color-cyan-600,
+    'btn-primary-bg-hover': $color-cyan-300,
+    'btn-primary-text-main': $color-slate-900,
+    'btn-primary-text-subtle': $color-slate-600,
+
+    'btn-secondary-bg': $color-purple-600,
+    'btn-secondary-bg-hover': $color-purple-300,
+    'btn-secondary-text-main': $color-slate-900,
+    'btn-secondary-text-subtle': $color-slate-600,
+
+    // Footer section
+    'bg-footer': '40, 40, 60',
+    'text-footer': $color-slate-300,
+
+    'border': $color-slate-600,
+    'shadow': rgba(0, 0, 0, 0.5),
+  ),
+);
+@include apply-themes($themes);
+
+:root {
+
+  /* --- Vars generated from config object */
+  @include generate-custom-properties($config);
+
+  /* --- Typography */
+  --font-family-base: #{$font-family-red-hat-display};
+
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1440,18,1.375,4,1,375-768&s=0.75|0.5,1.25|1.718|2.362|3.247|4.464,s-l&g=f=inter,l,xl,12 */
+  @include utopia.generateTypeScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minFontSize": 16,
+    "maxFontSize": 18,
+    "minTypeScale": 1.25,
+    "maxTypeScale": 1.375,
+    "positiveSteps": 4,
+    "negativeSteps": 1,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,32,1.333,2,0.75,375-768&s=0.75|0.5,1.25|1.5|1.75|2|2.5|3|4|5|6|7,2xl-6xl&g=s,m,l,NaN */
+  @include utopia.generateSpaceScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minSize": 16,
+    "maxSize": 32,
+    "positiveSteps": (1.25, 1.5, 1.75, 2, 2.5, 3, 4, 5, 6, 7),
+    "negativeSteps": (0.75, 0.5),
+    "customSizes": ("2xl-6xl"),
+    "prefix": "space-",
+    "relativeTo": "viewport-width",
+  ));
+
+  /* --- Others */
+  --flow-space: var(--space-s);
+}
+

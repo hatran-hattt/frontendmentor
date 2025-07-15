@@ -1,0 +1,38 @@
+@use "../abstracts" as *;
+
+/* Component: Number Icon */
+.c-number-icon {
+  position: relative; /* Needed for absolute positioning of children */
+  width: to-rem(56); /* Adjust container width as needed */
+  height: to-rem(136); /* Adjust container height to determine line length */
+
+  .line {
+    position: absolute;
+    width: to-rem(1); /* Thickness of the line */
+    height: 100%; /* Make it fill the container's height */
+    background-color: var(--color-border, black);
+    left: 50%; /* Center the line horizontally */
+    transform: translateX(-50%); /* Adjust for its own width */
+    z-index: 1; /* Ensure it's above the faint background lines */
+  }
+  .node {
+    position: absolute;
+    width: to-rem(56); /* Diameter of the circle */
+    height: to-rem(56); /* Diameter of the circle */
+    border-radius: 50%; /* Makes it a perfect circle */
+    border: to-rem(1) solid var(--color-border, black); /* Circle border */
+    background-color: var(--color-bg-page, white);
+    bottom: 0;
+    display: flex; /* Use flexbox to center the number */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 2; /* Ensure it's above the line */
+    /* By default, it's vertically centered by the parent container's align-items */
+  }
+
+  .number {
+    color: var(--color-text-main, black);
+    text-align: center;
+    @include text-preset5;
+  }
+}

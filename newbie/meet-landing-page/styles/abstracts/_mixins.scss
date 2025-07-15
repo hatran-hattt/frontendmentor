@@ -1,0 +1,266 @@
+@use "sass:map";
+@use 'functions' as *;
+
+// || Text styles base on design system
+@mixin text-preset1() {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step-4);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+@mixin text-preset2() {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step-3);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+@mixin text-preset3() {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step--1);
+  line-height: 1.1;
+  letter-spacing: to-rem(4);
+}
+@mixin text-preset4() {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-medium);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+@mixin text-preset5() {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-black);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+// || Generate CSS Custom Properties/Utility Classes from Config map
+// Example of Config map
+// $config: (
+//   'bg': (
+//     'items': ('page': red, 'card': green),
+//     'flag-gen-var': '1',
+//     'flag-gen-class': '1',
+//     'css-property': 'background',
+    
+//   ),
+//   'weight': (
+//     'items': $weight-items,
+//     'flag-gen-var': '1',
+//     'flag-gen-class': '0',
+//     // 'css-property': 'font-weight'
+//   ),
+//   'pad-block': (
+//     'items': $space-items,
+//     'flag-gen-var': '0',
+//     'flag-gen-class': '1',
+//     'css-property': 'padding-block'
+//   ),
+//   'flow': (
+//     'items': $space-items,
+//     'flag-gen-var': '0',
+//     'flag-gen-class': '1',
+//     'css-property': 'margin-block-start',
+//     'css-additional-select': '> * + *'
+//   ),
+// );
+
+
+// Generate CSS Custom Properties from Config map
+// Example output:
+// --bg-page: red;
+// --bg-card: green;
+@mixin generate-custom-properties($config) {
+  @each $property-key, $property-value in $config {
+    $items: map.get($property-value, 'items');
+    $flag-gen-var: map.get($property-value, 'flag-gen-var');
+    
+    // Generate CSS Custom Properties
+    @if ($flag-gen-var == '1') {
+      @each $name, $value in $items {
+        --#{$property-key}-#{$name}: #{$value};
+      }
+    }
+    
+  }
+}
+// Generate Utility Classes from Config map
+// Example output:
+// .bg-page {
+//   background: red;
+// }
+// .bg-card {
+//   background: green;
+// }
+@mixin generate-utility-classes($config) {
+  @each $property-key, $property-value in $config {
+    $items: map.get($property-value, 'items');
+    $flag-gen-class: map.get($property-value, 'flag-gen-class');
+
+    // Generate Utility Classes
+    @if ($flag-gen-class == '1') {
+      $css-property-name: map.get($property-value, 'css-property');
+      $css-additional-select: map.get($property-value, 'css-additional-select');
+      @each $item-name, $item-value in $items {
+        .#{$property-key}-#{$item-name} #{$css-additional-select} {
+          #{$css-property-name}: $item-value;
+        }
+      }
+    }
+  }
+}
+
+// || Generate CSS Custom Properties from themes map
+// --- Apply themes
+// This mixin iterates through all defined themes and applies their CSS Custom Properties.
+// It sets the 'light' theme as default, handles 'dark' via system preference,
+// and allows explicit switching for all themes via 'data-theme' attributes.
+// $themes-map: The main $themes map from _theme-definitions.scss
+@mixin apply-themes($themes-map) {
+  // 1. Apply the 'light' theme as the default to :root.
+  // This ensures a baseline theme is always present.
+  :root {
+    $theme-colors: map.get($themes-map, 'light');
+    @each $name, $value in $theme-colors {
+      --color-#{$name}: #{$value};
+    }
+  }
+
+  // 2. Loop through all themes and generate their styles scoped by data-theme attribute.
+  // This allows explicit theme selection via JavaScript.
+  @each $theme-name, $theme-colors in $themes-map {
+    // For each theme, create a selector like html[data-theme='dark'] or html[data-theme='custom']
+    html[data-theme='#{$theme-name}'] {
+      @each $name, $value in $theme-colors {
+        --color-#{$name}: #{$value};
+      }
+    }
+  }
+
+  // 3. Apply the 'dark' theme based on system preference.
+  // This rule is less specific than `html[data-theme='dark']` but more specific than `:root`.
+  // The `:not([data-theme])` ensures it only applies if no explicit data-theme is set,
+  // allowing manual toggles to override system preference.
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme]) {
+      $theme-colors: map.get($themes-map, 'dark');
+      @each $name, $value in $theme-colors {
+        --color-#{$name}: #{$value};
+      }
+    }
+  }
+}
+
+
+
+// || Media/Container query
+
+// Breakpoints
+$breakpoints: (
+  "xxsmall": to-em(320),
+  "xsmall": to-em(375),
+  "small": to-em(480),
+  "medium": to-em(768),
+  "large": to-em(1024),
+  "xlarge": to-em(1280),
+  "xxlarge": to-em(1440)
+);
+
+// overlap tolerance
+$operator-tolerance: (
+    "min-width": 0,
+    "max-width": to-em(1),
+    "min-height": 0,
+    "max-height": to-em(1),
+  );
+
+/// Common query mixin (for single-boundary queries)
+/// @param {String} $query-type - 'media' or 'container'
+/// @param {String} $breakpoint - The name of the breakpoint (e.g., 'medium', 'large')
+/// @param {String} $operator - The type of media query (e.g., 'min-width', 'max-width', 'only screen and')
+/// @requires $breakpoints map
+@mixin query($query-type: 'media', $breakpoint, $operator: 'min-width') {
+  
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @warn "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
+  }
+
+  @if not map.has-key($operator-tolerance, $operator) {
+    @warn "Operator '#{$breakpoint}' not found in $operator-tolerance map.";
+  }
+
+  $breakpoint-value: map.get($breakpoints, $breakpoint);
+  $tolerance-value: map.get($operator-tolerance, $operator);
+
+  @if $query-type == 'media' {
+    @media (#{$operator}: #{($breakpoint-value - $tolerance-value)}) {
+      @content;
+    }
+  } @else {
+    @container (#{$operator}: #{($breakpoint-value - $tolerance-value)}) {
+      @content;
+    }
+  }
+}
+
+// ----- Media query
+@mixin mq-up($breakpoint) {
+  @include query('media', $breakpoint, 'min-width') {
+    @content;
+  }
+}
+@mixin mq-down($breakpoint) {
+  @include query('media', $breakpoint, 'max-width') {
+    @content;
+  }
+}
+@mixin mq-range($min-breakpoint, $max-breakpoint) {
+  @if map.has-key($breakpoints, $min-breakpoint) and map.has-key($breakpoints, $max-breakpoint) {
+    $min-bp-value: map.get($breakpoints, $min-breakpoint);
+    $max-bp-value: map.get($breakpoints, $max-breakpoint) - map.get($operator-tolerance, 'max-width');
+
+    // Ensure min is not greater than max (or equal if you don't want empty ranges)
+    @if $min-bp-value < $max-bp-value {
+      @media screen and (min-width: #{$min-bp-value}) and (max-width: #{$max-bp-value}) {
+        @content;
+      }
+    } @else {
+      @warn "Invalid range: #{$min-breakpoint} (min: #{$min-bp-value}) is not less than #{$max-breakpoint} (max: #{$max-bp-value}).";
+    }
+  } @else {
+    @warn "Missing '#{$min-breakpoint}' or '#{$max-breakpoint}' breakpoint in $breakpoints map for 'mq-range' mixin.";
+  }
+}
+
+// ----- Container query
+@mixin cq-up($breakpoint) {
+  @include query('container', $breakpoint, 'min-width') {
+    @content;
+  }
+}
+@mixin cq-down($breakpoint) {
+  @include query('container', $breakpoint, 'max-width') {
+    @content;
+  }
+}
+@mixin cq-range($min-breakpoint, $max-breakpoint) {
+  @if map.has-key($breakpoints, $min-breakpoint) and map.has-key($breakpoints, $max-breakpoint) {
+    $min-bp-value: map.get($breakpoints, $min-breakpoint);
+    $max-bp-value: map.get($breakpoints, $max-breakpoint) - map.get($operator-tolerance, 'max-width');
+
+    // Ensure min is not greater than max (or equal if you don't want empty ranges)
+    @if $min-bp-value < $max-bp-value {
+      @container (min-width: #{$min-bp-value}) and (max-width: #{$max-bp-value}) {
+        @content;
+      }
+    } @else {
+      @warn "Invalid range: #{$min-breakpoint} (min: #{$min-bp-value}) is not less than #{$max-breakpoint} (max: #{$max-bp-value}).";
+    }
+  } @else {
+    @warn "Missing '#{$min-breakpoint}' or '#{$max-breakpoint}' breakpoint in $breakpoints map for 'mq-range' mixin.";
+  }
+}

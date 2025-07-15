@@ -1,0 +1,19 @@
+// *** The-7-1-pattern
+// |– layout/                # Major page structure (grid systems, header/footer, sidebar)
+// |   |– _navigation.scss   # Navigation
+// |   |– _grid.scss         # Grid system
+// |   |– _header.scss       # Header
+// |   |– _footer.scss       # Footer
+// |   |– _sidebar.scss      # Sidebar
+// |   |– _forms.scss        # Forms
+// |   …                     # Etc.
+// NOTE: The layout/ folder might also be called partials/, depending on what you prefer.
+
+// *** CUBE Integration: 
+// This is where your Compositional layout classes live. These classes define structural patterns for arranging content on a page.
+// These classes are typically applied directly to HTML elements to manage their children's layout.
+// Example: _grid.scss (e.g., .l-grid), _stack.scss (e.g., .l-stack), _container.scss (e.g., .l-container). These classes are typically applied directly to HTML elements to manage their children's layout.
+
+
+@forward "grid";
+@forward "footer"; 
