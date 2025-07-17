@@ -1,0 +1,94 @@
+@use "config" as *;
+@use "design-tokens" as *;
+@use 'mixins' as *;
+@use 'functions' as *;
+@use 'utopia' as utopia;
+@use "sass:color"; 
+
+/* --- Themes */
+$themes: (
+  'light': (
+    // General
+    'bg-page': $color-grey-200,
+    'bg-card': $color-white,
+    'text-main': $color-grey-500,
+    'text-heading': $color-grey-900,
+    'text-subtle': $color-grey-400,
+
+    // Button
+    'btn-bg': $color-grey-200,
+    'btn-fill': $color-grey-500,
+    'btn-bg-toggle': $color-grey-500,
+    'btn-fill-toggle': $color-white,
+
+    // Tooltip
+    'tooltip-bg': $color-grey-900,
+    
+    'shadow': rgba(0, 0, 0, 0.1),
+  ),
+  'dark': (
+    // General
+    'bg-page': $color-grey-900, // Darkest background for the page
+    'bg-card': $color-grey-500, // Slightly lighter dark background for cards to make them float
+    'text-main': $color-grey-200, // Light grey for main text
+    'text-heading': $color-white, // White for headings
+    'text-subtle': $color-grey-400, // Slightly darker light grey for subtle text
+
+    // Button
+    'btn-bg': $color-grey-500, // Medium grey for button background
+    'btn-fill': $color-white, // White fill for icons on dark buttons
+    'btn-bg-toggle': $color-grey-200, // Light grey for toggle button background
+    'btn-fill-toggle': $color-grey-900, // Dark grey fill for icons on light toggle button
+
+    // Tooltip
+    'tooltip-bg': $color-grey-200, // Light background for tooltip
+    
+    'shadow': rgba(255, 255, 255, 0.1), // Light shadow for dark mode
+  ),
+);
+@include apply-themes($themes);
+
+:root {
+
+  /* --- Vars generated from config object */
+  @include generate-custom-properties($config);
+
+  /* --- Typography */
+  --font-family-base: #{$font-family-manrope};
+
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  @include utopia.generateTypeScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minFontSize": 16,
+    "maxFontSize": 18,
+    "minTypeScale": 1.2,
+    "maxTypeScale": 1.333,
+    "positiveSteps": 5,
+    "negativeSteps": 2,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,18,1.333,5,2,375-768&s=0.75|0.5|0.25,1.25|1.5|1.75|2|2.5|3|3.5|4|5|6.5|10,4xl-xl|s-xl|s-9xl&g=s,l,xl,12 */
+  @include utopia.generateSpaceScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minSize": 16,
+    "maxSize": 18,
+    "positiveSteps": (1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 5, 6.5, 10),
+    "negativeSteps": (0.75, 0.5, 0.25),
+    "customSizes": ("4xl-xl", "s-xl", "s-9xl"),
+    "prefix": "space-",
+    "relativeTo": "viewport-width",
+  ));
+
+  /* --- Others */
+  --flow-space: var(--space-s);
+}
+
+// Sass variables
+$card-width-breakpoint: to-em(600);
+

@@ -1,0 +1,14 @@
+@use "../abstracts" as *;
+
+/* --- Grid Layout: Article preview grid */
+.grid-article-preview {
+  display: grid;
+
+  @include cq-down($card-width-breakpoint) {
+    grid-template-rows: minmax(0, to-rem(200)) auto;
+  }
+  
+  @include cq-up($card-width-breakpoint) {
+    grid-template-columns: 3fr 5fr;
+  }
+}

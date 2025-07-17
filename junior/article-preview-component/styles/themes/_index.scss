@@ -1,0 +1,10 @@
+// *** The-7-1-pattern
+// |– themes/                # Styles for different visual themes or skins.
+// |   |– _theme.scss        # Default theme
+// |   |– _admin.scss        # Admin theme
+// |   …                     # Etc.
+
+
+// *** CUBE Integration: 
+// This is where you'd define different sets of Compositional variables (design tokens) or Exceptions that alter the overall look and feel of your site.
+// Example: _dark-theme.scss, _light-theme.scss. These might override base variables or component-level exceptions.

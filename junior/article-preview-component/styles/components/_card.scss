@@ -1,0 +1,64 @@
+@use "../abstracts" as *;
+
+/* --- Component: Article Preview Card */
+/* Card's wrapper */
+.c-card {
+  gap: var(--space-2xl-3xl);
+  max-width: to-rem(800);
+  margin-inline: auto;      // make card center of container
+  border-radius: var(--border-radius, to-rem(10));
+  
+  box-shadow: 0 0.25rem 1.5rem var(--color-shadow); // x-offset, y-offset, blur, color
+  background-color: var(--color-bg-card);
+  @include cq-down($card-width-breakpoint) {
+    position: relative; /* Allows popup place relative to card */
+  }
+}
+/* Card's hero image */
+.c-card-hero {
+  inline-size: 100%;  // image take full width of parent element
+  block-size: 100%;   // image take full height of parent element
+  object-fit: cover;  // image size cover full parent element size
+  object-position: center; // crop image position
+  
+  @include cq-down($card-width-breakpoint) {
+    border-radius: var(--border-radius, to-rem(10)) var(--border-radius, to-rem(10)) 0 0; 
+  }
+  
+  @include cq-up($card-width-breakpoint) {
+    border-radius: var(--border-radius, to-rem(10)) 0 0 var(--border-radius, to-rem(10));
+  }
+}
+
+/* Card's content */
+.c-card-content {
+  display: grid;
+  gap: var(--space-4xl-xl);
+  padding-inline: var(--space-2xl);
+  padding-block: var(--space-s-xl);
+  text-align: start;
+
+  @include cq-down($card-width-breakpoint) {
+    padding-block-start: 0 !important;
+  }
+}
+
+/* Card's footer */
+.c-card-footer {
+  display: flex;
+  justify-content: space-between;
+
+  
+}
+
+/* --- Author */
+.c-card-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+
+  &__avatar {
+    width: var(--space-3xl);
+    border-radius: 50%;
+  }
+}

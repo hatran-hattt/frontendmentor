@@ -1,0 +1,127 @@
+@use "../abstracts" as *;
+
+$share-btn-size: to-rem(32);
+$popup-icon-size: to-rem(20);
+
+/* --- Component: Share Button */
+/* Component's button */
+.share-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $share-btn-size;
+  height: $share-btn-size;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-btn-bg);
+  svg > path {
+    width: 60%;
+    height: auto;
+    fill: var(--color-btn-fill);
+  }
+
+  &--toggle {
+    background-color: var(--color-btn-bg-toggle);
+    svg > path {
+      fill: var(--color-btn-fill-toggle);
+    }
+  }
+}
+
+/* Component's popup */
+.share-popup {
+  position: absolute; /* Takes the popup out of the normal document flow */
+  z-index: 10; /* Ensures the popup appears OVER other content */
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+
+  background-color: var(--color-tooltip-bg);
+  color: var(--color-text-subtle, white);
+  @include text-preset3;
+
+  /* icons container */
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+
+    /* icon */
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $popup-icon-size;
+      height: $popup-icon-size;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+/* Component style when container size is under breakpoint. */
+@include cq-down($card-width-breakpoint) {
+  $popup-padding-block: var(--space-l);
+  $popup-padding-inline: var(--space-2xl);
+  $popup-margin-bottom: 0px;
+
+  /* Position related to card (bottom of card & same line with popup) */
+  .share-btn {
+    position: absolute;
+    z-index: 20;
+    bottom: calc($popup-margin-bottom + $popup-padding-block - (($share-btn-size - $popup-icon-size) / 2));
+    right: $popup-padding-inline;
+  }
+
+  /* Position related to card (bottom of card) */
+  .share-popup {
+    bottom: $popup-margin-bottom;
+    left: 0;
+    width: 100%;
+
+    padding: $popup-padding-block $popup-padding-inline;
+    border-radius: 0 0 var(--border-radius, to-rem(10)) var(--border-radius, to-rem(10));
+  }
+
+  /* Hide popup arrow */
+  .share-popup__arrow {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+/* Component style when container size is above breakpoint. */
+@include cq-up($card-width-breakpoint) {
+  $popup-arrow-height: var(--space-2xs, to-rem(12));
+
+  .share-container {
+    position: relative; /* Allows popup place relative to share container */
+  }
+
+  /* Position related to share-container (above share button) */
+  .share-popup {
+    bottom: calc(100% + $share-btn-size);
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: var(--border-radius, to-rem(10));
+    padding: var(--space-s) var(--space-2xl);
+  }
+
+  /* Show popup arrow */
+  .share-popup__arrow {
+    position: absolute;
+    bottom: calc(-1 * $popup-arrow-height);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: calc($popup-arrow-height * 2);
+    height: calc($popup-arrow-height * 2);
+    background-color: var(--color-tooltip-bg);
+    z-index: -1;
+  }
+}
+
+
