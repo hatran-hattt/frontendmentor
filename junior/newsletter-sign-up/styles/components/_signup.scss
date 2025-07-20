@@ -1,0 +1,108 @@
+@use "../abstracts" as *;
+
+/* --- Component: Signup Screen */
+
+.c-signup {
+  background-color: var(--color-card-bg);
+
+  display: grid;
+  grid-template: auto auto / auto;
+  grid-template-areas:  "hero" "content";
+  gap: var(--space-l);
+
+  &__hero {
+    grid-area: hero;
+
+    img {
+      inline-size: 100%;  // image take full width of parent element
+      block-size: auto;
+      // max-height: 593px;
+      object-fit: cover;  // image size cover full parent element size
+      object-position: center; // crop image position
+    }
+  }
+
+  &__content {
+    grid-area: content;
+
+    display: grid;
+    gap: var(--space-l-xl);
+    padding-inline: var(--space-l);
+    padding-block: var(--space-l) var(--space-3xl);
+
+    ul {
+      display: grid;
+      gap: var(--space-2xs);
+      list-style: none;
+      padding-inline-start: var(--space-xl);
+
+      li {
+        position: relative;
+        padding-inline-start: var(--space-s);
+      }
+      li::before {
+        content: ''; /* CRITICAL: Essential for pseudo-elements */
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: var(--space-m);
+        height: var(--space-m);
+        margin-left: calc(-1 * var(--space-xl)); /* Adjust to move the marker into the padding-left space of the ul */
+        background-image: url("../assets/images/icon-list.svg");
+        background-size: contain; /* Ensure the image fits within the defined width/height */
+        background-repeat: no-repeat;
+        background-position: center; /* Center the image within its pseudo-element box */
+      }
+      
+    }
+    &__form {
+      display: grid;
+      gap: var(--space-l);
+    }
+  }
+}
+
+@include mq_down(medium) {
+  .c-signup {
+    align-self: stretch;
+    justify-self: stretch;
+    width: 100%;
+
+    &__hero img {
+      height: 100%;
+    }
+  }
+}
+
+@include mq_up(medium) {
+  .c-signup {
+    margin-inline: var(--space-7xl);
+    border-radius: var(--space-2xl); // 
+
+    &__hero {
+      border-radius: var(--space-s);
+      overflow: hidden;
+      margin: var(--space-l);
+      img {
+        height: auto;
+      }
+    }
+  }
+}
+
+@include mq_up(large) {
+  
+  .c-signup {
+    grid-template: auto / 3fr 2fr;
+    grid-template-areas: "content hero";
+
+    &__hero img {
+      height: 100%;
+    }
+
+    &__content {
+      justify-self: center;
+      align-self: center;
+    }
+  }
+}

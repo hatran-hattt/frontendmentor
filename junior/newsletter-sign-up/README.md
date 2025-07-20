@@ -46,8 +46,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/junior/article-preview-component
-- Live Site URL: https://hatran-hattt.github.io/frontendmentor/junior/article-preview-component/index.html
+- Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/junior/newsletter-sign-up
+- Live Site URL: https://hatran-hattt.github.io/frontendmentor/junior/newsletter-sign-up/index.html
 
 ## My process
 
@@ -61,34 +61,24 @@ Users should be able to:
 
 ### What I learned
 
-I've learned some CSS properties throughout this challenge
+#### 1. Handle form (get form data, validate)
 
-- Aligning items/tracks along the main(flexbox)/inline(grid) axis
+#### 2. CSS tips
 
-  - `justify-content` (applies to **flexbox/grid** containers): aligns `items (or tracks)` and distributes extra space within the container.
-  - `justify-items` (applies to **grid** containers): aligns the `content` of each individual grid item `within its cell`
-    > `justify-self` (applies to **grid** items): aligns the content of a `single` grid item within its cell
-
-- Applying a background image with a color layer
+- Set border-radius for picture element
 
   ```
-  {
-    background-image:
-      linear-gradient(to right, rgba(var(--color-bg-footer) ,0.75), rgba(#4D96A9,0.75)), /* Top layer: semi-transparent gradient */
-      url('../assets/mobile/image-footer.jpg'); /* Bottom layer: actual image */
-    background-repeat: no-repeat;
-    background-size: cover; // Scales the image as large as possible without stretching it (clipped)
-  }
+      picture {
+        border-radius: ...;
+        overflow: hidden; // Add this
+      }
   ```
 
-- `Container-type` might affect an element's sizing, if a `shink-to-fit` width occurs, then an explicit width might be needed
-  ```
-  .container {
-    container-type: inline-size;
-    width: 100%;
-  }
-  ```
-- Tip for centering block-level item horizontally: `margin: auto;`
+  > Imagine a square div with a border-radius of 20px (making its corners rounded). If you place a perfectly square img inside it that fills the div, the img's sharp corners will poke out of the div's rounded corners. Adding overflow: hidden; to the div will "trim" those sharp corners of the image, making it appear rounded.
+
+- Linear color for element: set `background-image` property (not `background-color`)
+
+- When using container query, `em` size constrains are caculated base on container's font-size (not root 16px);
 
 ## Author
 

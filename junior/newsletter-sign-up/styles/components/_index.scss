@@ -1,0 +1,14 @@
+// *** The-7-1-pattern
+// |– components/            # Reusable UI components (buttons, cards, navigation, forms).
+// |   |– _buttons.scss      # Buttons
+// |   |– _carousel.scss     # Carousel
+// |   |– _cover.scss        # Cover
+// |   |– _dropdown.scss     # Dropdown
+// |   …                     # Etc.
+// *** CUBE Integration: 
+// This is the primary home for your CUBE Blocks (.c-block-name) and their Exceptions (.c-block-name--modifier). Each component (e.g., button, card) would typically have its own SCSS partial here.
+
+@forward "button";
+@forward "form";
+@forward "signup";
+@forward "signup-complete";

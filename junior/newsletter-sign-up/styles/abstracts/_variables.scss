@@ -1,0 +1,81 @@
+@use "config" as *;
+@use "design-tokens" as *;
+@use 'mixins' as *;
+@use 'functions' as *;
+@use 'utopia' as utopia;
+@use "sass:color"; 
+
+/* --- Themes */
+$themes: (
+  'light': (
+    // General
+    'page-bg': $color-blue-700,
+    'card-bg': $color-white,
+    'text-main': $color-blue-800,
+    'text-subtle': $color-grey,
+
+    // Button
+    'btn-bg': $color-blue-800,
+    'btn-bg-active-1': $color-gradient-1,
+    'btn-bg-active-2': $color-gradient-2,
+    'btn-text': $color-white,
+    
+    // Input
+    'input-border': $color-grey,
+    'input-border-active': $color-blue-800,
+    'input-error': $color-red,
+    'input-error-bg': $color-red-100,
+    'input-placeholder': $color-grey,
+    
+    // 'shadow': rgba(0, 0, 0, 0.1),
+  ),
+  'dark': (
+    // TODO
+  ),
+);
+@include apply-themes($themes);
+
+:root {
+
+  /* --- Vars generated from config object */
+  @include generate-custom-properties($config);
+
+  /* --- Typography */
+  --font-family-base: #{$font-family-roboto};
+
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  @include utopia.generateTypeScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minFontSize": 16,
+    "maxFontSize": 18,
+    "minTypeScale": 1.2,
+    "maxTypeScale": 1.333,
+    "positiveSteps": 5,
+    "negativeSteps": 2,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,18,1.333,5,2,375-768&s=0.75|0.5|0.25,1.25|1.5|1.75|2|2.5|3|3.5|4|5|6.5|10,l-5xl&g=s,l,xl,12 */
+  @include utopia.generateSpaceScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minSize": 16,
+    "maxSize": 18,
+    "positiveSteps": (1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 5, 6.5, 10),
+    "negativeSteps": (0.75, 0.5, 0.25),
+    "customSizes": ("l-5xl"),
+    "prefix": "space-",
+    "relativeTo": "viewport-width",
+  ));
+
+  /* --- Others */
+  --flow-space: var(--space-s);
+}
+
+// Sass variables
+$card-width-breakpoint: to-em(600);
+

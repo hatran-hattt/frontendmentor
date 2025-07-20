@@ -1,0 +1,27 @@
+@use "../abstracts" as *;
+
+/* --- Component: Signup Complete Screen */
+.c-signup-complete {
+  background-color: var(--color-card-bg);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-l-5xl);
+
+  &__message {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+
+  @include mq_down(medium) {
+    align-self: stretch;
+  }
+
+  @include mq_up(medium) {
+    gap: var(--space-2xl);
+    border-radius: var(--space-2xl);
+    max-width: to-rem(510);
+  }
+}
