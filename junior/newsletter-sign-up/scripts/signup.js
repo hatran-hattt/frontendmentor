@@ -1,69 +1,50 @@
+import { attachValidationForForm, attachValidationForTextInputWhenBlur, COMMON_VALIDATORS } from './my-form-validation.js';
+
 // --------------- Main Process - Start --------------------------
 let signupScreen = document.querySelector('.c-signup');
 let completeScreen = document.querySelector('.c-signup-complete');
-let signupForm = signupScreen.querySelector('.c-signup form');
 let signedUpEmailElement = document.getElementById('signedUpEmail');
 
-signupForm.addEventListener('submit', handleSubmit);
+let signupForm = signupScreen.querySelector('.c-signup form');
+let emailInput = signupForm.querySelector('input[name="email"]');
+
+
+// Define specific validations for signup form
+// This object maps field 'name' attributes to their validation functions
+const signupFormValidations = {
+  email: COMMON_VALIDATORS.email,
+}
+
+attachValidationForForm(signupForm, signupFormValidations, handleWhenFormValid, handleWhenFormInvalid);
+attachValidationForTextInputWhenBlur(signupForm, signupFormValidations, handleTextInputBlur, handleTextInputBlur);
+completeScreen.querySelector('button').addEventListener('click', toggleScreen);
 // --------------- Main Process - End --------------------------
 
-// --- Handler for form's onsubmit event
-function handleSubmit(e) {
-  // 1. prevent default browser behaviour
-  e.preventDefault(e);
 
-  // 2. Retrieving data from the form
-  const data = Object.fromEntries(new FormData(e.target));
-  
-  // 3. validating the data
-  if (validateSignupForm(data)) {
-    // If input is valid, then show complete screen
-    signedUpEmailElement.textContent = data.email;
-    toggleScreen();
-  }
+// --------------- Event Handler - Start --------------------------
+function handleWhenFormValid() {
+  signedUpEmailElement.textContent = emailInput.value.trim();
+  toggleScreen();
 }
 
-// --- Validate all input fields of form.
-function validateSignupForm(data) {
-  // Validate email field
-  const checkEmailRlt = validateEmail(data.email);
-
-  // Validate abc field
-  // ...
-
-  // If exists one field has error -> invalid
-  if (!checkEmailRlt) { // || !checkAbcRlt
-    return false;
-  }
-
-  // valid
-  return true;
+function handleWhenFormInvalid(validationRlt) {
+  Object.keys(validationRlt.errors).forEach((key) => {
+    toggleErrorMessage(key, validationRlt.errors[key]);
+  });
 }
 
-// Validate [email] input field then show/hide error message.
-function validateEmail(email) {
-  let errMsg = '';
-  if (!email) {
-    errMsg = 'Valid email required';
-  } else {
-    const isValidEmail = /^\S+@\S+$/g
-    if (!isValidEmail.test(email)) {
-      errMsg =  'Valid email required';
-    }
-  }
-
-  // show/hide error message
-  toggleErrorMessage(errMsg, "email", errMsg);
-  
-  return errMsg == '';
+function handleTextInputBlur(fieldName, _fieldValue, errors) {
+  toggleErrorMessage(fieldName, errors);
 }
+// --------------- Event Handler - End --------------------------
 
-// Show/Hide error message for [inputName] input field.
-function toggleErrorMessage(show, inputName, errMsg) {
-  const inputElement = document.querySelector(`input[name="${inputName}"]`);
-  const errorMessageElement = document.querySelector(`.form-field:has(input[name="${inputName}"]) .form-field__messages`);
-  errorMessageElement.innerText = errMsg;
-  if (show) {
+// --------------- Other Functions - Start --------------------------
+// Show/Hide error message for input field.
+function toggleErrorMessage(fieldName, errors) {
+  const inputElement = document.querySelector(`input[name="${fieldName}"]`);
+  const errorMessageElement = document.querySelector(`.form-field:has(input[name="${fieldName}"]) .form-field__messages`);
+  if (errors.length !== 0) {
+    errorMessageElement.innerText = errors.join(' ');
     inputElement.classList.add('error');
     errorMessageElement.classList.remove('hidden');
   } else {
@@ -77,3 +58,4 @@ function toggleScreen() {
   signupScreen.classList.toggle('hidden');
   completeScreen.classList.toggle('hidden');
 }
+// --------------- Other Functions - End --------------------------

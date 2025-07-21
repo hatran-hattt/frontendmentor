@@ -17,7 +17,7 @@
     </title>
 
     <link rel="stylesheet" href="./styles/main.css" />
-    <script defer src="./scripts/signup.js"></script>
+    <script defer type="module" src="./scripts/signup.js"></script>
   </head>
   <body>
     <!-- <header>
@@ -60,7 +60,6 @@
                 type="email"
                 placeholder="email@company.com"
                 autocomplete="email"
-                onblur="validateEmail(this.value.trim());"
               />
               <div class="form-field__messages hidden"></div>
             </div>
@@ -90,11 +89,7 @@
             open it and click the button inside to confirm your subscription.
           </p>
         </div>
-        <button
-          class="c-signup-complete__button c-button"
-          type="button"
-          onclick="toggleScreen();"
-        >
+        <button class="c-signup-complete__button c-button" type="button">
           Dismiss message
         </button>
       </div>
