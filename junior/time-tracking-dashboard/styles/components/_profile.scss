@@ -1,0 +1,71 @@
+@use "../abstracts" as *;
+
+/* --- Component: Profile Card */
+.c-profile {
+  background-color: var(--color-card-bg);
+  border-radius: var(--space-s);
+
+  /* --- Profile Card - Header */
+  &__header {
+    background-color: var(--color-profile-bg);
+    border-radius: var(--space-s);
+    padding: var(--space-2xl);
+    gap: var(--space-l);
+
+    .c-profile__avatar {
+      border: var(--space-3xs) solid var(--color-profile-border-avatar);
+      border-radius: 50%;
+      box-shadow: 0 0.25rem 1.5rem var(--color-shadow);
+    }
+
+    .c-profile__info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xs);
+
+      &__label {
+        color: var(--color-text-subtle);
+        @include text-preset6;
+      }
+
+      &__name {
+        @include text-preset2;
+      }
+
+    }
+  }
+
+  /* --- Profile Card - Navigation */
+  &__nav {
+    padding-block: var(--space-l);
+    padding-inline-start: var(--space-xl);
+    @include text-preset5-regular;
+    ul {
+      justify-content: center;
+      gap: var(--space-4xl);
+
+      li {
+        color: var(--color-profile-text-nav);
+        &.active {
+          color: var(--color-profile-text-nav-active);
+        }
+
+        button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  /* --- Profile Card - Styles for xlarge screen */
+  @include mq_up(xlarge) {
+    max-width: to-rem(255);
+        &__header {
+          padding-block-end: var(--space-7xl);
+          gap: var(--space-3xl);
+        }
+    }
+}

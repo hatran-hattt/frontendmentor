@@ -1,0 +1,81 @@
+@use "config" as *;
+@use "design-tokens" as *;
+@use 'mixins' as *;
+@use 'functions' as *;
+@use 'utopia' as utopia;
+@use "sass:color"; 
+
+/* --- Themes */
+$themes: (
+  'light': (
+    // General
+    'page-bg': $color-navy-950,
+    'card-bg': $color-navy-900,
+    'text-main': $color-white,
+    'text-subtle': $color-navy-200,
+
+    // Profile card
+    'profile-text-nav': $color-purple-500,
+    'profile-text-nav-active': $color-white,
+    'profile-bg': $color-purple-600,
+    'profile-border-avatar': $color-white,
+
+    // Activity card
+    'activity-theme-work': $color-orange-300,
+    'activity-theme-play': $color-blue-300,
+    'activity-theme-study': $color-pink-400,
+    'activity-theme-exercise': $color-green-400,
+    'activity-theme-social': $color-purple-700,
+    'activity-theme-self-care': $color-yellow-300,
+    
+    'shadow': rgba(0, 0, 0, 0.7),
+  ),
+  'dark': (
+    // TODO
+  ),
+);
+@include apply-themes($themes);
+
+:root {
+
+  /* --- Vars generated from config object */
+  @include generate-custom-properties($config);
+
+  /* --- Typography */
+  --font-family-base: #{$font-family-rubik};
+
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  @include utopia.generateTypeScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minFontSize": 16,
+    "maxFontSize": 18,
+    "minTypeScale": 1.2,
+    "maxTypeScale": 1.333,
+    "positiveSteps": 5,
+    "negativeSteps": 2,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,18,1.333,5,2,375-768&s=0.75|0.5|0.25,1.25|1.5|1.75|2|2.5|3|3.5|4|5|6.5|10,l-5xl&g=s,l,xl,12 */
+  @include utopia.generateSpaceScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minSize": 16,
+    "maxSize": 18,
+    "positiveSteps": (1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 5, 6.5, 10),
+    "negativeSteps": (0.75, 0.5, 0.25),
+    "customSizes": ("l-5xl"),
+    "prefix": "space-",
+    "relativeTo": "viewport-width",
+  ));
+
+  /* --- Others */
+  --flow-space: var(--space-s);
+  --activity-icon-url: url("../images/icon-work.svg");
+  --activity-theme-color: var(--color-activity-theme-work);
+}
+

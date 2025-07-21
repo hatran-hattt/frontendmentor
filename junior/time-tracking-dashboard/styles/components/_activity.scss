@@ -1,0 +1,81 @@
+@use "../abstracts" as *;
+
+/* --- Component: Activity Card */
+.c-activity {
+  &__logo {
+    background-color: var(--activity-theme-color);
+    height: var(--space-5xl);
+    border-radius: var(--space-s) var(--space-s) 0 0;
+
+    background-image: var(--activity-icon-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right var(--space-m) center; // TIPS: Place image x size unit from right side.
+  }
+
+  &__content {
+    display: grid;
+    gap: var(--space-l);
+    margin-block-start: calc(-1 * var(--space-s));
+    padding: var(--space-l);
+    background-color: var(--color-card-bg);
+    border-radius: var(--space-s);
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .activity__title {
+        @include text-preset5-medium;
+      }
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      
+      .activity__current {
+        @include text-preset1;
+      }
+      .activity__previous {
+        @include text-preset6;
+        color: var(--color-text-subtle);
+      }
+
+      @include mq_up(medium) {
+        flex-direction: column;
+        gap: var(--space-2xs);
+        align-items: flex-start;
+      }
+    }
+  }
+}
+
+// Activity themes
+.activity-work {
+  --activity-theme-color: var(--color-activity-theme-work);
+  --activity-icon-url: url("../images/icon-work.svg");
+}
+.activity-play {
+  --activity-theme-color: var(--color-activity-theme-play);
+  --activity-icon-url: url("../images/icon-play.svg");
+}
+.activity-study {
+  --activity-theme-color: var(--color-activity-theme-study);
+  --activity-icon-url: url("../images/icon-study.svg");
+}
+.activity-exercise {
+  --activity-theme-color: var(--color-activity-theme-exercise);
+  --activity-icon-url: url("../images/icon-exercise.svg");
+}
+.activity-social {
+  --activity-theme-color: var(--color-activity-theme-social);
+  --activity-icon-url: url("../images/icon-social.svg");
+}
+.activity-self-care {
+  --activity-theme-color: var(--color-activity-theme-self-care);
+  --activity-icon-url: url("../images/icon-self-care.svg");
+}

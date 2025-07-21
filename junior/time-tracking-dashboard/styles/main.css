@@ -1,0 +1,447 @@
+/* [[[ABSTRACTS]]] */
+/* || Config */
+/* || Design Tokens */
+/* || Variables */
+/* --- Themes */
+:root {
+  --color-page-bg: #0E1323;
+  --color-card-bg: #1C204B;
+  --color-text-main: #FFFFFF;
+  --color-text-subtle: #BBC0FF;
+  --color-profile-text-nav: #7078C9;
+  --color-profile-text-nav-active: #FFFFFF;
+  --color-profile-bg: #5747EA;
+  --color-profile-border-avatar: #FFFFFF;
+  --color-activity-theme-work: #FF8B64;
+  --color-activity-theme-play: #55C2E6;
+  --color-activity-theme-study: #FF5E7D;
+  --color-activity-theme-exercise: #4BCF82;
+  --color-activity-theme-social: #7335D2;
+  --color-activity-theme-self-care: #F1C75B;
+  --color-shadow: rgba(0, 0, 0, 0.7);
+}
+
+html[data-theme=light] {
+  --color-page-bg: #0E1323;
+  --color-card-bg: #1C204B;
+  --color-text-main: #FFFFFF;
+  --color-text-subtle: #BBC0FF;
+  --color-profile-text-nav: #7078C9;
+  --color-profile-text-nav-active: #FFFFFF;
+  --color-profile-bg: #5747EA;
+  --color-profile-border-avatar: #FFFFFF;
+  --color-activity-theme-work: #FF8B64;
+  --color-activity-theme-play: #55C2E6;
+  --color-activity-theme-study: #FF5E7D;
+  --color-activity-theme-exercise: #4BCF82;
+  --color-activity-theme-social: #7335D2;
+  --color-activity-theme-self-care: #F1C75B;
+  --color-shadow: rgba(0, 0, 0, 0.7);
+}
+
+:root {
+  /* --- Vars generated from config object */
+  --weight-extra-light: 200;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semi-bold: 600;
+  --weight-bold: 700;
+  --weight-extra-bold: 800;
+  --weight-black: 900;
+  /* --- Typography */
+  --font-family-base: Rubik, sans-serif;
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --step--2: clamp(0.6331rem, 0.712rem + -0.0876vw, 0.6944rem);
+  --step--1: clamp(0.8333rem, 0.8303rem + 0.0152vw, 0.844rem);
+  --step-0: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1144rem + 0.428vw, 1.4996rem);
+  --step-2: clamp(1.44rem, 1.2803rem + 0.7986vw, 1.999rem);
+  --step-3: clamp(1.728rem, 1.4604rem + 1.3381vw, 2.6647rem);
+  --step-4: clamp(2.0736rem, 1.6512rem + 2.112vw, 3.552rem);
+  --step-5: clamp(2.4883rem, 1.8465rem + 3.2093vw, 4.7348rem);
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,18,1.333,5,2,375-768&s=0.75|0.5|0.25,1.25|1.5|1.75|2|2.5|3|3.5|4|5|6.5|10,l-5xl&g=s,l,xl,12 */
+  --space-3xs: clamp(0.25rem, 0.2321rem + 0.0893vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4821rem + 0.0893vw, 0.5625rem);
+  --space-xs: clamp(0.75rem, 0.7143rem + 0.1786vw, 0.875rem);
+  --space-s: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  --space-m: clamp(1.25rem, 1.1964rem + 0.2679vw, 1.4375rem);
+  --space-l: clamp(1.5rem, 1.4464rem + 0.2679vw, 1.6875rem);
+  --space-xl: clamp(1.75rem, 1.6786rem + 0.3571vw, 2rem);
+  --space-2xl: clamp(2rem, 1.9286rem + 0.3571vw, 2.25rem);
+  --space-3xl: clamp(2.5rem, 2.4107rem + 0.4464vw, 2.8125rem);
+  --space-4xl: clamp(3rem, 2.8929rem + 0.5357vw, 3.375rem);
+  --space-5xl: clamp(3.5rem, 3.375rem + 0.625vw, 3.9375rem);
+  --space-6xl: clamp(4rem, 3.8571rem + 0.7143vw, 4.5rem);
+  --space-7xl: clamp(5rem, 4.8214rem + 0.8929vw, 5.625rem);
+  --space-8xl: clamp(6.5rem, 6.2679rem + 1.1607vw, 7.3125rem);
+  --space-9xl: clamp(10rem, 9.6429rem + 1.7857vw, 11.25rem);
+  --space-3xs-2xs: clamp(0.25rem, 0.1607rem + 0.4464vw, 0.5625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.3929rem + 0.5357vw, 0.875rem);
+  --space-xs-s: clamp(0.75rem, 0.6429rem + 0.5357vw, 1.125rem);
+  --space-s-m: clamp(1rem, 0.875rem + 0.625vw, 1.4375rem);
+  --space-m-l: clamp(1.25rem, 1.125rem + 0.625vw, 1.6875rem);
+  --space-l-xl: clamp(1.5rem, 1.3571rem + 0.7143vw, 2rem);
+  --space-xl-2xl: clamp(1.75rem, 1.6071rem + 0.7143vw, 2.25rem);
+  --space-2xl-3xl: clamp(2rem, 1.7679rem + 1.1607vw, 2.8125rem);
+  --space-3xl-4xl: clamp(2.5rem, 2.25rem + 1.25vw, 3.375rem);
+  --space-4xl-5xl: clamp(3rem, 2.7321rem + 1.3393vw, 3.9375rem);
+  --space-5xl-6xl: clamp(3.5rem, 3.2143rem + 1.4286vw, 4.5rem);
+  --space-6xl-7xl: clamp(4rem, 3.5357rem + 2.3214vw, 5.625rem);
+  --space-7xl-8xl: clamp(5rem, 4.3393rem + 3.3036vw, 7.3125rem);
+  --space-8xl-9xl: clamp(6.5rem, 5.1429rem + 6.7857vw, 11.25rem);
+  --space-l-5xl: clamp(1.5rem, 0.8036rem + 3.4821vw, 3.9375rem);
+  /* --- Others */
+  --flow-space: var(--space-s);
+  --activity-icon-url: url("../images/icon-work.svg");
+  --activity-theme-color: var(--color-activity-theme-work);
+}
+
+/* || Functions */
+/* || Mixins */
+/* [[[VENDORS]]] */
+/* [[[BASE]]] */
+/* || Reset */
+/* 1. Universal Box-Sizing */
+/* This is fundamental. It changes how width and height are calculated,
+   making layout much more intuitive: width/height includes padding and border. */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* 2. Reset Margins & Paddings for Common Block-Level Elements */
+/* Removes default browser margins/paddings that often cause inconsistencies.
+   Includes common elements like headings, paragraphs, lists, and figures. */
+body, h1, h2, h3, h4, h5, h6, p, blockquote, figure,
+ol, ul, dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove List Styles */
+/* Gets rid of default bullets/numbers and any intrinsic padding/margin for lists.
+   You'll re-add specific list styling if needed. */
+ol, ul {
+  list-style: none;
+}
+
+/* 4. Responsive Images */
+/* Ensures images and other media elements are block-level and scale within their containers. */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto; /* Important for maintaining aspect ratio */
+}
+
+/* 5. Improve Form Element Styling */
+/* Makes form elements inherit font styles and sets some consistent baselines. */
+input, button, textarea, select {
+  font: inherit; /* Inherit font properties from parent */
+  /* outline: none; Only remove if you have a :focus-visible style later */
+}
+
+/* 6. Base Link Styling */
+/* Removes default underline from links. Re-add on hover for accessibility if desired. */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit color unless explicitly set */
+}
+
+/* || Global */
+/* [[[ABSTRACTS]]] */
+body {
+  background-color: var(--color-page-bg);
+  color: var(--color-text-main);
+}
+
+/* [[[LAYOUT]]] */
+/* [[[ABSTRACTS]]] */
+/* --- Layout: Dashboard */
+.l-dashboard {
+  display: grid;
+  grid-template: auto auto/auto;
+  gap: var(--space-xl);
+}
+@media (min-width: 80em) {
+  .l-dashboard {
+    grid-template: auto/1fr 3fr;
+  }
+}
+
+/* --- Layout: Activities container */
+.l-activities {
+  display: grid;
+  gap: var(--space-xl);
+}
+@media (min-width: 48em) {
+  .l-activities {
+    grid-template: auto auto/repeat(3, minmax(14.375rem, 1fr));
+  }
+}
+@media (min-width: 80em) {
+  .l-activities {
+    align-items: center;
+  }
+}
+
+/* --- Layout: Profile Card - Header */
+.l-header {
+  display: flex;
+  flex-direction: row;
+}
+@media (min-width: 80em) {
+  .l-header {
+    flex-direction: column;
+  }
+}
+
+/* --- Layout: Profile Card - Navigation */
+.l-nav ul {
+  display: flex;
+  flex-direction: row;
+}
+@media (min-width: 80em) {
+  .l-nav ul {
+    flex-direction: column;
+  }
+}
+
+/* [[[COMPONENTS]]] */
+/* [[[ABSTRACTS]]] */
+/* --- Component: Profile Card */
+.c-profile {
+  background-color: var(--color-card-bg);
+  border-radius: var(--space-s);
+  /* --- Profile Card - Header */
+  /* --- Profile Card - Navigation */
+  /* --- Profile Card - Styles for xlarge screen */
+}
+.c-profile__header {
+  background-color: var(--color-profile-bg);
+  border-radius: var(--space-s);
+  padding: var(--space-2xl);
+  gap: var(--space-l);
+}
+.c-profile__header .c-profile__avatar {
+  border: var(--space-3xs) solid var(--color-profile-border-avatar);
+  border-radius: 50%;
+  box-shadow: 0 0.25rem 1.5rem var(--color-shadow);
+}
+.c-profile__header .c-profile__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+.c-profile__header .c-profile__info__label {
+  color: var(--color-text-subtle);
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-ligregularht);
+  font-size: var(--step-0);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.c-profile__header .c-profile__info__name {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-light);
+  font-size: var(--step-3);
+  line-height: 1.175;
+  letter-spacing: 0;
+}
+.c-profile__nav {
+  padding-block: var(--space-l);
+  padding-inline-start: var(--space-xl);
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-regular);
+  font-size: var(--step-1);
+  line-height: 1.167;
+  letter-spacing: 0;
+}
+.c-profile__nav ul {
+  justify-content: center;
+  gap: var(--space-4xl);
+}
+.c-profile__nav ul li {
+  color: var(--color-profile-text-nav);
+}
+.c-profile__nav ul li.active {
+  color: var(--color-profile-text-nav-active);
+}
+.c-profile__nav ul li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+@media (min-width: 80em) {
+  .c-profile {
+    max-width: 15.9375rem;
+  }
+  .c-profile__header {
+    padding-block-end: var(--space-7xl);
+    gap: var(--space-3xl);
+  }
+}
+
+/* [[[ABSTRACTS]]] */
+/* --- Component: Activity Card */
+.c-activity__logo {
+  background-color: var(--activity-theme-color);
+  height: var(--space-5xl);
+  border-radius: var(--space-s) var(--space-s) 0 0;
+  background-image: var(--activity-icon-url);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right var(--space-m) center;
+}
+.c-activity__content {
+  display: grid;
+  gap: var(--space-l);
+  margin-block-start: calc(-1 * var(--space-s));
+  padding: var(--space-l);
+  background-color: var(--color-card-bg);
+  border-radius: var(--space-s);
+}
+.c-activity__content__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.c-activity__content__header .activity__title {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-medium);
+  font-size: var(--step-1);
+  line-height: 1.167;
+  letter-spacing: 0;
+}
+.c-activity__content__details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.c-activity__content__details .activity__current {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-light);
+  font-size: var(--step-4);
+  line-height: 1.179;
+  letter-spacing: 0;
+}
+.c-activity__content__details .activity__previous {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-ligregularht);
+  font-size: var(--step-0);
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--color-text-subtle);
+}
+@media (min-width: 48em) {
+  .c-activity__content__details {
+    flex-direction: column;
+    gap: var(--space-2xs);
+    align-items: flex-start;
+  }
+}
+
+.activity-work {
+  --activity-theme-color: var(--color-activity-theme-work);
+  --activity-icon-url: url("../images/icon-work.svg");
+}
+
+.activity-play {
+  --activity-theme-color: var(--color-activity-theme-play);
+  --activity-icon-url: url("../images/icon-play.svg");
+}
+
+.activity-study {
+  --activity-theme-color: var(--color-activity-theme-study);
+  --activity-icon-url: url("../images/icon-study.svg");
+}
+
+.activity-exercise {
+  --activity-theme-color: var(--color-activity-theme-exercise);
+  --activity-icon-url: url("../images/icon-exercise.svg");
+}
+
+.activity-social {
+  --activity-theme-color: var(--color-activity-theme-social);
+  --activity-icon-url: url("../images/icon-social.svg");
+}
+
+.activity-self-care {
+  --activity-theme-color: var(--color-activity-theme-self-care);
+  --activity-icon-url: url("../images/icon-self-care.svg");
+}
+
+/* [[[UTILITIES]]] */
+/* [[[ABSTRACTS]]] */
+/* || Utilities for exceptions (E in CUBE) */
+.main-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100vh;
+  justify-items: center;
+  align-items: center;
+  padding-block: var(--space-2xl);
+}
+
+/* || Utilities related to layout */
+.flow > * + * {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.wrapper {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  container-type: inline-size;
+  width: 100%;
+}
+
+/* || Utilities related to visibility */
+/* Hide element (Visually hidden but accessible to screen readers) */
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Show element */
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Utilities generated from config object */
+/* [[[PAGES]]] */
+/* [[[THEMES]]] */
+
+/*# sourceMappingURL=main.css.map */

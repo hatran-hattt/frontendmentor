@@ -58,6 +58,14 @@ Users should be able to:
 
 ### What I learned
 
+#### 1. JS: Load json data using fetch API
+
+#### 2. CSS TIPS:
+
+```
+  background-position: right var(--space-m) center; // TIPS: Place background image x size unit from right side.
+```
+
 ## Author
 
 - Frontend Mentor - [@hatran-hattt](https://www.frontendmentor.io/profile/hatran-hattt)

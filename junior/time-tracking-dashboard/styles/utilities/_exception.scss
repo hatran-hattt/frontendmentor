@@ -1,0 +1,11 @@
+/* || Utilities for exceptions (E in CUBE) */
+// @use "../abstracts" as *;
+
+.main-wrapper {
+  display: grid;
+  grid-template-columns: 1fr; // To avoid fixed value column
+  height: 100vh;
+  justify-items: center;
+  align-items: center;
+  padding-block: var(--space-2xl);
+}
