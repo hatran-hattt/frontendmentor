@@ -1,0 +1,11 @@
+[
+  {
+    "category": "newbie",
+    "challenges": ["qr-code-component", "blog-preview-card", "social-links-profile", "recipe-page",
+      "product-preview-card", "four-card-feature", "testimonials-grid"]
+  },
+  {
+    "category": "junior",
+    "challenges": ["article-preview-component", "newsletter-sign-up", "time-tracking-dashboard", "tip-calculator-app"]
+  }
+]
