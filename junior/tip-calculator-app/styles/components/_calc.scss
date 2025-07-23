@@ -1,0 +1,51 @@
+@use "../abstracts" as *;
+
+/* --- Component: Tip Calculator */
+.c-calc {
+  background-color: var(--color-card-bg);
+  padding: var(--space-2xl) var(--space-l);
+  box-shadow: 0 0.25rem 1.5rem var(--color-shadow);
+
+  &-out {
+    display: flex;
+
+    border-radius: var(--space-l);
+    background-color: var(--color-info-bg);
+    padding: var(--space-l);
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .info-name {
+        &__main {
+          @include text-preset5;
+          color: var(--color-info-name-txt-main);
+        }
+
+        &__subtle {
+          @include text-preset6;
+          color: var(--color-info-name-txt-subtle);
+        }
+        
+      }
+
+      .info_value {
+         @include text-preset1;
+         color: var(--color-info-value);
+      }
+      
+    }
+
+  }
+
+  @include mq_down(small) {
+    border-radius: var(--space-l) var(--space-l) 0 0;
+    width: 100%;
+  }
+
+  @include mq_up(small) {
+    border-radius: var(--space-l);
+    width: 80%;
+  }
+}

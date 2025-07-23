@@ -1,0 +1,11 @@
+// *** The-7-1-pattern
+
+// |– pages/                 # Page-specific styles that don't fit into generic components or layouts
+// |   |– _home.scss         # Home specific styles
+// |   |– _contact.scss      # Contact specific styles
+// |   …                     # Etc.
+
+// *** CUBE Integration: 
+// This folder is for styles unique to specific pages. These might involve Compositional overrides for a particular layout on that page, or Exceptions that are only relevant in that page's context and don't warrant a generic component or utility.
+
+// Example: _homepage.scss, _product-detail.scss. These files should ideally be small and primarily compose existing Blocks and Layouts, or apply minor, page-specific adjustments.

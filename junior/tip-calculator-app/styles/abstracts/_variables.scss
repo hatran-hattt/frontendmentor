@@ -1,0 +1,91 @@
+@use "config" as *;
+@use "design-tokens" as *;
+@use 'mixins' as *;
+@use 'functions' as *;
+@use 'utopia' as utopia;
+@use "sass:color"; 
+
+/* --- Themes */
+$themes: (
+  'light': (
+    // General
+    'page-bg': $color-grey-200,
+    'card-bg': $color-white,
+    'text-main': $color-white,
+    'text-subtle': $color-grey-400,
+
+    // Input Form
+    'field-label': $color-grey-500,
+    'field-input-text': $color-green-900,
+    'field-input-bg': $color-grey-50,
+    'field-input-focus-border': $color-green-400,
+    'field-input-error-border': $color-orange-400,
+    'field-input-error-msg': $color-orange-400,
+    'field-radio-text': $color-white,
+    'field-radio-bg': $color-green-900,
+    'field-radio-selected-text': $color-green-900,
+    'field-radio-selected-bg': $color-green-200,
+    'field-radio-custom-text': $color-grey-550,
+    'field-radio-custom-bg': $color-grey-50,
+
+    // Output Result
+    'info-bg': $color-green-900,
+    'info-name-txt-main': $color-white,
+    'info-name-txt-subtle': $color-grey-400,
+    'info-value': $color-green-400,
+    
+    // Button
+    'btn-text': $color-green-900,
+    'btn-bg': $color-green-200,
+    'btn-disabled-text': $color-green-800,
+    'btn-disabled-bg': $color-green-750,
+    
+    'shadow': rgba(0, 0, 0, 0.7),
+  ),
+  'dark': (
+    // TODO
+  ),
+);
+@include apply-themes($themes);
+
+:root {
+
+  /* --- Vars generated from config object */
+  @include generate-custom-properties($config);
+
+  /* --- Typography */
+  --font-family-base: #{$font-family-space-mono};
+
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  @include utopia.generateTypeScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minFontSize": 16,
+    "maxFontSize": 18,
+    "minTypeScale": 1.2,
+    "maxTypeScale": 1.333,
+    "positiveSteps": 5,
+    "negativeSteps": 2,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,18,1.333,5,2,375-768&s=0.75|0.5|0.25,1.25|1.5|1.75|2|2.5|3|3.5|4|5|6.5|10,l-5xl&g=s,l,xl,12 */
+  @include utopia.generateSpaceScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minSize": 16,
+    "maxSize": 18,
+    "positiveSteps": (1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 5, 6.5, 10),
+    "negativeSteps": (0.75, 0.5, 0.25),
+    "customSizes": ("2xl-8xl"),
+    "prefix": "space-",
+    "relativeTo": "viewport-width",
+  ));
+
+  /* --- Others */
+  --flow-space: var(--space-s);
+}
+

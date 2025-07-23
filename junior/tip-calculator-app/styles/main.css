@@ -1,0 +1,480 @@
+/* [[[ABSTRACTS]]] */
+/* || Config */
+/* || Design Tokens */
+/* || Variables */
+/* --- Themes */
+:root {
+  --color-page-bg: #C5E4E7;
+  --color-card-bg: #FFFFFF;
+  --color-text-main: #FFFFFF;
+  --color-text-subtle: #7F9D9F;
+  --color-field-label: #5E7A7D;
+  --color-field-input-text: #00474B;
+  --color-field-input-bg: #F3F9FA;
+  --color-field-input-focus-border: #26C2AE;
+  --color-field-input-error-border: #E17052;
+  --color-field-input-error-msg: #E17052;
+  --color-field-radio-text: #FFFFFF;
+  --color-field-radio-bg: #00474B;
+  --color-field-radio-selected-text: #00474B;
+  --color-field-radio-selected-bg: #9FE8DF;
+  --color-field-radio-custom-text: #547878;
+  --color-field-radio-custom-bg: #F3F9FA;
+  --color-info-bg: #00474B;
+  --color-info-name-txt-main: #FFFFFF;
+  --color-info-name-txt-subtle: #7F9D9F;
+  --color-info-value: #26C2AE;
+  --color-btn-text: #00474B;
+  --color-btn-bg: #9FE8DF;
+  --color-btn-disabled-text: #085C61;
+  --color-btn-disabled-bg: #0D686D;
+  --color-shadow: rgba(0, 0, 0, 0.7);
+}
+
+html[data-theme=light] {
+  --color-page-bg: #C5E4E7;
+  --color-card-bg: #FFFFFF;
+  --color-text-main: #FFFFFF;
+  --color-text-subtle: #7F9D9F;
+  --color-field-label: #5E7A7D;
+  --color-field-input-text: #00474B;
+  --color-field-input-bg: #F3F9FA;
+  --color-field-input-focus-border: #26C2AE;
+  --color-field-input-error-border: #E17052;
+  --color-field-input-error-msg: #E17052;
+  --color-field-radio-text: #FFFFFF;
+  --color-field-radio-bg: #00474B;
+  --color-field-radio-selected-text: #00474B;
+  --color-field-radio-selected-bg: #9FE8DF;
+  --color-field-radio-custom-text: #547878;
+  --color-field-radio-custom-bg: #F3F9FA;
+  --color-info-bg: #00474B;
+  --color-info-name-txt-main: #FFFFFF;
+  --color-info-name-txt-subtle: #7F9D9F;
+  --color-info-value: #26C2AE;
+  --color-btn-text: #00474B;
+  --color-btn-bg: #9FE8DF;
+  --color-btn-disabled-text: #085C61;
+  --color-btn-disabled-bg: #0D686D;
+  --color-shadow: rgba(0, 0, 0, 0.7);
+}
+
+:root {
+  /* --- Vars generated from config object */
+  --weight-extra-light: 200;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semi-bold: 600;
+  --weight-bold: 700;
+  --weight-extra-bold: 800;
+  --weight-black: 900;
+  /* --- Typography */
+  --font-family-base: Space Mono, sans-serif;
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --step--2: clamp(0.6331rem, 0.712rem + -0.0876vw, 0.6944rem);
+  --step--1: clamp(0.8333rem, 0.8303rem + 0.0152vw, 0.844rem);
+  --step-0: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1144rem + 0.428vw, 1.4996rem);
+  --step-2: clamp(1.44rem, 1.2803rem + 0.7986vw, 1.999rem);
+  --step-3: clamp(1.728rem, 1.4604rem + 1.3381vw, 2.6647rem);
+  --step-4: clamp(2.0736rem, 1.6512rem + 2.112vw, 3.552rem);
+  --step-5: clamp(2.4883rem, 1.8465rem + 3.2093vw, 4.7348rem);
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,18,1.333,5,2,375-768&s=0.75|0.5|0.25,1.25|1.5|1.75|2|2.5|3|3.5|4|5|6.5|10,l-5xl&g=s,l,xl,12 */
+  --space-3xs: clamp(0.25rem, 0.2321rem + 0.0893vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4821rem + 0.0893vw, 0.5625rem);
+  --space-xs: clamp(0.75rem, 0.7143rem + 0.1786vw, 0.875rem);
+  --space-s: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  --space-m: clamp(1.25rem, 1.1964rem + 0.2679vw, 1.4375rem);
+  --space-l: clamp(1.5rem, 1.4464rem + 0.2679vw, 1.6875rem);
+  --space-xl: clamp(1.75rem, 1.6786rem + 0.3571vw, 2rem);
+  --space-2xl: clamp(2rem, 1.9286rem + 0.3571vw, 2.25rem);
+  --space-3xl: clamp(2.5rem, 2.4107rem + 0.4464vw, 2.8125rem);
+  --space-4xl: clamp(3rem, 2.8929rem + 0.5357vw, 3.375rem);
+  --space-5xl: clamp(3.5rem, 3.375rem + 0.625vw, 3.9375rem);
+  --space-6xl: clamp(4rem, 3.8571rem + 0.7143vw, 4.5rem);
+  --space-7xl: clamp(5rem, 4.8214rem + 0.8929vw, 5.625rem);
+  --space-8xl: clamp(6.5rem, 6.2679rem + 1.1607vw, 7.3125rem);
+  --space-9xl: clamp(10rem, 9.6429rem + 1.7857vw, 11.25rem);
+  --space-3xs-2xs: clamp(0.25rem, 0.1607rem + 0.4464vw, 0.5625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.3929rem + 0.5357vw, 0.875rem);
+  --space-xs-s: clamp(0.75rem, 0.6429rem + 0.5357vw, 1.125rem);
+  --space-s-m: clamp(1rem, 0.875rem + 0.625vw, 1.4375rem);
+  --space-m-l: clamp(1.25rem, 1.125rem + 0.625vw, 1.6875rem);
+  --space-l-xl: clamp(1.5rem, 1.3571rem + 0.7143vw, 2rem);
+  --space-xl-2xl: clamp(1.75rem, 1.6071rem + 0.7143vw, 2.25rem);
+  --space-2xl-3xl: clamp(2rem, 1.7679rem + 1.1607vw, 2.8125rem);
+  --space-3xl-4xl: clamp(2.5rem, 2.25rem + 1.25vw, 3.375rem);
+  --space-4xl-5xl: clamp(3rem, 2.7321rem + 1.3393vw, 3.9375rem);
+  --space-5xl-6xl: clamp(3.5rem, 3.2143rem + 1.4286vw, 4.5rem);
+  --space-6xl-7xl: clamp(4rem, 3.5357rem + 2.3214vw, 5.625rem);
+  --space-7xl-8xl: clamp(5rem, 4.3393rem + 3.3036vw, 7.3125rem);
+  --space-8xl-9xl: clamp(6.5rem, 5.1429rem + 6.7857vw, 11.25rem);
+  --space-2xl-8xl: clamp(2rem, 0.4821rem + 7.5893vw, 7.3125rem);
+  /* --- Others */
+  --flow-space: var(--space-s);
+}
+
+/* || Functions */
+/* || Mixins */
+/* [[[VENDORS]]] */
+/* [[[BASE]]] */
+/* || Reset */
+/* 1. Universal Box-Sizing */
+/* This is fundamental. It changes how width and height are calculated,
+   making layout much more intuitive: width/height includes padding and border. */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* 2. Reset Margins & Paddings for Common Block-Level Elements */
+/* Removes default browser margins/paddings that often cause inconsistencies.
+   Includes common elements like headings, paragraphs, lists, and figures. */
+body, h1, h2, h3, h4, h5, h6, p, blockquote, figure,
+ol, ul, dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove List Styles */
+/* Gets rid of default bullets/numbers and any intrinsic padding/margin for lists.
+   You'll re-add specific list styling if needed. */
+ol, ul {
+  list-style: none;
+}
+
+/* 4. Responsive Images */
+/* Ensures images and other media elements are block-level and scale within their containers. */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto; /* Important for maintaining aspect ratio */
+}
+
+/* 5. Improve Form Element Styling */
+/* Makes form elements inherit font styles and sets some consistent baselines. */
+input, button, textarea, select {
+  font: inherit; /* Inherit font properties from parent */
+  /* outline: none; Only remove if you have a :focus-visible style later */
+}
+
+/* 6. Base Link Styling */
+/* Removes default underline from links. Re-add on hover for accessibility if desired. */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit color unless explicitly set */
+}
+
+/* || Global */
+/* [[[ABSTRACTS]]] */
+body {
+  background-color: var(--color-page-bg);
+  font-family: var(--font-family-base);
+}
+
+a {
+  color: var(--color-text-subtle, #733FCB);
+  text-decoration: underline;
+}
+
+/* [[[LAYOUT]]] */
+/* [[[ABSTRACTS]]] */
+/* --- Layout: Header */
+.l-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2xl);
+}
+
+/* --- Layout: Footer */
+/* --- Layout: Main */
+.l-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+/* --- Layout: Tip Calculator */
+.l-calc {
+  display: grid;
+  grid-template: auto auto/auto;
+  gap: var(--space-2xl-3xl);
+  max-width: 57.5rem;
+}
+@media (min-width: 64em) {
+  .l-calc {
+    grid-template: auto/10fr 11fr;
+  }
+}
+
+.l-calc-in {
+  display: grid;
+  gap: var(--space-2xl-3xl);
+}
+
+.l-calc-out {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2xl-8xl);
+}
+
+/* --- Layout: Footer */
+.l-footer {
+  margin-block: 3rem;
+  text-align: center;
+}
+
+/* [[[COMPONENTS]]] */
+/* [[[ABSTRACTS]]] */
+.c-button {
+  padding-block: var(--space-s);
+  border-radius: var(--space-2xs);
+  border: none;
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--step-1);
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-btn-text);
+  background-color: var(--color-btn-bg);
+}
+.c-button:disabled {
+  color: var(--color-btn-disabled-text);
+  background-color: var(--color-btn-disabled-bg);
+}
+
+/* [[[ABSTRACTS]]] */
+/* --- Component: Tip Calculator */
+.c-calc {
+  background-color: var(--color-card-bg);
+  padding: var(--space-2xl) var(--space-l);
+  box-shadow: 0 0.25rem 1.5rem var(--color-shadow);
+}
+.c-calc-out {
+  display: flex;
+  border-radius: var(--space-l);
+  background-color: var(--color-info-bg);
+  padding: var(--space-l);
+}
+.c-calc-out__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.c-calc-out__info .info-name__main {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-info-name-txt-main);
+}
+.c-calc-out__info .info-name__subtle {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--step--1);
+  line-height: 1.46;
+  letter-spacing: 0;
+  color: var(--color-info-name-txt-subtle);
+}
+.c-calc-out__info .info_value {
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--step-4);
+  line-height: 1.48;
+  letter-spacing: -0.02;
+  color: var(--color-info-value);
+}
+@media (max-width: 29.9375em) {
+  .c-calc {
+    border-radius: var(--space-l) var(--space-l) 0 0;
+    width: 100%;
+  }
+}
+@media (min-width: 30em) {
+  .c-calc {
+    border-radius: var(--space-l);
+    width: 80%;
+  }
+}
+
+/* [[[ABSTRACTS]]] */
+/* --- Component: Form */
+/* Hide number input spinners for Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide number input spinners for Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.form-field {
+  display: grid;
+  grid-template: auto auto/auto auto;
+  grid-template-areas: "label message" "input input";
+  gap: var(--space-2xs);
+}
+.form-field > .label {
+  grid-area: label;
+  color: var(--color-field-label);
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.form-field > .messages {
+  grid-area: message;
+  justify-self: end;
+  align-self: start;
+  color: var(--color-field-input-error-msg);
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.form-field > [class*=input] {
+  grid-area: input;
+}
+
+input[class*=input-txtbox] {
+  border: none;
+  outline: none; /* TIPS: Add this line to remove the default outline */
+  border-radius: var(--space-3xs);
+  text-align: right;
+  padding: var(--space-s) var(--space-s);
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--step-1);
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-field-input-text);
+  background-color: var(--color-field-input-bg);
+}
+input[class*=input-txtbox]:focus, input[class*=input-txtbox]:focus-visible {
+  border: 2px solid var(--color-field-input-focus-border);
+}
+input[class*=input-txtbox].error {
+  border: 2px solid var(--color-field-input-error-border);
+}
+
+input[class*=input-txtbox--with-icon] {
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: left var(--space-s) center;
+}
+input[class*=input-txtbox--with-icon].dollar {
+  background-image: url("../images/icon-dollar.svg");
+}
+input[class*=input-txtbox--with-icon].person {
+  background-image: url("../images/icon-person.svg");
+}
+
+.input-group-radio {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-s);
+}
+@media (min-width: 48em) {
+  .input-group-radio {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.input-group-radio .radio__label {
+  text-align: center;
+  outline: none; /* Add this line to remove the default outline */
+  cursor: pointer;
+  color: var(--color-field-radio-text);
+  background-color: var(--color-field-radio-bg);
+  padding: var(--space-s) var(--space-s);
+  border-radius: var(--space-3xs);
+  font-family: var(--font-family-base);
+  font-weight: var(--weight-bold);
+  font-size: var(--step-1);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.input-group-radio .radio__label:focus-visible {
+  border: 2px solid var(--color-field-input-focus-border);
+}
+.input-group-radio .radio__label--custom {
+  color: var(--color-field-radio-custom-text);
+  background-color: var(--color-field-radio-custom-bg);
+}
+.input-group-radio .radio__label.selected {
+  color: var(--color-field-radio-selected-text);
+  background-color: var(--color-field-radio-selected-bg);
+}
+
+/* [[[UTILITIES]]] */
+/* [[[ABSTRACTS]]] */
+/* || Utilities for exceptions (E in CUBE) */
+/* || Utilities related to layout */
+.flow > * + * {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.wrapper {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  container-type: inline-size;
+  width: 100%;
+}
+
+/* || Utilities related to visibility */
+/* Hide element (Visually hidden but accessible to screen readers) */
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Show element */
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Utilities generated from config object */
+/* [[[PAGES]]] */
+/* [[[THEMES]]] */
+
+/*# sourceMappingURL=main.css.map */

@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/newbie/meet-landing-page
-- Live Site URL: https://hatran-hattt.github.io/frontendmentor/newbie/meet-landing-page/index.html
+- Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/junior/tip-calculator-app
+- Live Site URL: https://hatran-hattt.github.io/frontendmentor/junior/tip-calculator-app/index.html
 
 ## My process
 
@@ -57,34 +57,44 @@ Users should be able to:
 
 ### What I learned
 
-I've learned some CSS properties throughout this challenge
+I've learned some CSS/JS tips throughout this challenge
 
-- Aligning items/tracks along the main(flexbox)/inline(grid) axis
+#### 1. Problem: Grid columns are not wide equally despite of setting 1fr for both
 
-  - `justify-content` (applies to **flexbox/grid** containers): aligns `items (or tracks)` and distributes extra space within the container.
-  - `justify-items` (applies to **grid** containers): aligns the `content` of each individual grid item `within its cell`
-    > `justify-self` (applies to **grid** items): aligns the content of a `single` grid item within its cell
+- Reason: After giving content's minimum size, remains space is divide equally
+- Solution: using `minmax` (ex minmax((0, 1fr)) instead of only `fr`. That works because the x minimum size prevents the grid's default behavior of making columns larger to accommodate the content's minimum size, allowing the 1fr units to distribute space equally based on the container.
 
-- Applying a background image with a color layer
+> `fr` is affected by intrinsic content size or a min-width -> might lead to unequall columns
+
+#### 2. Problem: When focus input element, there are 2 layer of border (:focus & :focus-visible)
+
+- Reason `:focus-visible` border style is browser default
+- Solution: adding `outline: none;` to tell the browser not to draw its default outline when the input is focused.
+
+#### 3. Problem: Tabbing for custom input, hidden input tab radio (input , lablel)
+
+- Use `tabindex="-1"` to ignore tabbing (ex: hidden radio input)
+- Use `tabindex="0"` to enable tabbing follow document flow (ex: custom label radio)
+
+#### 4. Others:
+
+- Apply CSS to hide number input spinners
 
   ```
-  {
-    background-image:
-      linear-gradient(to right, rgba(var(--color-bg-footer) ,0.75), rgba(#4D96A9,0.75)), /* Top layer: semi-transparent gradient */
-      url('../assets/mobile/image-footer.jpg'); /* Bottom layer: actual image */
-    background-repeat: no-repeat;
-    background-size: cover; // Scales the image as large as possible without stretching it (clipped)
+  /* Hide number input spinners for Chrome, Safari, Edge, Opera */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Hide number input spinners for Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
   ```
 
-- `Container-type` might affect an element's sizing, if a `shink-to-fit` width occurs, then an explicit width might be needed
-  ```
-  .container {
-    container-type: inline-size;
-    width: 100%;
-  }
-  ```
-- Tip for centering block-level item horizontally: `margin: auto;`
+- Use `inputmode` attribute to hint touch device to show appropriate input pad
 
 ## Author
 

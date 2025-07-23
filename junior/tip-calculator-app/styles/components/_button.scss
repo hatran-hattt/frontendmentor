@@ -1,0 +1,20 @@
+@use "../abstracts" as *;
+
+.c-button {
+  padding-block: var(--space-s);
+  border-radius: var(--space-2xs);
+  border: none;
+  @include text-preset4;
+  color: var(--color-btn-text);
+  background-color: var(--color-btn-bg);
+
+  &:hover, &:focus-visible {
+    // background-image: linear-gradient(to right, var(--color-btn-bg-active-1), var(--color-btn-bg-active-2));
+  }
+
+  &:disabled {
+    color: var(--color-btn-disabled-text);
+    background-color: var(--color-btn-disabled-bg);
+  }
+  
+}

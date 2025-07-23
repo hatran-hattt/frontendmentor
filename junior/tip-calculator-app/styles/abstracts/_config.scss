@@ -1,0 +1,93 @@
+$color-items: (
+  // 'text-label': var(--color-text-label),
+  // 'text-heading': var(--color-text-heading),
+  // 'text-footer': var(--color-text-footer),
+);
+
+$weight-items: (
+  'extra-light': 200,
+  'light': 300,
+  'regular': 400,
+  'medium': 500,
+  'semi-bold': 600,
+  'bold': 700,
+  'extra-bold': 800,
+  'black': 900,
+);
+
+$space-items: (
+  // 'xs': var(--space-xs),
+  // 's': var(--space-s),
+  // 'm': var(--space-m),
+  // 'l': var(--space-l),
+  // 'xl': var(--space-xl),
+  // '2xl': var(--space-2xl),
+  // '3xl': var(--space-3xl),
+  // '4xl': var(--space-4xl),
+  // '5xl': var(--space-5xl),
+  
+  // // range
+  // 's-xl': var(--space-s-xl),
+  // '2xl-3xl':  var(--space-2xl-3xl),
+  // '4xl-xl': var(--space-4xl-xl),
+  // 's-9xl': var(--space-s-9xl),
+);
+
+//----------------CONFIG
+$config: (
+  'color': (
+    'items': $color-items,
+    'flag-gen-var': '0',
+    'flag-gen-class': '1',
+    'css-property': 'color',
+  ),
+  'weight': (
+    'items': $weight-items,
+    'flag-gen-var': '1',
+    'flag-gen-class': '0',
+    // 'css-property': 'font-weight'
+  ),
+  'pad': (
+    'items': $space-items,
+    'flag-gen-var': '0',
+    'flag-gen-class': '1',
+    'css-property': 'padding'
+  ),
+  'pad-block': (
+    'items': $space-items,
+    'flag-gen-var': '0',
+    'flag-gen-class': '1',
+    'css-property': 'padding-block'
+  ),
+  'pad-block-start': (
+    'items': $space-items,
+    'flag-gen-var': '0',
+    'flag-gen-class': '1',
+    'css-property': 'padding-block-start'
+  ),
+  'pad-inline': (
+    'items': $space-items,
+    'flag-gen-var': '0',
+    'flag-gen-class': '1',
+    'css-property': 'padding-inline'
+  ),
+  'mar-block-start': (
+    'items': $space-items,
+    'flag-gen-var': '0',
+    'flag-gen-class': '1',
+    'css-property': 'margin-block-start'
+  ),
+  'gap': (
+    'items': $space-items,
+    'flag-gen-var': '0',
+    'flag-gen-class': '1',
+    'css-property': 'gap'
+  ),
+  'flow': (
+    'items': $space-items,
+    'flag-gen-var': '0',
+    'flag-gen-class': '1',
+    'css-property': 'margin-block-start',
+    'css-additional-select': '> * + *'
+  ),
+);
