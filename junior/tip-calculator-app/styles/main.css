@@ -394,6 +394,13 @@ input[class*=input-txtbox--with-icon].person {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+.input-group-radio .radio__input:focus-visible + .radio__label {
+  border: 2px solid var(--color-field-input-focus-border);
+}
+.input-group-radio .radio__input:hover + .radio__label {
+  color: var(--color-field-radio-selected-text);
+  background-color: var(--color-field-radio-selected-bg);
+}
 .input-group-radio .radio__label {
   text-align: center;
   outline: none; /* Add this line to remove the default outline */
@@ -407,9 +414,6 @@ input[class*=input-txtbox--with-icon].person {
   font-size: var(--step-1);
   line-height: 1.5;
   letter-spacing: 0;
-}
-.input-group-radio .radio__label:focus-visible {
-  border: 2px solid var(--color-field-input-focus-border);
 }
 .input-group-radio .radio__label--custom {
   color: var(--color-field-radio-custom-text);

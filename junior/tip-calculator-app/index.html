@@ -49,19 +49,21 @@
           </div>
           <!-- Input Tip -->
           <div class="form-field">
-            <div class="label">Select Tip %</div>
-            <div class="input-group-radio" id="tip-radio-group">
+            <div class="label" id="tip-group-label">Select Tip %</div>
+            <div
+              class="input-group-radio"
+              id="tip-radio-group"
+              role="radiogroup"
+              aria-labelledby="tip-group-label"
+            >
               <input
                 type="radio"
                 id="tip-5"
                 name="tip-percentage"
                 value="5"
                 class="radio__input hidden"
-                tabindex="-1"
               />
-              <label for="tip-5" class="radio__label" role="radio" tabindex="0"
-                >5%</label
-              >
+              <label for="tip-5" class="radio__label">5%</label>
 
               <input
                 type="radio"
@@ -69,11 +71,8 @@
                 name="tip-percentage"
                 value="10"
                 class="radio__input hidden"
-                tabindex="-1"
               />
-              <label for="tip-10" class="radio__label" role="radio" tabindex="0"
-                >10%</label
-              >
+              <label for="tip-10" class="radio__label">10%</label>
 
               <input
                 type="radio"
@@ -81,11 +80,8 @@
                 name="tip-percentage"
                 value="15"
                 class="radio__input hidden"
-                tabindex="-1"
               />
-              <label for="tip-15" class="radio__label" role="radio" tabindex="0"
-                >15%</label
-              >
+              <label for="tip-15" class="radio__label">15%</label>
 
               <input
                 type="radio"
@@ -93,11 +89,8 @@
                 name="tip-percentage"
                 value="25"
                 class="radio__input hidden"
-                tabindex="-1"
               />
-              <label for="tip-25" class="radio__label" role="radio" tabindex="0"
-                >25%</label
-              >
+              <label for="tip-25" class="radio__label">25%</label>
 
               <input
                 type="radio"
@@ -105,11 +98,8 @@
                 name="tip-percentage"
                 value="50"
                 class="radio__input hidden"
-                tabindex="-1"
               />
-              <label for="tip-50" class="radio__label" role="radio" tabindex="0"
-                >50%</label
-              >
+              <label for="tip-50" class="radio__label">50%</label>
 
               <input
                 type="radio"
@@ -117,18 +107,15 @@
                 name="tip-percentage"
                 value=""
                 class="radio__input hidden"
-                tabindex="-1"
               />
-              <label
-                for="tip-custom"
-                class="radio__label radio__label--custom"
-                role="radio"
-                tabindex="0"
+              <label for="tip-custom" class="radio__label radio__label--custom"
                 >Custom</label
               >
 
               <input
                 class="input-txtbox custom__input hidden"
+                aria-labelledby="tip-custom"
+                disabled
                 type="number"
                 id="tip-custom-value"
                 name="tip-custom-value"

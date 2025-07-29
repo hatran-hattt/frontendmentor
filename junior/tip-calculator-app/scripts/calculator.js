@@ -13,6 +13,7 @@ const calcForm = document.getElementById('calc-form');
 const inBillElem = document.getElementById(INPUT_FIELD_NAME.BILL);
 const inNumOfPeoElem = document.getElementById(INPUT_FIELD_NAME.NUM_OF_PEOPLE);
 const inTipRadioGroup = document.getElementById('tip-radio-group');
+const inCustomTipRadio = document.getElementById('tip-custom');
 const inCustomTipValueElem = document.getElementById(INPUT_FIELD_NAME.TIP_CUSTOM);
 const inCustomTipLabelElem = inTipRadioGroup.querySelector('label[for="tip-custom"]');
 
@@ -37,8 +38,6 @@ inTipRadioGroup.addEventListener('change', handleTipRadioGroupChange);
 inCustomTipValueElem.addEventListener('change', validateFormAndCalculateResult);
 inNumOfPeoElem.addEventListener('change', validateFormAndCalculateResult);
 resetBtn.addEventListener('click', handleReset);
-const radioLabels = inTipRadioGroup.querySelectorAll('label');
-radioLabels.forEach(label => label.addEventListener('keydown', handleKeyDownForRadioLabel));
 
 // --------------- Main Process - END --------------------------
 
@@ -64,6 +63,8 @@ function handleTipRadioGroupChange(e) {
     if (!selectedValue) {
       // Show custom tip input & hide custom label
       inCustomTipValueElem.classList.remove('hidden');
+      inCustomTipValueElem.disabled = false;
+      selectedRadio.disabled = true;
       inCustomTipValueElem.focus();
       inCustomTipLabelElem.classList.add('hidden');
     } else {
@@ -71,6 +72,8 @@ function handleTipRadioGroupChange(e) {
       
       inCustomTipValueElem.value = '';
       inCustomTipValueElem.classList.add('hidden');
+      inCustomTipValueElem.disabled = true;
+      inCustomTipRadio.disabled = false;
       inCustomTipLabelElem.classList.remove('hidden');
     }
     let validationRlt = validateField(INPUT_FIELD_NAME.TIP, selectedValue, calcFormValidations);
@@ -123,7 +126,7 @@ function validateFormAndCalculateResult() {
   if (!tipPercentage) {
     tipPercentage = data[INPUT_FIELD_NAME.TIP_CUSTOM];
   }
-  tipPercentage = Number(tipPercentage);
+  tipPercentage = tipPercentage ? Number(tipPercentage) : 0;
   const numOfPeople = Number(data[INPUT_FIELD_NAME.NUM_OF_PEOPLE]);
 
   // If all fields are not inputed, disable btn reset.
@@ -208,10 +211,12 @@ function resetRadioGroup() {
     label.classList.remove('selected');
   });
 
+  inCustomTipRadio.disabled = false;
+  inCustomTipValueElem.disabled = true;
   inCustomTipValueElem.value = '';
   inCustomTipValueElem.classList.add('hidden');
   inCustomTipLabelElem.classList.remove('hidden');
-
+  
   resetBtn.disabled = true;
 
   // TODO
@@ -219,25 +224,4 @@ function resetRadioGroup() {
   // you might need to remove a corresponding class here as well.
   // E.g., const labels = document.querySelectorAll(`label[for^="${groupName}"]`);
   // labels.forEach(label => label.classList.remove('is-selected'));
-}
-
-function handleKeyDownForRadioLabel(e) {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault(); // Prevent default browser action (e.g., space scrolls page)
-
-    // Find the associated radio input
-    const radioId = this.getAttribute('for');
-    const associatedRadio = document.getElementById(radioId);
-
-    if (associatedRadio) {
-      // Set the radio button as checked
-      associatedRadio.checked = true;
-
-      // Manually dispatch a 'change' event on the radio input.
-      // This is important because programmatically setting 'checked'
-      // doesn't automatically fire the 'change' event.
-      // Many scripts rely on the 'change' event for their logic.
-      associatedRadio.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-  }
 }
