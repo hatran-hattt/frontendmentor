@@ -1,0 +1,25 @@
+@use "../../styles/abstracts" as *;
+
+/* --- Layout: Header */
+.l-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2xl);
+}
+
+/* --- Layout: Main */
+.l-main {
+  display: grid;
+  grid-template-columns: 1fr; // To avoid fixed value column
+  // height: 100vh;
+  justify-items: center;
+  align-items: center;
+  // padding-block: var(--space-2xl);
+}
+
+/* --- Layout: Footer */
+.l-footer {
+  margin-block: 3rem;
+  text-align: center;
+}

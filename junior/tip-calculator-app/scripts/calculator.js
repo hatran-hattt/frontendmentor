@@ -17,7 +17,7 @@ const inCustomTipRadio = document.getElementById('tip-custom');
 const inCustomTipValueElem = document.getElementById(INPUT_FIELD_NAME.TIP_CUSTOM);
 const inCustomTipLabelElem = inTipRadioGroup.querySelector('label[for="tip-custom"]');
 
-const outTipAmmountElem = document.getElementById('out-tip-ammount');
+const outTipAmountElem = document.getElementById('out-tip-amount');
 const outTotalElem = document.getElementById('out-total');
 
 const resetBtn = document.getElementById('reset-btn');
@@ -100,7 +100,7 @@ function handleReset() {
   
 
   // Clear results
-  outTipAmmountElem.textContent = STR_ZERO_DOLLAR;
+  outTipAmountElem.textContent = STR_ZERO_DOLLAR;
   outTotalElem.textContent = STR_ZERO_DOLLAR;
 
 
@@ -114,7 +114,7 @@ function validateFormAndCalculateResult() {
   let validationRlt = validateForm(calcForm, calcFormValidations);
   if (!validationRlt.isValid) {
     // Clear results
-    outTipAmmountElem.textContent = STR_ZERO_DOLLAR;
+    outTipAmountElem.textContent = STR_ZERO_DOLLAR;
     outTotalElem.textContent = STR_ZERO_DOLLAR;
     return;
   }
@@ -142,11 +142,11 @@ function validateFormAndCalculateResult() {
   }
 
   // If billAmount and numofPeople are entered, calculate the result.
-  let tipAmmount = roundUpToXDecimals((billAmount * tipPercentage) / 100, 2);
+  let tipAmount = roundUpToXDecimals((billAmount * tipPercentage) / 100, 2);
   let total = roundUpToXDecimals((billAmount * ( 100 + tipPercentage) / 100) / numOfPeople, 2);
 
   // Update UI
-  outTipAmmountElem.textContent = `\$${tipAmmount}`;
+  outTipAmountElem.textContent = `\$${tipAmount}`;
   outTotalElem.textContent = `\$${total}`;
 
 }

@@ -32,7 +32,7 @@
     <main class="l-main">
       <div class="l-calc c-calc">
         <form class="l-calc-in c-calc-in" id="calc-form" novalidate>
-          <!-- Input Bill Ammount -->
+          <!-- Input Bill Amount -->
           <div class="form-field">
             <label class="label" for="bill">Bill</label>
             <input
@@ -56,79 +56,93 @@
               role="radiogroup"
               aria-labelledby="tip-group-label"
             >
-              <input
-                type="radio"
-                id="tip-5"
-                name="tip-percentage"
-                value="5"
-                class="radio__input hidden"
-              />
-              <label for="tip-5" class="radio__label">5%</label>
+              <div>
+                <input
+                  type="radio"
+                  id="tip-5"
+                  name="tip-percentage"
+                  value="5"
+                  class="radio__input hidden"
+                />
+                <label for="tip-5" class="radio__label">5%</label>
+              </div>
 
-              <input
-                type="radio"
-                id="tip-10"
-                name="tip-percentage"
-                value="10"
-                class="radio__input hidden"
-              />
-              <label for="tip-10" class="radio__label">10%</label>
+              <div>
+                <input
+                  type="radio"
+                  id="tip-10"
+                  name="tip-percentage"
+                  value="10"
+                  class="radio__input hidden"
+                />
+                <label for="tip-10" class="radio__label">10%</label>
+              </div>
 
-              <input
-                type="radio"
-                id="tip-15"
-                name="tip-percentage"
-                value="15"
-                class="radio__input hidden"
-              />
-              <label for="tip-15" class="radio__label">15%</label>
+              <div>
+                <input
+                  type="radio"
+                  id="tip-15"
+                  name="tip-percentage"
+                  value="15"
+                  class="radio__input hidden"
+                />
+                <label for="tip-15" class="radio__label">15%</label>
+              </div>
 
-              <input
-                type="radio"
-                id="tip-25"
-                name="tip-percentage"
-                value="25"
-                class="radio__input hidden"
-              />
-              <label for="tip-25" class="radio__label">25%</label>
+              <div>
+                <input
+                  type="radio"
+                  id="tip-25"
+                  name="tip-percentage"
+                  value="25"
+                  class="radio__input hidden"
+                />
+                <label for="tip-25" class="radio__label">25%</label>
+              </div>
 
-              <input
-                type="radio"
-                id="tip-50"
-                name="tip-percentage"
-                value="50"
-                class="radio__input hidden"
-              />
-              <label for="tip-50" class="radio__label">50%</label>
+              <div>
+                <input
+                  type="radio"
+                  id="tip-50"
+                  name="tip-percentage"
+                  value="50"
+                  class="radio__input hidden"
+                />
+                <label for="tip-50" class="radio__label">50%</label>
+              </div>
 
-              <input
-                type="radio"
-                id="tip-custom"
-                name="tip-percentage"
-                value=""
-                class="radio__input hidden"
-              />
-              <label for="tip-custom" class="radio__label radio__label--custom"
-                >Custom</label
-              >
+              <div>
+                <input
+                  type="radio"
+                  id="tip-custom"
+                  name="tip-percentage"
+                  value=""
+                  class="radio__input hidden"
+                />
+                <label
+                  for="tip-custom"
+                  class="radio__label radio__label--custom"
+                  >Custom</label
+                >
 
-              <input
-                class="input-txtbox custom__input hidden"
-                aria-labelledby="tip-custom"
-                disabled
-                type="number"
-                id="tip-custom-value"
-                name="tip-custom-value"
-                placeholder="0"
-                step="0.01"
-                min="0"
-              />
+                <input
+                  class="input-txtbox custom__input hidden"
+                  aria-labelledby="tip-custom"
+                  disabled
+                  type="number"
+                  id="tip-custom-value"
+                  name="tip-custom-value"
+                  placeholder="0"
+                  step="0.01"
+                  min="0"
+                />
+              </div>
             </div>
             <div class="messages hidden"></div>
           </div>
           <!-- Input Numberof People -->
           <div class="form-field">
-            <label class="label" for="bill">Number of People</label>
+            <label class="label" for="num-of-people">Number of People</label>
             <input
               class="input-txtbox--with-icon person"
               id="num-of-people"
@@ -144,13 +158,13 @@
         </form>
         <div class="l-calc-out c-calc-out">
           <div class="c-calc-out__info-wrapper">
-            <!-- Tip Ammount -->
+            <!-- Tip Amount -->
             <div class="c-calc-out__info">
               <div class="info-name">
-                <p class="info-name__main">Tip Ammount</p>
+                <p class="info-name__main">Tip Amount</p>
                 <p class="info-name__subtle">/ person</p>
               </div>
-              <p class="info_value" id="out-tip-ammount">$0.00</p>
+              <p class="info_value" id="out-tip-amount">$0.00</p>
             </div>
             <!-- Total -->
             <div class="c-calc-out__info">

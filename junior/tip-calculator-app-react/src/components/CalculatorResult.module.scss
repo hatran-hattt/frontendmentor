@@ -1,0 +1,37 @@
+@use "../styles/abstracts" as *;
+
+.calc-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2xl-8xl);
+
+  border-radius: var(--space-l);
+  background-color: var(--color-info-bg);
+  padding: var(--space-l);
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .info-name {
+    &__main {
+      @include text-preset5;
+      color: var(--color-info-name-txt-main);
+    }
+
+    &__subtle {
+      @include text-preset6;
+      color: var(--color-info-name-txt-subtle);
+    }
+    
+  }
+
+  .info-value {
+      @include text-preset1;
+      color: var(--color-info-value);
+  }
+  
+}

@@ -1,60 +1,26 @@
-@use "../abstracts" as *;
+@use "../styles/abstracts" as *;
 
 /* --- Component: Form */
 
-
-/* Hide number input spinners for Chrome, Safari, Edge, Opera */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Hide number input spinners for Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.form-field {
+.calc-form {
   display: grid;
-  grid-template: auto auto / auto auto;
-  grid-template-areas: "label message" "input input";
-  gap: var(--space-2xs);
+  gap: var(--space-2xl-3xl);
+}
 
-  & > .label {
-    grid-area: label;
-    
-    color: var(--color-field-label);
-    @include text-preset5;
-    
-  }
-
-  & > .messages {
-    grid-area: message;
-    justify-self: end;
-    align-self: start;
-
-    color: var(--color-field-input-error-msg);
-    @include text-preset5;
-  }
-
-  & > [class*=input] {
-    grid-area: input;
-
-    // padding-inline: var(--space-l);
-    // padding-block: var(--space-s);
-    // border-radius: var(--space-2xs);
-    // border: 1px solid var(--color-input-border);
-
-    // color: var(--color-text-main);
-    // @include text-preset2-regular;
-
+/* Hide number input spinners*/
+.hide-number-spinners {
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+    margin: 0;
   }
 }
 
-input[class*=input-txtbox] {
+.txtbox {
   width: 100%;
   width: -webkit-fill-available;
+  
   border: none;
   outline: none; /* TIPS: Add this line to remove the default outline */
   border-radius: var(--space-3xs);
@@ -75,22 +41,21 @@ input[class*=input-txtbox] {
   }
 }
 
-input[class*=input-txtbox--with-icon] {
+.icon {
   
   background-size: auto;
   background-repeat: no-repeat;
   background-position: left var(--space-s) center; // TIPS: Place image x size unit from right side.
 
   &.dollar {
-    background-image: url('../images/icon-dollar.svg');
+    background-image: url('../../assets/images/icon-dollar.svg');
   }
   &.person {
-    background-image: url('../images/icon-person.svg');
+    background-image: url('../../assets/images/icon-person.svg');
   }
-
 }
 
-.input-group-radio {
+.group-radio {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr)); // TIPS: 1fr 1fr: affected by intrinsic content size or a min-width -> can be unequall
   gap: var(--space-s);
@@ -120,10 +85,6 @@ input[class*=input-txtbox--with-icon] {
     padding: var(--space-s) var(--space-s);
     border-radius: var(--space-3xs);
     @include text-preset3;
-
-    // &:focus-visible {
-    //   border: 2px solid var(--color-field-input-focus-border);
-    // }
     
     &--custom {
       color: var(--color-field-radio-custom-text);

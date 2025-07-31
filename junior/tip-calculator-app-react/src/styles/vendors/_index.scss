@@ -1,0 +1,8 @@
+// *** The-7-1-pattern
+// |– vendors/               # Third-party CSS (e.g., from a library like Normalize.css, Font Awesome).
+// |   |– _bootstrap.scss    # Bootstrap
+// |   |– _jquery-ui.scss    # jQuery UI
+// |   …                     # Etc.
+
+// *** CUBE Integration: 
+// This is for external, third-party CSS. You generally don't apply CUBE principles within these files, but you might use CUBE's Utilities or Compositional classes to integrate or override their styling.

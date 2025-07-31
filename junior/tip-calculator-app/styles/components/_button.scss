@@ -8,7 +8,7 @@
   color: var(--color-btn-text);
   background-color: var(--color-btn-bg);
 
-  &:hover, &:focus-visible {
+  &:not(:disabled):hover, &:focus-visible {
     // background-image: linear-gradient(to right, var(--color-btn-bg-active-1), var(--color-btn-bg-active-2));
   }
 

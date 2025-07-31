@@ -1,0 +1,19 @@
+@use "../../styles/abstracts" as *;
+
+.button {
+  padding-block: var(--space-s, clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem));
+  border-radius: var(--space-2xs, clamp(0.5rem, 0.4821rem + 0.0893vw, 0.5625rem));
+  border: none;
+  @include text-preset4;
+  color: var(--color-btn-text, white);
+  background-color: var(--color-btn-bg, blue);
+
+  &:not(:disabled):hover, &:focus-visible {
+  }
+
+  &:disabled {
+    color: var(--color-btn-disabled-text, white);
+    background-color: var(--color-btn-disabled-bg, gray);
+  }
+  
+}

@@ -352,6 +352,8 @@ input[type=number] {
 }
 
 input[class*=input-txtbox] {
+  width: 100%;
+  width: -webkit-fill-available;
   border: none;
   outline: none; /* TIPS: Add this line to remove the default outline */
   border-radius: var(--space-3xs);
@@ -402,6 +404,7 @@ input[class*=input-txtbox--with-icon].person {
   background-color: var(--color-field-radio-selected-bg);
 }
 .input-group-radio .radio__label {
+  display: block;
   text-align: center;
   outline: none; /* Add this line to remove the default outline */
   cursor: pointer;

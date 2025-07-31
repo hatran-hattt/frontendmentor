@@ -1,0 +1,29 @@
+@use "../styles/abstracts" as *;
+
+/* --- Component: Form */
+
+/* --- Layout: Tip Calculator */
+.calc-app {
+  display: grid;
+  grid-template: auto auto / auto;
+  gap: var(--space-2xl-3xl);
+  max-width: to-rem(920);
+
+  background-color: var(--color-card-bg);
+  padding: var(--space-2xl) var(--space-l);
+  box-shadow: 0 0.25rem 1.5rem var(--color-shadow);
+
+  @include mq_down(small) {
+    border-radius: var(--space-l) var(--space-l) 0 0;
+    width: 100%;
+  }
+
+  @include mq_up(small) {
+    border-radius: var(--space-l);
+    width: 80%;
+  }
+
+  @include mq_up(large) {
+    grid-template: auto / 10fr 11fr;
+  }
+}
