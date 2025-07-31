@@ -31,7 +31,7 @@ function updateChallengeContainer() {
     item.challenges.forEach(challenge => {
       const challengeElement = document.createElement('li');
       challengeElement.innerHTML = `
-        <a href="./${item.category}/${challenge}/index.html">${challenge}</a>
+        <a href="./${item.category}/${challenge.folder}/index.html">${challenge.name}${challenge.note ? ` (${challenge.note})` : ""}</a>
       `;
 
       listChallenges.appendChild(challengeElement);

@@ -48,10 +48,10 @@
   background-position: left var(--space-s) center; // TIPS: Place image x size unit from right side.
 
   &.dollar {
-    background-image: url('../../assets/images/icon-dollar.svg');
+    background-image: url('../assets/images/icon-dollar.svg');
   }
   &.person {
-    background-image: url('../../assets/images/icon-person.svg');
+    background-image: url('../assets/images/icon-person.svg');
   }
 }
 
