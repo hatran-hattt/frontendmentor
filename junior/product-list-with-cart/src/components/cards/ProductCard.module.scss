@@ -1,0 +1,33 @@
+@use "../../styles/abstracts" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+
+  .card-hero-wrapper {
+    position: relative;
+    margin-block-end: var(--space-l);
+    img {
+      border-radius: var(--space-2xs);
+    }
+
+    & > :last-child {
+      position: absolute;
+      left: 50%;   // Center horizontally
+      transform: translateX(-50%) translateY(-50%); // Adjust for the button's width to truly center
+    }
+  }
+
+  .card-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+}
+
+.card--selected {
+  img {
+    border: solid 2px var(--color-card-border-active);
+  }
+}

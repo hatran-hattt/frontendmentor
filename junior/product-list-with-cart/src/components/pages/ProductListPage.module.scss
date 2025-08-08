@@ -1,0 +1,39 @@
+@use "../../styles/abstracts" as *;
+
+.main {
+  display: grid;
+  grid-template: auto auto / auto;
+  grid-template-areas: "products" "cart";
+  align-items: start;
+  gap: var(--space-xl);
+  
+
+  padding: var(--space-l-3xl);
+
+  .section-product-list {
+    grid-area: products;
+    display: grid;
+    gap: var(--space-xl);
+    
+    .products-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+
+      @include mq_up(medium) {
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: var(--space-xl);
+      }
+    } 
+  }
+
+  .section-cart {
+    grid-area: cart;
+  }
+
+  @include mq_up(large) {
+    grid-template: auto / 2fr 1fr;
+    grid-template-areas: "products cart";
+  }
+
+}

@@ -67,6 +67,11 @@
         "name": "Tip Calculator App",
         "folder": "tip-calculator-app-react/dist",
         "note": "React.js"
+      },
+      {
+        "name": "Product list with cart page",
+        "folder": "product-list-with-cart/dist",
+        "note": "React.js"
       }
     ]
   }

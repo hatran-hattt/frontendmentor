@@ -1,0 +1,27 @@
+// *** The-7-1-pattern
+// |– abstracts/             # Variables, mixins, functions, placeholders.
+// |   |– _variables.scss    # Sass Variables
+// |   |– _functions.scss    # Sass Functions
+// |   |– _mixins.scss       # Sass Mixins
+// |   |– _placeholders.scss # Sass Placeholders
+// The rule of thumb for this folder is that it should not output a single line of CSS when compiled on its own.
+// These are nothing but Sass helpers.
+
+// *** CUBE Integration: 
+// This is the perfect place for your CUBE design tokens (variables for colors, spacing, typography, breakpoints).
+// These define the foundational values used across your CUBE Blocks, Utilities, and Compositions.
+
+/* || Config */
+@forward "config";
+
+/* || Design Tokens */
+@forward "design-tokens";
+
+/* || Variables */
+@forward "variables";
+
+/* || Functions */
+@forward "functions";
+
+/* || Mixins */
+@forward "mixins";

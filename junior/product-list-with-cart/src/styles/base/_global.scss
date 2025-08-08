@@ -1,0 +1,25 @@
+// Compositional styles that apply globally to raw HTML elements.
+
+@use "../abstracts" as *;
+
+body {
+  // height: 100vh;
+  background-color: var(--color-page-bg);
+  font-family: var(--font-family-base);
+  // color: var(--color-text-main);
+  // @include text-preset2-regular;
+}
+
+// h2 {
+//   @include text-preset1;
+// }
+
+// h3 {
+//   color: var(--color-text-heading);
+//   @include text-preset2-bold;
+// }
+
+a {
+  color: var(--color-text-subtle, #733FCB);
+  text-decoration: underline;
+}

@@ -45,8 +45,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/junior/tip-calculator-app
-- Live Site URL: https://hatran-hattt.github.io/frontendmentor/junior/tip-calculator-app/index.html
+- Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/junior/product-list-with-cart
+- Live Site URL: https://hatran-hattt.github.io/frontendmentor/junior/product-list-with-cart/dist/index.html
 
 ## My process
 
@@ -57,83 +57,77 @@ Users should be able to:
 - CSS Grid, Flexbox
 - Mobile-first workflow
 - Sass (CSS extension language)
+- React.js
 
 ### What I learned
 
 I've learned some CSS/JS tips throughout this challenge
 
-#### 1. Learn React.js basic
+#### 1. React.js
 
-- Component-base Architecture: create reusable, independently components
+1.1. Use Immer library to update object in state
 
-- Component:
+1.2. Manage component lifecycle using `useEffect` hook
 
-  - Create Component using Functional Component (Older types: Class Component, ...)
+- Mounting: The component is being created and inserted into the DOM for the first time.
+  The code inside a useEffect hook runs after the initial render. If you provide an empty dependency array ([]), the effect will only run once after the component mounts
+  ```
+    useEffect(() => {
+      // This code runs only once after the component mounts.
+      // Perfect for fetching data, setting up event listeners, etc.
+      console.log('Component has mounted!');
+    }, []); // Empty dependency array means it runs once
+  ```
+- Updating: The component is being re-rendered because its state or props have changed.
+  The code inside a useEffect hook runs after every render where one of its dependencies has changed.
+  ```
+    useEffect(() => {
+      // This code runs after the component mounts AND whenever `count` changes.
+      console.log(`Count has updated to ${count}`);
+    }, [count]); // Dependency array with `count`
+  ```
+- Unmounting: The component is being removed from the DOM.
+  The useEffect hook can return an optional "cleanup" function. This function runs just before the component unmounts.
 
-    - Regular JavaScript functions whose names always begin with a capital letter
-    - Return JSX markup
-      > JSX is similar to HTML, with a few differences.
-      > Curly braces let you bring JavaScript logic and variables into your markup.
-      > To pass props, add them to the JSX (can forward all props with `<Avatar {...props} />` JSX spread syntax)
-      > To read props, use destructuring syntax
-      > `children` prop is automatically pass to every component
-      > `Conditional`:
-      >
-      > > - ternary operator: {cond ? <A /> : <B />}
-      > > - AND operator: {cond && <A />}
+  ```
+    useEffect(() => {
+      const timerId = setInterval(() => {
+        // ... some logic
+      }, 1000);
 
-  - Rendering lists
+      // The returned function is the cleanup function
+      return () => {
+        // This code runs when the component is about to unmount.
+        // It's used to clean up resources, clear timers, etc.
+        clearInterval(timerId);
+        console.log('Component is unmounting!');
+      };
+    }, []);
+  ```
 
-    - JSX elements directly inside a map() call always need keys!
+#### 2. CSS tips
 
-  - Importing & Exporting Component using `named` and `default` import/export
+- Modal: overlayer, scrollable
 
-    - `named` import/export (many per file)
+  ```
+  .modal-overlay {
+    /* Position the overlay over the entire screen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 
-      ```
-        export function Profile() {
-          // ...
-        }
+  .modal-container {
+    max-height: 90vh; /* This is the key: modal will not exceed 90% of viewport height */
+  }
 
-        import { Profile } from '...';
-      ```
-
-    - `default` import/export (only 1 per file)
-
-      ```
-        export default function Profile() {
-          // ...
-        }
-
-        import Profile from '...';
-      ```
-
-  - Others:
-    - `React’s rendering process must always be pure`. Components should only return their JSX, and not change any objects or variables that existed before rendering—that would make them impure!
-    - Updating the screen, starting an animation, changing the data—are called `side effects`. They’re things that happen “on the side”, not during rendering.
-    - `Side effects` usually belong inside `event handlers`. Even though event handlers are defined inside your component, they don’t run during rendering! `So event handlers don’t need to be pure`.
-    - If you’ve exhausted all other options and can’t find the right event handler for your side effect, you can still attach it to your returned JSX with a `useEffect` call in your component. This tells React to execute it later, after rendering, when side effects are allowed. However, this approach should be your last resort.
-
-- State
-
-  - Use a state variable when a component needs to “remember” some information between renders.
-  - React components re-render themselves and all their children when the state is updated
-  - State is private to the component. If you render it in two places, each copy gets its own state.
-
-- Trigger - Render - Commit Loop
-  Any screen update in a React app happens in three steps:
-
-  - Trigger
-    > Timing for a component to render: initial render & re-render when state updates (the component's or its ancestors' state has been updated)
-  - Render
-    > This is the "pure" phase. React calls your component function
-    > It does not touch the DOM. It produces a description of what the UI should look like
-    > This phase should be side-effect-free—no network requests, no DOM manipulation, no timers.
-  - Commit:
-    > React takes the description from the render phase and updates the DOM (only changes the DOM nodes if there’s a difference between renders)
-    > After the DOM is updated, React runs the side effects. This is where your useEffect and useLayoutEffect hooks are executed.
-
-  > The Loop: A trigger initiates a render, which leads to a commit. The commit can, in turn, lead to another trigger (e.g., an effect fetches data and calls a useState updater function).
+  .modal-content-scrollable {
+    flex-grow: 1; /* Allows this section to take up all available vertical space */
+    overflow-y: auto; /* THIS IS THE MOST IMPORTANT PROPERTY */
+  }
+  ```
 
 ## Author
 

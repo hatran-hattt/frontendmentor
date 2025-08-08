@@ -1,0 +1,94 @@
+@use "config" as *;
+@use "design-tokens" as *;
+@use 'mixins' as *;
+@use 'functions' as *;
+@use "sass:color"; 
+@use '../../../node_modules/utopia-core-scss/src/utopia' as utopia;
+
+/* --- Themes */
+$themes: (
+  'light': (
+    // General
+    'page-bg': $color-rose-50,
+    'text-main': $color-rose-900,
+    'text-subtle': $color-rose-500,
+    'text-accent': $color-red,
+
+    // Card
+    'card-bg': $color-rose-50,
+    'card-border-active': $color-red,
+
+    // Button primary
+    'btn-primary-text': $color-white,
+    'btn-primary-bg': $color-red,
+    'btn-primary-border': $color-red,
+    'btn-primary-icon': $color-white,
+
+    // Button secondary
+    'btn-secondary-text': $color-rose-900,
+    'btn-secondary-bg': $color-white,
+    'btn-secondary-border': $color-rose-400,
+    'btn-secondary-icon': $color-red,
+
+    // Icons
+    'icon-remove': $color-rose-400,
+    'icon-check-mark': $color-green,
+    'icon-carbon-tree': $color-green,
+
+    // Modal
+    'modal-bg': $color-white,
+    'modal-content-bg': $color-rose-50,
+
+    // Cart
+    'cart-bg': $color-white,
+    
+    'separator': $color-rose-100,
+    'shadow': rgba(0, 0, 0, 0.7),
+  ),
+  'dark': (
+    // TODO
+  ),
+);
+@include apply-themes($themes);
+
+:root {
+
+  /* --- Vars generated from config object */
+  @include generate-custom-properties($config);
+
+  /* --- Typography */
+  --font-family-base: #{$font-family-red-hat-text};
+
+  /* --- Fluid type scales */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  @include utopia.generateTypeScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minFontSize": 16,
+    "maxFontSize": 18,
+    "minTypeScale": 1.2,
+    "maxTypeScale": 1.333,
+    "positiveSteps": 5,
+    "negativeSteps": 2,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+
+  /* --- Fluid space scales */
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,18,1.333,5,2,375-768&s=0.75|0.5|0.25,1.25|1.5|1.75|2|2.5|3|3.5|4|5|6.5|10,l-5xl&g=s,l,xl,12 */
+  @include utopia.generateSpaceScale((
+    "minWidth": 320,
+    "maxWidth": 1440,
+    "minSize": 16,
+    "maxSize": 18,
+    "positiveSteps": (1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 5, 6.5, 10),
+    "negativeSteps": (0.75, 0.5, 0.25),
+    "customSizes": ("l-3xl",),
+    "prefix": "space-",
+    "relativeTo": "viewport-width",
+  ));
+
+  /* --- Others */
+  --flow-space: var(--space-s);
+}
+

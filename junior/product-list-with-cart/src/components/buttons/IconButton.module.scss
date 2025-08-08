@@ -1,0 +1,19 @@
+@use "../../styles/abstracts" as *;
+
+.icon-btn {
+  /* Layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  /* Appearance */
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
+}
