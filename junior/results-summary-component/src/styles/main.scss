@@ -1,0 +1,39 @@
+// *** The-7-1-pattern
+// – main.scss              # Main Sass file
+// This single file imports all the partials from the 7 folders in a specific order to ensure correct cascading.
+// This file should not contain anything but @import and comments.
+// Files should be imported according to the folder they live in, one after the other in the following order:
+// abstracts/
+// vendors/
+// base/
+// layout/
+// components/
+// ---> utilities/
+// pages/
+// themes/
+
+// *** CUBE Integration: 
+
+/* [[[ABSTRACTS]]] */
+@use "abstracts/index" as abstracts;
+
+/* [[[VENDORS]]] */
+@use "vendors/index" as vendors;
+
+/* [[[BASE]]] */
+@use "base/index" as base;
+
+/* [[[LAYOUT]]] */
+@use "layout/index" as layout;
+
+// /* [[[COMPONENTS]]] */
+// @use "components/index" as components;
+
+/* [[[UTILITIES]]] */
+@use 'utilities/index' as utilities;
+
+// /* [[[PAGES]]] */
+// @use "pages/index" as pages;
+
+// /* [[[THEMES]]] */
+// @use "themes/index" as themes;

@@ -17,6 +17,10 @@ const ProductListPage = () => {
     // We define an async function inside useEffect
     // because useEffect itself cannot be async.
     const fetchData = async () => {
+      updateData((draft) => {
+        draft.isLoading = true;
+      });
+
       try {
         const response = await fetch("/data.json");
         if (!response.ok) {

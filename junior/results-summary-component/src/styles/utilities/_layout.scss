@@ -1,0 +1,36 @@
+/* || Utilities related to layout */
+// @use "../abstracts" as *;
+// .flow > * + * {
+//   margin-top: var(--flow-space, 1rem);
+// }
+
+// .wrapper {
+//   max-width: 75rem;
+//   margin-left: auto;
+//   margin-right: auto;
+//   // padding: 0 get-size('500'); TODO
+// }
+
+// .flex {
+//   display: flex;
+// }
+
+// .flex-col {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .content-center {
+//   justify-content: center;
+//   align-items: center;
+//   // text-align: center;
+// }
+
+// .container {
+//   container-type: inline-size;
+//   width: 100%;                  // explicit width to not be shink by container-type (affect the box model and sizing of the element)
+// }
+
+// .full-width {
+//   width: 100%;
+// }

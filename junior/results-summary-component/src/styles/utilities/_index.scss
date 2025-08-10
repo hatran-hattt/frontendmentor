@@ -1,0 +1,16 @@
+// *** CUBE Integration: 
+// While some might put utilities in abstracts,
+// creating a dedicated utilities/ folder (or at least a _utilities.scss file in abstracts) is ideal for CUBE Utilities (.u-utility-name).
+// Note: Sass mixins and functions are incredibly useful and frequently used to define and generate utilities in CUBE CSS, especially for creating systematic and scalable utility classes.
+
+// Example: _spacing.scss (e.g., .u-mt-s, .u-p-lg), _text.scss (e.g., .u-text-center, .u-text-bold), _visibility.scss (e.g., .u-hidden-mobile). These classes should be highly specific and often use !important to ensure they override other styles.
+
+@use "../abstracts" as *;
+
+@forward "exception";
+@forward "layout";
+@forward "text";
+@forward "visibility";
+
+/* Utilities generated from config object */
+@include generate-utility-classes($config);

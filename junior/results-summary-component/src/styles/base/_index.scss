@@ -1,0 +1,24 @@
+// *** The-7-1-pattern
+// |– base/                   # The boilerplate code for the project
+// |   |– _reset.scss                           # Reset/normalize
+// |   |– _typography.scss                      # Typography rules
+// |   |– _base.scss ( or _global.scss)         # Standard styles for commonly used HTML elements
+// |   …                                        # Etc.
+
+// *** CUBE Integration: 
+// This folder holds the Compositional styles that apply globally to raw HTML elements.
+// These files would define base styles for body, h1-h6, p, a, ul, etc., often using CSS custom properties defined in abstracts
+
+/* || Reset */
+@forward "reset";
+
+/* || Global */
+@forward "global";
+
+/* || Global */
+@forward "typography";
+
+
+
+
+

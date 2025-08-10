@@ -1,0 +1,34 @@
+@use "../../styles/abstracts" as *;
+
+
+.modal-overlay {
+  /* Position the overlay over the entire screen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  
+  /* Center the modal content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  max-height: 90vh; /* This is the key: modal will not exceed 90% of viewport height */
+  
+   /* Stacks header, content, footer vertically */
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content-scrollable {
+  flex-grow: 1; /* Allows this section to take up all available vertical space */
+  overflow-y: auto; /* THIS IS THE MOST IMPORTANT PROPERTY */
+}
+
+.modal-content-not-scrollable {
+  flex-shrink: 0; /* Prevents them from shrinking when content is long */
+}

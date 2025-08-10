@@ -1,0 +1,33 @@
+@use "../../styles/abstracts" as *;
+
+.wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+  min-width: to-rem(160);
+
+  padding: var(--space-xs);
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  border-radius: 999px;
+}
+
+.stepper-button {
+  background: none;
+  border: none;
+
+  & svg path {
+    fill: var(--color-btn-primary-text);
+  }
+
+  // & .left-button {
+
+  // }
+
+  // & .right-button {
+
+  // }
+}
+
+// .quantity {
+
+// }
