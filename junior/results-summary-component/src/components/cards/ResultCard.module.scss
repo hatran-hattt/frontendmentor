@@ -48,7 +48,7 @@
       & > :first-child {
         color: var(--color-card-rlt-text-bold);
         font-weight: var(--weight-extra-bold);
-        font-size: var(--step-10);
+        font-size: to-rem(56);
         @include mq_up(medium) {
           font-size: var(--step-5);
         }

@@ -72,6 +72,11 @@
         "name": "Product list with cart page",
         "folder": "product-list-with-cart/dist",
         "note": "React.js"
+      },
+      {
+        "name": "Results summary component",
+        "folder": "results-summary-component/dist",
+        "note": "React.js"
       }
     ]
   }
