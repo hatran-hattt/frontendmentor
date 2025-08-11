@@ -1,10 +1,13 @@
+import useCart from "../../context/useCart";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
 import { RemoveIcon, CarbonTreeIcon } from "../icons";
 import placeholderImg from "../../assets/images/illustration-empty-cart.svg";
 import styles from "./Cart.module.scss";
 
-const Cart = ({ items, onRemoveItem, className, onConfirm }) => {
+const Cart = ({ items, className, onConfirm }) => {
+  const { removeItem } = useCart();
+
   if (!items || items.length == 0) {
     return <EmptyCart />;
   }
@@ -26,7 +29,7 @@ const Cart = ({ items, onRemoveItem, className, onConfirm }) => {
         itemInfo={item}
         showSeparator={index < items.length - 1}
         onRemove={() => {
-          onRemoveItem(item.id);
+          removeItem(item.id);
         }}
       />
     );

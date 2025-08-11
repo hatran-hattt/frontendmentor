@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useImmer } from "use-immer";
+import useCart from "../../context/useCart";
 import Cart from "../cards/Cart";
 import ProductCard from "../cards/ProductCard";
 import ConfirmModal from "../modals/ConfirmModal";
@@ -12,6 +13,7 @@ const ProductListPage = () => {
     products: [],
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { itemMap, resetCart } = useCart();
 
   useEffect(() => {
     // We define an async function inside useEffect
@@ -27,10 +29,6 @@ const ProductListPage = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         let json = await response.json();
-        json = json.map((product) => {
-          product.quantity = 0;
-          return product;
-        });
         updateData((draft) => {
           draft.products = json;
           draft.error = null;
@@ -58,37 +56,8 @@ const ProductListPage = () => {
     return <div>Error: {data.error}</div>;
   }
 
-  const handleProductQuantity = (productId, quantityChange) => {
-    if (!data.products.some((product) => product.id === productId)) {
-      return;
-    }
-
-    updateData((draft) => {
-      const targetProduct = draft.products.find(
-        (product) => product.id === productId
-      );
-      switch (quantityChange) {
-        case PRODUCT_QUANTITY_CHANGE.up:
-          targetProduct.quantity += 1;
-          break;
-        case PRODUCT_QUANTITY_CHANGE.down:
-          if (targetProduct.quantity > 0) {
-            targetProduct.quantity -= 1;
-          }
-          break;
-        case PRODUCT_QUANTITY_CHANGE.reset:
-          targetProduct.quantity = 0;
-          break;
-      }
-    });
-  };
-
   const handleReset = () => {
-    updateData((draft) => {
-      draft.products.forEach((product) => {
-        product.quantity = 0;
-      });
-    });
+    resetCart();
     setIsModalOpen(false);
   };
 
@@ -99,33 +68,20 @@ const ProductListPage = () => {
           <h2 className="text-preset1 color-text-main">Desserts</h2>
           <div className={styles["products-wrapper"]}>
             {data.products.map((product) => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onQuantityUp={() =>
-                    handleProductQuantity(
-                      product.id,
-                      PRODUCT_QUANTITY_CHANGE.up
-                    )
-                  }
-                  onQuantityDown={() =>
-                    handleProductQuantity(
-                      product.id,
-                      PRODUCT_QUANTITY_CHANGE.down
-                    )
-                  }
-                />
-              );
+              return <ProductCard key={product.id} product={product} />;
             })}
           </div>
         </section>
         <Cart
           className={styles["section-cart"]}
-          items={data.products.filter((product) => product.quantity > 0)}
-          onRemoveItem={(productId) =>
-            handleProductQuantity(productId, PRODUCT_QUANTITY_CHANGE.reset)
-          }
+          items={data.products
+            .filter((product) => itemMap.has(product.id))
+            .map((product) => {
+              return {
+                ...product,
+                quantity: itemMap.get(product.id),
+              };
+            })}
           onConfirm={() => {
             setIsModalOpen(true);
           }}
@@ -133,7 +89,14 @@ const ProductListPage = () => {
       </main>
       {isModalOpen && (
         <ConfirmModal
-          items={data.products.filter((product) => product.quantity > 0)}
+          items={data.products
+            .filter((product) => itemMap.has(product.id))
+            .map((product) => {
+              return {
+                ...product,
+                quantity: itemMap.get(product.id),
+              };
+            })}
           onReset={handleReset}
         />
       )}

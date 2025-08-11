@@ -65,9 +65,17 @@ I've learned some CSS/JS tips throughout this challenge
 
 #### 1. React.js
 
-1.1. Use Immer library to update object in state
+##### 1.1. Use Immer library to update object in state
 
-1.2. Manage component lifecycle using `useEffect` hook
+- Note: Error `[Immer] The plugin for 'MapSet' has not been loaded into Immer` means you need to explicitly enable Immer's support for Map and Set objects. This feature is not enabled by default to keep Immer's core library small.
+
+  ```
+  import { enableMapSet } from 'immer'; // Import enableMapSet
+
+  enableMapSet(); // Call the function to enable Map and Set support
+  ```
+
+##### 1.2. Manage component lifecycle using `useEffect` hook
 
 - Mounting: The component is being created and inserted into the DOM for the first time.
   The code inside a useEffect hook runs after the initial render. If you provide an empty dependency array ([]), the effect will only run once after the component mounts
@@ -104,6 +112,13 @@ I've learned some CSS/JS tips throughout this challenge
       };
     }, []);
   ```
+
+##### 1.3. Global State
+
+Steps to use Context API:
+Create Context: const MyContext = createContext(defaultValue);
+Provide Context: Wrap parent components with `<MyContext.Provider value={data}>`
+Consume Context: Use useContext(MyContext) hook in child components.
 
 #### 2. CSS tips
 

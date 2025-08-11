@@ -1,10 +1,15 @@
+import useCart from "../../context/useCart";
 import ResponsiveImage from "../images/ResponsiveImage";
 import Button from "../buttons/Button";
 import QuantityStepper from "../buttons/QuantityStepper";
 import { AddToCartIcon } from "../icons";
 import styles from "./ProductCard.module.scss";
 
-const ProductCard = ({ product, onQuantityUp, onQuantityDown }) => {
+const ProductCard = ({ product }) => {
+  const { itemMap, addItem, upQuantity, downQuantity } = useCart();
+
+  const currentQuantity = itemMap.get(product.id) || 0;
+
   // Format currency
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -14,7 +19,7 @@ const ProductCard = ({ product, onQuantityUp, onQuantityDown }) => {
   return (
     <article
       className={`${styles["card"]} ${
-        product.quantity > 0 ? styles["card--selected"] : ""
+        currentQuantity > 0 ? styles["card--selected"] : ""
       }`}
     >
       <div className={styles["card-hero-wrapper"]}>
@@ -24,12 +29,12 @@ const ProductCard = ({ product, onQuantityUp, onQuantityDown }) => {
           desktopSrc={product.image.desktop}
           alt={product.name}
         />
-        {product.quantity > 0 ? (
+        {currentQuantity > 0 ? (
           <QuantityStepper
-            currentQuantity={product.quantity}
+            currentQuantity={currentQuantity}
             className="text-preset4-bold"
-            onSubtract={onQuantityDown}
-            onAdd={onQuantityUp}
+            onSubtract={() => downQuantity(product.id)}
+            onAdd={() => upQuantity(product.id)}
           />
         ) : (
           <Button
@@ -38,7 +43,7 @@ const ProductCard = ({ product, onQuantityUp, onQuantityDown }) => {
             text="Add to Cart"
             btnStyle="secondary"
             className="text-preset4-bold"
-            onClick={onQuantityUp}
+            onClick={() => addItem(product.id)}
           />
         )}
       </div>
