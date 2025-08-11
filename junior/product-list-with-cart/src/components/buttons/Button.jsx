@@ -16,6 +16,8 @@ export default function Button({
       className={[styles["btn"], styles["btn--" + finalBtnStyle], className]
         .filter(Boolean)
         .join(" ")}
+      aria-label={text}
+      type={!otherProps.type && "button"}
       {...otherProps}
     >
       {icon}
