@@ -1,4 +1,4 @@
-import useCart from "../../context/useCart";
+import { useCart } from "../../context/CartContext";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
 import { RemoveIcon, CarbonTreeIcon } from "../icons";

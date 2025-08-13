@@ -1,5 +1,5 @@
 import ProductListPage from "./components/pages/ProductListPage";
-import CartProvider from "./context/CartProvider";
+import { CartProvider } from "./context/CartContext";
 import { enableMapSet } from "immer"; // Import enableMapSet
 
 enableMapSet(); // Call the function to enable Map and Set support

@@ -1,4 +1,4 @@
-import useCart from "../../context/useCart";
+import { useCart } from "../../context/CartContext";
 import ResponsiveImage from "../images/ResponsiveImage";
 import Button from "../buttons/Button";
 import QuantityStepper from "../buttons/QuantityStepper";

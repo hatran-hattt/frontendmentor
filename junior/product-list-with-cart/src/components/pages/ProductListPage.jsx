@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useImmer } from "use-immer";
-import useCart from "../../context/useCart";
+import { useCart } from "../../context/CartContext";
 import Cart from "../cards/Cart";
 import ProductCard from "../cards/ProductCard";
 import ConfirmModal from "../modals/ConfirmModal";
