@@ -59,14 +59,19 @@
         "note": ""
       },
       {
-        "name": "Tip Calculator App",
+        "name": "Tip Calculator App (version vanilla JS + CSS)",
         "folder": "tip-calculator-app",
         "note": ""
       },
       {
-        "name": "Tip Calculator App",
+        "name": "Tip Calculator App (version React.js + vanilla CSS)",
         "folder": "tip-calculator-app-react/dist",
         "note": "React.js"
+      },
+      {
+        "name": "Tip Calculator App (version React.js + TailwindCSS)",
+        "folder": "tip-calculator-app-react-tailwind/dist",
+        "note": "React.js TailwindCSS"
       },
       {
         "name": "Product list with cart page",

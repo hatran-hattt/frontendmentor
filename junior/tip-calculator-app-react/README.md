@@ -54,6 +54,7 @@ Users should be able to:
 - CSS Grid, Flexbox
 - Mobile-first workflow
 - Sass (CSS extension language)
+- React.js
 
 ### What I learned
 
