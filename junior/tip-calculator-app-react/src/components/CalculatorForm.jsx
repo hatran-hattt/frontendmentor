@@ -43,7 +43,9 @@ export default function CalculatorForm({
 // Input Bill Amount
 function BillAmountInput({ value, errMsg, onChange }) {
   const inputElementProps = {
-    className: `${styles["txtbox"]} ${styles["hide-number-spinners"]}
+    className: `${styles["txtbox"]} ${errMsg ? styles["error"] : ""} ${
+      styles["hide-number-spinners"]
+    }
                   ${styles["icon"]} ${styles["dollar"]}`,
     id: INPUT_FIELD_NAME.BILL,
     name: INPUT_FIELD_NAME.BILL,
@@ -91,6 +93,7 @@ function TipGroupInput({
         onChange={onChange}
         isHidden={!isCustomRadioSelected}
         focusCustomTipInput={focusCustomTipInput}
+        errMsg={errMsg}
       />
     ),
   });
@@ -113,7 +116,13 @@ function TipGroupInput({
   );
 }
 
-function CustomTipInput({ value, onChange, isHidden, focusCustomTipInput }) {
+function CustomTipInput({
+  value,
+  onChange,
+  isHidden,
+  focusCustomTipInput,
+  errMsg,
+}) {
   const customTipInputRef = useRef(null);
 
   useEffect(() => {
@@ -122,9 +131,9 @@ function CustomTipInput({ value, onChange, isHidden, focusCustomTipInput }) {
 
   return (
     <input
-      className={`${styles["txtbox"]} ${styles["hide-number-spinners"]} ${
-        isHidden ? "hidden" : ""
-      }`}
+      className={`${styles["txtbox"]} ${errMsg ? styles["error"] : ""} ${
+        styles["hide-number-spinners"]
+      } ${isHidden ? "hidden" : ""}`}
       aria-label="Custom Tip"
       disabled={isHidden}
       type="number"
@@ -143,8 +152,9 @@ function CustomTipInput({ value, onChange, isHidden, focusCustomTipInput }) {
 // Input Number of People
 function NumOfPeopleInput({ value, errMsg, onChange }) {
   const inputElementProps = {
-    className: `${styles["txtbox"]} ${styles["hide-number-spinners"]}
-                  ${styles["icon"]} ${styles["person"]}`,
+    className: `${styles["txtbox"]} ${errMsg ? styles["error"] : ""} ${
+      styles["hide-number-spinners"]
+    } ${styles["icon"]} ${styles["person"]}`,
     id: INPUT_FIELD_NAME.NUM_OF_PEOPLE,
     name: INPUT_FIELD_NAME.NUM_OF_PEOPLE,
     type: "number",
