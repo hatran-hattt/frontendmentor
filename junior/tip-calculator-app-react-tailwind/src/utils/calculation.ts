@@ -1,5 +1,5 @@
 // --------- LOGIC
-export function roundUpToXDecimals(num, decimalPlaces) {
+export function roundUpToXDecimals(num: number, decimalPlaces: number) {
   if (typeof num !== 'number' || typeof decimalPlaces !== 'number' || decimalPlaces < 0 || !Number.isInteger(decimalPlaces)) {
     console.error("Invalid input: 'num' must be a number and 'decimalPlaces' must be a non-negative integer.");
     return NaN; // Or throw an error, depending on desired error handling

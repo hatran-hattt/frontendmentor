@@ -1,6 +1,12 @@
 import clsx from "clsx";
-export default function Button({ text, ...otherProps }) {
-  const { className: classNameProp, disabled, ...remainProps } = otherProps;
+
+type ButtonProps = {
+  text: string;
+  className?: string;
+  disabled?: boolean;
+}
+
+export default function Button({ text, className, disabled, ...otherProps}: ButtonProps & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className' | 'disabled'>) {
 
   const btnClass = clsx(
     "py-(--space-s) rounded-(--space-2xs) border-0 text-(length:--step-1) leading-[1.5] font-bold",
@@ -10,9 +16,9 @@ export default function Button({ text, ...otherProps }) {
   );
   return (
     <button
-      className={[btnClass, classNameProp].filter(Boolean).join(" ")}
+      className={clsx(btnClass, className)}
       disabled={disabled}
-      {...remainProps}
+      {...otherProps}
     >
       {text}
     </button>

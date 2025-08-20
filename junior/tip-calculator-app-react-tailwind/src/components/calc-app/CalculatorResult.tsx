@@ -1,12 +1,19 @@
 import Button from "../buttons/Button";
 
 // Calculator Form
+type CalculatorResultProps = {
+  tipAmount: string;
+  total: string;
+  shouldResetBtnEnable: boolean;
+  onReset: () => void;
+};
+
 export default function CalculatorResult({
   tipAmount,
   total,
   shouldResetBtnEnable,
   onReset,
-}) {
+}: CalculatorResultProps) {
   return (
     <div className="flex flex-col justify-between gap-(--space-2xl-8xl) rounded-(--space-l) bg-(--cl-info-bg) p-(--space-l)">
       <div>
@@ -23,8 +30,13 @@ export default function CalculatorResult({
   );
 }
 
+type InfoProps = {
+  mainTxt: string;
+  subtleTxt: string;
+  value: number | string;
+};
 // Input Bill Amount
-function Info({ mainTxt, subtleTxt, value }) {
+function Info({ mainTxt, subtleTxt, value }: InfoProps) {
   return (
     <div className="flex justify-between items-center">
       <div>

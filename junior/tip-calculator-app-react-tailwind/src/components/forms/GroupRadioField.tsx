@@ -1,15 +1,36 @@
 import clsx from "clsx";
 import FormField from "./FormField";
+import type { UseFormRegister } from "react-hook-form";
+import type { InFormData } from "../../types/form";
+
+type RadioData = {
+  id: string;
+  labelTxt: string;
+  value: number;
+  customElement?: React.ReactNode;
+  onCustomRadioChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isHidden?: boolean;
+};
+
+type GroupRadioFieldProps = {
+  register: UseFormRegister<InFormData>;
+  fieldName: string;
+  groupLabelTxt: string;
+  groupId: string;
+  dataRadios: RadioData[];
+  selectedValue: number | null | unknown;
+  errMsg?: string | null;
+};
 
 export default function GroupRadioField({
+  register,
+  fieldName,
   groupLabelTxt,
   groupId,
-  radioName,
   dataRadios,
   selectedValue,
-  onChange,
-  errMsg = null,
-}) {
+  errMsg,
+}: GroupRadioFieldProps) {
   // Group Radio
   return (
     <FormField
@@ -31,12 +52,13 @@ export default function GroupRadioField({
             return (
               <RadioField
                 key={radio.id}
+                register={register}
+                fieldName={fieldName}
                 labelTxt={radio.labelTxt}
                 id={radio.id}
-                name={radioName}
                 value={radio.value}
-                checked={radio.value === selectedValue}
-                onChange={onChange}
+                checked={radio.value == selectedValue}
+                onCustomRadioChange={radio.onCustomRadioChange}
                 customElement={radio.customElement}
                 hideRadio={radio.isHidden}
               />
@@ -48,16 +70,29 @@ export default function GroupRadioField({
   );
 }
 
+type RadioFieldProps = {
+  register: UseFormRegister<InFormData>;
+  fieldName: string;
+  labelTxt: string;
+  id: string;
+  value: number;
+  checked: boolean;
+  customElement?: React.ReactNode;
+  onCustomRadioChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  hideRadio?: boolean;
+};
+
 function RadioField({
+  register,
+  fieldName,
   labelTxt,
   id,
-  name,
   value,
   checked,
   customElement,
-  onChange,
+  onCustomRadioChange,
   hideRadio,
-}) {
+}: RadioFieldProps) {
   const labelClassName = clsx(
     "block text-center outline-0 cursor-pointer p-(--space-s) rounded-(--space-3xs)",
     "font-base font-bold text-(length:--step-1) leading-[1.5] tracking-normal",
@@ -72,21 +107,28 @@ function RadioField({
     hideRadio && "hidden"
   );
 
+  const {onChange, ...restProps} = register(fieldName);
+
   return (
     <div>
       <input
+        {...restProps}
         type="radio"
         id={id}
-        name={name}
         value={value}
         className="peer sr-only"
-        checked={checked}
-        onChange={onChange}
+        onChange={(e) => {
+          onChange(e);
+          if (onCustomRadioChange) {
+            onCustomRadioChange(e);
+          }
+        }}
       />
       <label htmlFor={id} className={labelClassName}>
         {labelTxt}
       </label>
       {customElement}
     </div>
+    
   );
 }

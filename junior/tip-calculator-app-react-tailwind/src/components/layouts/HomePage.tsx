@@ -2,7 +2,9 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function HomePage({ children }) {
+import type { ReactNode } from "react";
+
+export default function HomePage({ children }: { children: ReactNode }) {
   // const [count, setCount] = useState(0);
 
   return (

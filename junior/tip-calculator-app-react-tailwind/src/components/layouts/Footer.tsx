@@ -23,6 +23,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-// color: var(--color-text-subtle, #733FCB);
-//   text-decoration: underline;

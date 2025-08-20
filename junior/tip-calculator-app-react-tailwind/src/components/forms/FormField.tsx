@@ -1,12 +1,20 @@
 import clsx from "clsx";
 
+type FormFieldProps = {
+  labelTxt: string;
+  labelFor?: string;
+  labelledBy?: string;
+  renderInput: (props: { className: string }) => React.ReactNode;
+  errMsg?: string | null;
+};
+
 export default function FormField({
   labelTxt,
   labelFor,
   labelledBy,
   renderInput,
   errMsg = null,
-}) {
+}: FormFieldProps) {
   // Text style
   const textStyle = "font-bold text-(length:--step-0) leading-[1.5]";
 
