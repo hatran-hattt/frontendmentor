@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/junior/tip-calculator-app
-- Live Site URL: https://hatran-hattt.github.io/frontendmentor/junior/tip-calculator-app/index.html
+- Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/junior/tip-calculator-app-react-tailwind
+- Live Site URL: https://hatran-hattt.github.io/frontendmentor/junior/tip-calculator-app-react-tailwind/dist/index.html
 
 ## My process
 
@@ -54,7 +54,7 @@ Users should be able to:
 - CSS Grid, Flexbox
 - Mobile-first workflow
 - React.js
-- TailwindCSS
+- TailwindCSS, React hook form, Zod
 
 ### What I learned
 

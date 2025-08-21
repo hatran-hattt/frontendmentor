@@ -5,37 +5,37 @@
       {
         "name": "QR Code Component",
         "folder": "qr-code-component",
-        "note": ""
+        "note": "Vanila"
       },
       {
         "name": "Blog Preview Card",
         "folder": "blog-preview-card",
-        "note": ""
+        "note": "Vanila"
       },
       {
         "name": "Social Links Profile",
         "folder": "social-links-profile",
-        "note": ""
+        "note": "Vanila"
       },
       {
         "name": "Recipe Page",
         "folder": "recipe-page",
-        "note": ""
+        "note": "Vanila"
       },
       {
         "name": "Product Preview Card",
         "folder": "product-preview-card",
-        "note": ""
+        "note": "Vanila"
       },
       {
         "name": "Four Card Feature",
         "folder": "four-card-feature",
-        "note": ""
+        "note": "Vanila"
       },
       {
         "name": "Testimonials Grid",
         "folder": "testimonials-grid",
-        "note": ""
+        "note": "Vanila"
       }
     ]
   },
@@ -46,32 +46,32 @@
       {
         "name": "Article Preview Component",
         "folder": "article-preview-component",
-        "note": ""
+        "note": "Vanila"
       },
       {
         "name": "Newsletter Sign Up",
         "folder": "newsletter-sign-up",
-        "note": ""
+        "note": "Vanila"
       },
       {
         "name": "Time Tracking Dashboard",
         "folder": "time-tracking-dashboard",
-        "note": ""
+        "note": "Vanila"
       },
       {
-        "name": "Tip Calculator App (version vanilla JS + CSS)",
+        "name": "Tip Calculator App",
         "folder": "tip-calculator-app",
-        "note": ""
+        "note": "Vanila"
       },
       {
-        "name": "Tip Calculator App (version React.js + vanilla CSS)",
+        "name": "Tip Calculator App",
         "folder": "tip-calculator-app-react/dist",
         "note": "React.js"
       },
       {
-        "name": "Tip Calculator App (version React.js + TailwindCSS)",
+        "name": "Tip Calculator App",
         "folder": "tip-calculator-app-react-tailwind/dist",
-        "note": "React.js TailwindCSS"
+        "note": "React.js, TailwindCSS, React hook form, Zod "
       },
       {
         "name": "Product list with cart page",
