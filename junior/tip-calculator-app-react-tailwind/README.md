@@ -53,12 +53,12 @@ Users should be able to:
 - CSS custom properties
 - CSS Grid, Flexbox
 - Mobile-first workflow
-- React.js
+- React.js, TypeScript
 - TailwindCSS, React hook form, Zod
 
 ### What I learned
 
-I've learned following library throughout this challenge
+I've learned following libraries throughout this challenge
 
 #### 1. TailwindCSS (style components using utility classes directly in markup)
 
