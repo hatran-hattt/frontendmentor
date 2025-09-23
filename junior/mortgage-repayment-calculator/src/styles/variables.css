@@ -1,0 +1,120 @@
+/* --- Design tokens */
+:root {
+  --cl-lime: #d8db2f;
+  --cl-lime-trans-15: rgba(216, 219, 47, 0.15);
+  --cl-slate-900: #133041;
+  --cl-slate-700: #4e6e7e;
+  --cl-slate-500: #6b94a8;
+  --cl-slate-300: #9abed5;
+  --cl-slate-300-trans-25: rgba(154, 190, 213, 0.25);
+  --cl-slate-100: #e4f4fd;
+  --cl-white: #ffffff;
+  --cl-red: #d73328;
+}
+/* --- Themes */
+:root {
+  /* || Common */
+  --cl-page-bg: var(--cl-slate-100);
+  --cl-card-bg: var(--cl-white);
+  --cl-main-text: var(--cl-slate-900);
+  --cl-subtle-text: var(--cl-slate-700);
+
+  /* || Form */
+  --cl-form-label: var(--cl-slate-700);
+  --cl-input-text: var(--cl-slate-900);
+
+  /* >>> State: normal */
+  --cl-input-bg: var(--cl-slate-100);
+  --cl-input-border: var(--cl-slate-500);
+  --cl-radio: var(--cl-slate-700);
+
+  /* >>> State: hover */
+  --cl-input-border-hover: var(--cl-slate-900);
+  --cl-radio-border-hover: var(--cl-lime);
+
+  /* >>> State: active */
+  --cl-input-bg-active: var(--cl-lime);
+  --cl-input-border-active: var(--cl-lime);
+  --cl-radio-active: var(--cl-lime);
+  --cl-radio-bg-active: var(--cl-lime-trans-15);
+
+  /* >>> State: error */
+  --cl-input-error: var(--cl-red);
+  --cl-input-error-contrast: var(--cl-white);
+
+  /* || Button */
+  --cl-btn-text: var(--cl-slate-900);
+  --cl-btn-bg: var(--cl-lime);
+
+  /* || Result */
+  --cl-rlt-bg: var(--cl-slate-900);
+  --cl-rlt-text-main: var(--cl-slate-300);
+  --cl-rlt-text-bold: var(--cl-white);
+  --cl-rlt-accent: var(--cl-lime);
+  --cl-rlt-line: var(--cl-slate-300-trans-25);
+
+  --cl-shadow: rgba(0, 0, 0, 0.7);
+}
+html[data-theme="light"] {
+}
+html[data-theme="dark"] {
+}
+@media (prefers-color-scheme: dark) {
+}
+
+/* 
+  8 - 41~56
+  4 - 24
+  1 - 18
+  0 - 16
+  -1 - 14
+
+  spacing: xl-40 l-32 m-24 s-16 xs-12 2xs-8
+ */
+
+/* --- Fluid type scales */
+/* @link https://utopia.fyi/type/calculator?c=360,16,1.125,1440,18,1.153,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+  --step--1: clamp(0.8889rem, 0.8599rem + 0.1286vw, 0.9757rem);
+  --step-0: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
+  --step-1: clamp(1.125rem, 1.0676rem + 0.255vw, 1.2971rem);
+  --step-2: clamp(1.2656rem, 1.189rem + 0.3407vw, 1.4956rem);
+  --step-3: clamp(1.4238rem, 1.3236rem + 0.4453vw, 1.7244rem);
+  --step-4: clamp(1.6018rem, 1.473rem + 0.5725vw, 1.9882rem);
+  --step-5: clamp(1.802rem, 1.6386rem + 0.7265vw, 2.2924rem);
+  --step-6: clamp(2.0273rem, 1.822rem + 0.9124vw, 2.6432rem);
+  --step-7: clamp(2.2807rem, 2.0251rem + 1.1361vw, 3.0476rem);
+  --step-8: clamp(2.5658rem, 2.2498rem + 1.4046vw, 3.5139rem);
+}
+
+/* @link https://utopia.fyi/space/calculator?c=360,16,1.125,1440,18,1.153,8,1,&s=0.75|0.5|0.25,1.5|2|2.5,s-l&g=s,l,xl,12 */
+
+:root {
+  --space-3xs: clamp(0.25rem, 0.2292rem + 0.0926vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4792rem + 0.0926vw, 0.5625rem);
+  --space-xs: clamp(0.75rem, 0.7083rem + 0.1852vw, 0.875rem);
+  --space-s: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
+  --space-m: clamp(1.5rem, 1.4375rem + 0.2778vw, 1.6875rem);
+  --space-l: clamp(2rem, 1.9167rem + 0.3704vw, 2.25rem);
+  --space-xl: clamp(2.5rem, 2.3958rem + 0.463vw, 2.8125rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1458rem + 0.463vw, 0.5625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.375rem + 0.5556vw, 0.875rem);
+  --space-xs-s: clamp(0.75rem, 0.625rem + 0.5556vw, 1.125rem);
+  --space-s-m: clamp(1rem, 0.7708rem + 1.0185vw, 1.6875rem);
+  --space-m-l: clamp(1.5rem, 1.25rem + 1.1111vw, 2.25rem);
+  --space-l-xl: clamp(2rem, 1.7292rem + 1.2037vw, 2.8125rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1rem, 0.5833rem + 1.8519vw, 2.25rem);
+}
+
+/* Font rules */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../assets/fonts/PlusJakartaSans-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900; /* Range for variable font */
+  font-style: normal;
+}

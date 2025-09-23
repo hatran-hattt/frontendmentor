@@ -82,6 +82,11 @@
         "name": "Results summary component",
         "folder": "results-summary-component/dist",
         "note": "React.js"
+      },
+      {
+        "name": "Mortgage repayment calculator",
+        "folder": "mortgage-repayment-calculator/dist",
+        "note": "React.js, TailwindCSS, React hook form, Zod, Shadcn UI "
       }
     ]
   }
