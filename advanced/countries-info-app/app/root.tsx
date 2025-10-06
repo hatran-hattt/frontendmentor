@@ -9,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import Header from "./components/layout/Header";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -19,7 +20,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap",
   },
 ];
 
@@ -32,13 +33,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
-        <ScrollRestoration />
+      <body className="font-base">
+        <Header/>
+        <main className="min-h-dvh mt-(--space-7xl) pt-(--space-m-xl) bg-(--cl-page-bg) text-(--cl-text-main)">
+          {children}
+        </main>
+        <ScrollRestoration
+          getKey={(location, matches) => {
+            // Restore based on a unique location key (default behavior)
+            // return location.key
+
+            // Restore based on pathname
+            return location.pathname
+          }} />
         <Scripts />
       </body>
     </html>
   );
+}
+
+export function HydrateFallback() {
+  return <p>Loading data ...</p>
 }
 
 export default function App() {
