@@ -54,7 +54,7 @@ Your users should be able to:
 ### Links
 
 - Solution URL: https://github.com/hatran-hattt/frontendmentor/tree/master/advanced/countries-info-app
-- Live Site URL: https://hatran-hattt.github.io/frontendmentor/advanced/countries-info-app/dist/index.html
+- Live Site URL: https://countries-info-app-drab.vercel.app/
 
 ## My process
 
