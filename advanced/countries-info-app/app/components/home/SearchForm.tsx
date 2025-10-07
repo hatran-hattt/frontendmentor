@@ -27,7 +27,7 @@ const regions = [
 
 export const FormSchema = z.object({
   country: z.string().trim().toLowerCase().optional(),
-  region: z.enum(["All", "Africa", "Americas", "Asia", "Europe", "Oceania"])
+  region: z.enum(["All", "Africa", "Americas", "Asia", "Europe", "Oceania"]).optional()
 
 })
 
@@ -39,24 +39,23 @@ type SearchFormProps = {
 }
 
 export function SearchForm(props: SearchFormProps) {
+  const initCountry = props.initCountry ?? "";
+  const initRegion = FormSchema.shape.region.safeParse(props.initRegion).data
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      country: props.initCountry ?? "",
-      region: FormSchema.shape.region.safeParse(props.initRegion).data
+      country: initCountry,
+      region: initRegion
     },
   })
+  const prevCountryRef = useRef<string>(initCountry)
+  const prevRegionRef = useRef<string | undefined>(initRegion)
 
   const watchedCountry = form.watch("country")
   const watchedRegion = form.watch("region")
 
-  const prevCountryRef = useRef<string | undefined>(undefined)
-  const prevRegionRef = useRef<string | undefined>(undefined)
-
   useEffect(() => {
-    // console.log(`Prev values: ${prevCountryRef.current} - ${prevRegionRef.current}`)
-    // console.log(`Watched values: ${watchedCountry} - ${watchedRegion}`)
-
     if (prevCountryRef.current !== watchedCountry || prevRegionRef.current !== watchedRegion) {
       const result = FormSchema.safeParse(form.getValues()); // Run the data through Zod to validate
       if (result.success) {
@@ -64,9 +63,8 @@ export function SearchForm(props: SearchFormProps) {
       }
     }
 
-    prevCountryRef.current = watchedCountry;
+    prevCountryRef.current = watchedCountry ?? "";
     prevRegionRef.current = watchedRegion
-
   }, [watchedCountry, watchedRegion])
 
   

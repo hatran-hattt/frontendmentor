@@ -38,9 +38,31 @@ function filterCountries(countries: Array<CountryData>, searchParams: SearchPara
   return filteredRlt
 }
 
+// TIPS: Clean search params
+// Utility function to clean an object
+interface SearchParamsObject {
+  [key: string]: string | undefined | null;
+}
+interface CleanedSearchParams {
+  [key: string]: string;
+}
+const cleanSearchParams = (
+  searchParams: SearchParamsObject
+): CleanedSearchParams => {
+  const cleaned: CleanedSearchParams = {};
+  for (const [key, value] of Object.entries(searchParams)) {
+    // Only include values that are not null, undefined, or empty strings
+    if (value !== null && value !== undefined && value !== '') {
+      cleaned[key] = value;
+    }
+  }
+  return cleaned;
+};
+
+
 interface SearchParams {
   country?: string;
-  region?: string;
+  region?: string | undefined;
 }
 export default function Home() {
 
@@ -55,7 +77,7 @@ export default function Home() {
   const handleQueryChange = (formData: z.infer<typeof FormSchema>) => {
     const filteredRlt = filterCountries(countries, formData)
     setFilteredCountries(filteredRlt)
-    setSearchParams(formData)
+    setSearchParams(cleanSearchParams(formData), {replace: true}) // TIPS: Clean search params (remove params whose value is null/undefined)
   }
 
   return (
@@ -65,9 +87,7 @@ export default function Home() {
         initCountry={searchParamsObj.country}
         initRegion={searchParamsObj.region}
         />
-      {/* TODO: handle fetchStatus */}
       <SearchResult items={filteredCountries} className="py-(--space-l-2xl) px-(--space-2xl-5xl)" />
     </>
   )
-  // return <><h1>Homepage</h1><br></br><Link to="/JPN">Go to detail Page</Link></>
 }
