@@ -1,5 +1,6 @@
 import type { CountryData } from "~/types/CountryData";
 import InfoLine from "../common/InfoLine";
+import { Link } from "react-router";
 
 export default function CountryDetail({data}: {data: CountryData}) {
   const NoDataString = "N/A"
@@ -41,14 +42,16 @@ export default function CountryDetail({data}: {data: CountryData}) {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          {(data.borders && data.borders?.length) ?
+          {(data.border_details && data.border_details?.length) ?
             (
               <>
                 <p className="text-(length:--step-0) font-semibold">Border Countries: </p>
                 <div className="flex flex-wrap gap-2">
-                  {data.borders?.map((border) => (
-                    <div className="min-w-24 px-2 py-2 rounded-sm shadow-sm
-                    dark:bg-(--cl-card-bg) text-(length:--step--1) font-light" key={border}>{border}</div>
+                  {data.border_details?.map((borderDetail) => (
+                    <Link to={`/${borderDetail.cca3}`}>
+                      <div className="min-w-24 px-2 py-2 rounded-sm shadow-sm
+                      dark:bg-(--cl-card-bg) text-(length:--step--1) font-light" key={borderDetail.cca3}>{borderDetail.display_name}</div>
+                    </Link>
                   ))}
                 </div>
               </>

@@ -16,12 +16,15 @@ export async function clientLoader({params}: Route.ClientLoaderArgs) {
   let data: CountryData = await fetchJson({url: GET_COUNTRY_DETAIL_API_URL})
 
   if (data.borders) {
-    const borderNames = await Promise.all(data.borders?.map(async (borderCca3) => {
+    const borderDetails = await Promise.all(data.borders?.map(async (borderCca3) => {
       const GET_COUNTRY_NAME_API_URL = `https://restcountries.com/v3.1/alpha/${borderCca3}?fields=name`
       let borderData: CountryData = await fetchJson({url: GET_COUNTRY_NAME_API_URL})
-      return borderData.name.official
+      return {
+        cca3: borderCca3,
+        display_name: borderData.name.official
+      }
     }))
-    data.borders = borderNames
+    data.border_details = borderDetails
   }
   
   return data

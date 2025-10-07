@@ -57,6 +57,14 @@ export interface Flags {
 }
 
 /**
+ * Defines the full name object structure.
+ */
+export interface BorderDetail {
+    cca3?: string;
+    display_name?: string;
+}
+
+/**
  * The main interface defining the complete country data object.
  */
 export interface CountryData {
@@ -71,4 +79,5 @@ export interface CountryData {
     tld?: string[]
     languages?: Languages;
     borders?: string[];
+    border_details?: BorderDetail[];
 }
